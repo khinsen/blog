@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="@|description|">
+    <meta name="author"      content="@|author|">
+    <meta name="keywords"    content="@|keywords|">
+    <link rel="icon"      href="@|uri-prefix|/img/favicon.ico">
+    <link rel="canonical" href="@|full-uri|">
+
+    <title>@|title|</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@|uri-prefix|/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="@|uri-prefix|/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="@|uri-prefix|/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          @(if (string-ci=? uri-path
+                            (string-append uri-prefix "/index.html"))
+            @list{<a class="blog-nav-item active" href="@|uri-prefix|/index.html">Home</a>}
+            @list{<a class="blog-nav-item" href="@|uri-prefix|/index.html">Home</a>}
+)
+          <a class="blog-nav-item" href="@|atom-feed-uri|">Atom</a>
+          <a class="blog-nav-item" href="@|rss-feed-uri|">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          @(when tag
+            @list{<h3><b>Posts tagged</b> <em>@|tag|</em></h3>})
+          @|contents|
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     @(when rel-prev @list{<li><a href="@|rel-prev|">Previous</a></li>}) -->
+          <!--     @(when rel-next @list{<li><a href="@|rel-next|">Next</a></li>}) -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="@|uri-prefix|/index.html">All Posts</a></li>
+               @|tags-list-items|
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
