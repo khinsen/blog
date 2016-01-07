@@ -2,7 +2,7 @@
     Date: 2016-01-07T16:09:10
     Tags: scientific computing
 
-Yesterday a [blog post](https://t.co/5KQYEBTt35) by Cyrille Rossant entitled "Moving away from HDF5" caught my eye. My own tendency at the moment is to use HDF5 more and more, so I was interested in why someone else would want to do the opposite. Here is my conclusion after reading his post, plus some ideas about where scientific data management is or should be heading in my opinion.
+Yesterday a [blog post](http://cyrille.rossant.net/moving-away-hdf5/) by Cyrille Rossant entitled "Moving away from HDF5" caught my eye. My own tendency at the moment is to use HDF5 more and more, so I was interested in why someone else would want to do the opposite. Here is my conclusion after reading his post, plus some ideas about where scientific data management is or should be heading in my opinion.
 
 <!-- more -->
 
