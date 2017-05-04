@@ -1,0 +1,42 @@
+    Title: Which mistakes do we actually make in scientific code?
+    Date: 2017-05-04T12:00:16
+    Tags: computer-aided research, scientific software
+
+Over the last few years, I have repeated a little experiment: Have two scientists, or two teams of scientists, write code for the same task, described in plain English as it would appear in a paper, and then compare the results produced by the two programs. Each person/team was asked to do a maximum amount of verification and testing before comparing to the other person's/team's work.
+
+<!-- more -->
+
+Let me state the most disturbing outcome of this experiment first: we never found complete agreement between the two programs. Not once. And when we explored to find the cause of the discrepancies, we most often found bugs in *both* programs, plus missing details in the description written initially for human readers.
+
+The two most practically significant experiments of this kind were actual research projects that have since been published:
+
+- [A comparison of reduced coordinate sets for describing protein structure](http://dx.doi.org/10.1063/1.4821598). For this work, Shuangwei Hu wrote Matlab code, and I wrote the Python code that was [ultimately published](https://doi.org/10.6084/m9.figshare.798825.v1).
+
+- [Model-free simulation approach to molecular diffusion tensors](http://dx.doi.org/10.1063/1.4823996). In this case, Gerald Kneller wrote Mathematica code, and I wrote the [Python version](https://doi.org/10.6084/m9.figshare.808594.v1) again.
+
+Later on, I did a series of similar experiments with PhD students participating in what can be summarized as advanced Python programming courses. PhD students with limited programming experience are exactly the kind of scientists who write much of the software for research projects. But the setting was "exercises in a course", with programming tasks being much simpler, and much better specified, than what the typical research project requires.
+
+The results of these experiments that I will summarize here are no more than anecdotal evidence. In fact, the initial goal was not to perform an experiment in scientific computing, but to perform better checks on the code for a research project. It would be interesting to do a larger-scale proper study, but that's beyond my means and competence.
+
+As I already mentioned, there was never complete agreement between the two programs supposed to solve the same problem. In many cases the differences were small, and I suspect many would have brushed them away as caused by uncontrollable round-off, given that all problems were numerical in nature. But upon closer scrutiny, we always found different issues, and got much better agreement after fixing them. This is why I still believe what [bitwise reproducibility matters](https://khinsen.wordpress.com/2015/01/07/why-bitwise-reproducibility-matters/). When small numerical differences are inevitable, as they are with today's scientific programming languages, it becomes much more difficult to search for and eliminate mistakes.
+
+So which are the mistakes that were uncovered by comparing two independent implementations of the same method?
+
+Number one, by far, is discrepancies between the informal description for human readers and the executable implementation. Put simply, the programs did not compute what the informal description said they should compute, or the informal description was incomplete, admitting more than one interpretation.
+
+Number two is typos in numerical constants and in variable names. Since I can almost hear proponents of static typing saying "that's what you deserve for using Python", let me add that most typos in variable names would *not* have been caught by static type checking. If you have two integer loop indices `i` and `j`, no type checker will complain when you interchange them by mistake.
+
+Number three is off-by-one-or-two errors in loops and in array indices. If you have a complex formula involving lots of x[i], x[i+1], and x[i-1], it's hard to avoid getting an index wrong occasionally. Unfortunately, array bounds checking does not catch all of these mistakes. Another interesting observation is that this type of mistake is just as likely in the informal description as in the code. Humans are apparently not very good at handling this kind of "detail".
+
+Is there anything we can do to reduce the risk of these types of mistakes? I'd say yes, but it's not going to be easy.
+
+Let's start with what software engineering techniques could do to improve the situation. The main opportunity I see is for mistakes of the third kind. Index arithmetic could be eliminated altogether by abstracting it away. Most situations correspond to one of a handful of patterns, often called [stencils](https://en.wikipedia.org/wiki/Stencil_(numerical_analysis), which could become functions or macros in a suitable domain-specific language. Another idea, applicable to legacy code, is to have code checking tools recognize stencils and small deviations from common stencils and point out potential mistakes - see [this presentation](https://camfort.github.io/tvcs2017/#contrastin) at the recent
+[2nd Meeting on Testing and Verification for Computational Science](https://camfort.github.io/tvcs2017/).
+
+Similar heuristic searches for potential mistakes could be applied to typos in variable names, though it is not sure that such reports would ultimately be useful. The real issue is the widespread use of short and similar variable names. A radical approach would be to ban them as part of a programming style guide, and have source code checkers flag violations of such a rule.
+
+For the main source of mistakes, discrepancies between informal specification and implementation, software engineering approaches are totally hopeless in my opinion. After all, the programs are perfectly reasonable and consistent, they merely solve a problem that is different from the one they were written to solve. Given the current state of technology, the comparison between the two problem decriptions can only be done by human proofreading, as long as at least one problem description is informal. I suspect the best approach we have today is exactly what I described above - develop two independent implementations and compare.
+
+In the long run, we can work on reducing the gap between informal descriptions (papers, software documentations) and executable implementations. I vaguely remember hearing about people exploring the possibility of turning informal descriptions into formal specifications by natural language processing - if anyone has a reference, please leave a comment! But I am rather skeptical of this approach, and therefore I prefer to let humans make the move towards formal specifications. The human-computer interface for such specifications is what I call [digital scientific notations](http://sjscience.org/article?id=527), and I am currently working on [developing such a notation](https://github.com/khinsen/leibniz) for my corner of science, which is computational physics and chemistry.
+
+Finally, let me point out that my experiments and their conclusion apply only to research code in the strict sense, i.e. code that was written to compute a result that is *a priori* unknown. Referring to my [earlier post on software collapse](http://blog.khinsen.net/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/), this is the fourth and project-specific layer of scientific software. When writing libraries and software tools that implement established methods for wider use, the situation is different because testing can be used much more effectively.
