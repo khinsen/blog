@@ -46,3 +46,6 @@ I would like to see the SciPy community define its point of view on these issues
 What is not OK is what I perceive as the dominant attitude today: sell SciPy as a great easy-to-use tool for all scientists, and then, when people get bitten by breaking changes, tell them that it's their fault for not having a solid maintenance plan for their code.
 
 Finally, in anticipation of an argument that I expect to see, let me stress that this is not a technical issue. Computing technology moves at a fast pace, but that doesn't mean that lack of stability is a fatality. My [last Fortran code](https://github.com/khinsen/hydrolib), published in 1994, still works without changing a single line. Banks have been running Cobol code unchanged for decades. Today's Java implementations will run the very first Java code from 1995 without changes, and even much faster thanks to JIT technology. This last example also shows that stability is not in contradiction with progress. You can have both if that's a design goal. It's all a matter of policy, not technology.
+
+
+**Note added 2017-11-22:** see also my [summary of the discussion](http://blog.khinsen.net/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/) in reaction to this post.
