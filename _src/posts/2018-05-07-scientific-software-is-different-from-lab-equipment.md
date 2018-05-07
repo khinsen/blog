@@ -1,0 +1,67 @@
+    Title: Scientific software is different from lab equipment
+    Date: 2018-05-07T09:40:35
+    Tags: computational science, computer-aided research, scientific software
+
+My most recent paper submission ([preprint](https://peerj.com/preprints/26633/) available) is about improving the verifiability of computer-aided research, and contains many references to the related subject of reproducibility. A reviewer asked the same question about all these references: isn't this the same as for experiments done with lab equipment? Is software worse? I think the answers are of general interest, so here they are.
+
+<!-- more -->
+
+First of all, an inevitable remark about terminology, which is still far from standardized (see [this preprint](https://arxiv.org/abs/1802.03311) and [this article](https://doi.org/10.3389%2Ffninf.2017.00076)  for two recent contributions to the controversy). I will use the term "computational reproducibility" in its historically first sense introduced by Claerbout in 1992, because it seems to me that this is currently the dominant usage. *Reproducing* a computation thus means running the same software on the same data, though it's usually done by a different person using a different computer. In contrast, *replication* refers to solving the same problem using different software. This terminological subtlety matters for the following discussion, because experimental reproducibility is actually more similar to replicability, rather than reproducibility, in the computational case.
+
+There are two aspects in which I think scientific software differs significantly from lab equipment:
+
+  1. Its characteristics as a human-made artifact
+  2. Its role in the process of doing science.
+
+## Software is more complex and less robust than lab equipment
+
+The first point I raised in my paper is the epistemic opacity of automated computation. Quote:
+
+> The overarching issue is that performing a computation by hand, step
+> by step, on concrete data, yields a level of understanding and
+> awareness of potential pitfalls that cannot be achieved by reasoning
+> more abstractly about algorithms. As one moves up the ladder of
+> abstraction from manual computation via writing code from scratch,
+> writing code that relies on libraries, and running code written by
+> others, to having code run by a graduate student, more and more
+> aspects of the computation fade from a researcher's attention. While
+> a certain level of epistemic opacity is inevitable if we want to
+> delegate computations to a machine, there are also many sources of
+> accidental epistemic opacity that can and should be eliminated in
+> order to make scientific results as understandable as possible.
+
+The reviewer asks: isn't this the same as when doing experiments using lab equipment constructed by somebody else? My answer is no.
+
+Let's do a little thought experiment, introducing Alice and Bob as virtual guinea pigs. Alice is an experienced microscopist, Bob is an experienced computational scientist. We give Alice a microscope she hasn't seen before, and ask her to evaluate if it is suitable for her research. We give Bob a simulation program (with source code and documentation) that he hasn't seen before, and ask him the same question.
+
+My expectation is that Alice will go off an do some tests with samples that she knows well, and perhaps do some measurements on the microscope. After that, she will tell us for which aspects of her work she can use this new microscope. Meanwhile, Bob will be scratching his head while trying to figure out how to deal with our question.
+
+One reason for the difference is that a microscope is a much simpler artifact than a simulation program. While it is certainly difficult to design and produce a good microscope, from a user's perspective its characteristics can be described by a handful of parameters, and its quality can be evaluated by a series of test observations. Software, on the contrary, can do almost anything. A typical simulation program has lots of options, whose precise meaning isn't always obvious from its documentation. More importantly, no two simulation programs have identical options. Even the most experienced user of simulation software A falls back to near-novice status when given simulation software B.
+
+A more subtle difference is that microscopes, and lab equipment in general, are designed to be robust against small production defects and small variations of environmental conditions. Such small variations cause only small changes in the generated images. With software, on the other hands, all bets are off. A one-character mistake in the source code can cause the program to crash, but also to produce arbitrarily different numbers. In fact, there is no notion of similarity and thus of small variations for software. For a more detailed discussion, see my [CiSE article](http://doi.ieeecomputersociety.org/10.1109/MCSE.2016.67) on this topic. This is why you can evaluate the quality of a microscope using a few judiciously chosen samples, whereas no amount of test runs can assure you that a piece of software is free of bugs. Unless you can afford to test *all possible* inputs, of course, but then you don't really need the software.
+
+These two differences explain why Alice knows how to evaluate the microscope, whereas Bob doesn't know where to start. He might look at the documentation and the test cases to see if the program is meant to be used for the kind of work he does. But the documentation almost certainly lacks some important details of the approximations that are made in the code and that matter for Bob's work. Moreover, he would still have to check that the software has no serious bugs related to the functionality he plans to use. Without knowing the implemented algorithms in detail, he cannot even anticipate what bugs to watch out for.
+
+Bob could also choose a very different approach and judge the software by quality standards from software engineering. Is the code well structured? Does it have unit and integration tests? These are the criteria that software journal ask their reviewers to evaluate (e.g. the [Journal of Open Research Software](https://openresearchsoftware.metajnl.com/about/editorialpolicies/) or the [Journal of Open Source Software](http://joss.theoj.org/about#reviewer_guidelines)). Statistically, they are probably related to the risk of encountering bugs (if anyone knows about research into this question, please leave a comment!). But even the most meticulous developers make mistakes, and, more importantly, may have different applications in mind than those that Bob cares about.
+
+Finally, Bob could do what in my experience most scientists do in choosing research software: they use what their colleagues use. Bob would then send a few emails asking if anyone he knows uses this software and is happy with it. This is a reasonable approach if you can assume that your colleagues, or at least a sizable fraction of them, are in a better position to judge the suitability of a piece of software than yourself. But if everyone adopts this approach, it becomes a popularity contest with little intrinsic value. In any case, it is not a way to actually answer our question.
+
+In the end, if you really want to know if your software does what you expect it to do, you have to go through every line of the source code until you understand what it does. You are then at the minimal level of epistemic opacity that you can attain without actually doing the computations by hand. Unfortunately, in the case of complex wide-spectrum software, this is likely to be much more effort than writing your own special-purpose software.
+
+The solution I propose in my paper is to use human-readable formal specifications as a form of documentation that is rigorous and complete, and can be used as a reference to verify the software against. The idea is to have a statement of the implemented algorithms that is precise and complete but as simple as possible, without being encumbered by considerations such as performance. Note that I don't know if this will turn out to be possible - my work is merely a first step into that direction that, to the best of my knowledge, has not been explored until now.
+
+## Software is about models, lab equipment is about observations
+
+A popular meme in explaining science describes it as founded on two pillars, experiment and theory. Some people propose to add computation and/or simulation as a third pillar, and data mining as a fourth, although these additions remain controversial. In my opinion, they are misguided by a bad identification of the initial pillars. They are not experiment and theory, but observations and models. We often speak of computational experiments when doing simulations, and there are good reasons for the analogy, but it is important to keep in mind that these are experiments on models, not on natural phenomena.
+
+Observations provide us with information about nature, and models allow us to organize and generalize this information. In this picture, computation has two roles: evaluating the consequences of a model, and comparing them to observations. Simulation is an example for the first role, data mining for the second. Both of these roles predate electronic computers, they simply received more modest labels such as "solving differential equations" or "fitting parameters" in the past.
+
+In the context of reproducibility and verifiability, it is important to realize that there is no symmetry between these two pillars. Nature is the big unknown that we probe through observations. To do this, we use lab equipment that can never be perfect, for two reasons: first, it is constructed on the basis of our imperfect understanding of nature, and second, our control of matter is limited, so we cannot produce equipment that behaves precisely as we imagine it. Models, on the other hand, are symbolic artifacts that are under our precise control. We can formulate and communicate them without any ambiguity, if only we are careful enough.
+
+Because of these very different roles of observations and models, computational reproducibility has no analogue in the universe of observations. It is almost exclusively a communication issue, the one exception being the non-determinism in parallel computing that we accept in exchange for getting results faster. Non-determinism aside, if Alice cannot reproduce Bob's computations, that simply means that Bob has not been able or willing to describe his work in enough detail for Alice to re-do it identically. There is no fundamental obstacle to such a description, because models and software are symbolic artifacts. We actually know how to achieve computational reproducibility, but we still need to make it straightforward in practice.
+
+Similarly, if Alice cannot verify that Bob's computation solves the problem he claims them to solve, this means that Bob has not succeeded in explaining his work clearly enough for Alice to understand what is going on. An unverifiable computation is thus very similar to a badly written article. The big difference in practice is that centuries of experience with writing have lead to accepted and documented standards of good writing style, whereas after a few decades of scientific computing, we still do not know how to expose complex algorithms to human readers in the most understandable way. My paper is a first small step towards developing appropriate techniques.
+
+Experimental reproducibility, on the other hand, is an ideal that can never be achieved perfectly, because no two setups are strictly the same. Verifiability is equally limited because observations can never be repeated identically, even when done with the same equipment. Reproducibility is a quality attribute much like accuracy, precision, or cost. Tradeoffs between these attributes are inevitable, and have to be made by each scientific discipline as a function of what its main obstacles to progress are.
+
+Science has been adjusting to the inevitable limits of observations since its beginnings, whereas the issue of incomplete model descriptions has come up only with the introduction of computers permitting to work with complex models. We don't know how yet if non-verifiable models are a real problem or not. However, as a theoretician I am not comfortable with the current situation. Models can be simple or complex, good or bad, grounded in solid theory or ad-hoc, but they should not be fuzzy. In particular not for complex systems, where it is very hard to foresee the consequences of minor changes.
