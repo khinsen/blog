@@ -27,3 +27,6 @@ Is there anything that FOSS communities can do to prevent such miscommunication 
     their code to changes in the interfaces explained there.
 
 I would expect such a notice in the [introduction to the SciPy Lecture Notes](https://scipy-lectures.org/intro/intro.html), for example. It describes the SciPy ecosystem, comparing it to alternative choices, but says no word about what users need to do to safely use this ecosystem in their research work. As I said in my [previous post](https://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/), the FOSS community has largely been blind to the consequences of software industrialization, maintaining the outdated view that developers and users form a single community. It's time for an upgrade.
+
+
+Note added after the initial publication: Dan Katz commented [on Twitter](https://twitter.com/danielskatz/status/1194203819271491586) with a reference to this very clear [statement on the development priorities for Matlab](https://collegeville.github.io/CW3S19/WorkshopResources/WhitePapers/quillenCW3S19.pdf). It would be very helpful if FOSS communities published similar statements about their products.
