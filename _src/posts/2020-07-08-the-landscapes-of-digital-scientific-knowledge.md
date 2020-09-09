@@ -2,7 +2,7 @@
     Date: 2020-07-08T16:09:46
     Tags: science
 
-Over the last years, an interesting metaphor for information and knowledge curation is beginning to take root. It compares knowledge to a landscape in which it identifies in particular two key elements: streams and gardens. The first use of this metaphor that I am aware of is [this essay by Mike Caulfield](https:/hapgood.us/2015/10/17/the-garden-and-the-stream-a-technopastoral/), which I strongly recommend you to read first. In the following, I will apply this metaphor specifically to scientific knowledge and its possible evolution in the digital era.
+Over the last years, an interesting metaphor for information and knowledge curation is beginning to take root. It compares knowledge to a landscape in which it identifies in particular two key elements: streams and gardens. The first use of this metaphor that I am aware of is [this essay by Mike Caulfield](https://hapgood.us/2015/10/17/the-garden-and-the-stream-a-technopastoral/), which I strongly recommend you to read first. In the following, I will apply this metaphor specifically to scientific knowledge and its possible evolution in the digital era.
 
 <!-- more -->
 
