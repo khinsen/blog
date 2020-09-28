@@ -7,7 +7,7 @@ computational
 notebooks.](http://blog.khinsen.net/posts/2019/02/11/the-computational-notebook-of-the-future/)
 Since then I have made some progress on a prototype implementation,
 which is the topic of this post. Again I have made a companion
-[screencast](https://peervideo.net/videos/watch/4022a2cf-2b22-4a1c-935e-bf80724d3970) (also on [Vimeo](https://vimeo.com/339361206) for those who find peervideo.net too slow to access) so that you can get a better idea of how all this works in practice.
+[screencast](https://vimeo.com/339361206) so that you can get a better idea of how all this works in practice.
 
 <!-- more -->
 
