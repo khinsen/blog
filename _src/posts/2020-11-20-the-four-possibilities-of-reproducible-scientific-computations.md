@@ -48,3 +48,5 @@ The possibility of verifying the correspondence of source code and executable ve
 ## Please comment!
 
 As I said, the goal of this blog post is to start a discussion. Your comments are valuable, possibly more so than the post itself. How important are the four possibilities in your own discipline? How well can they be realized within the current state of the art? Are there additional possibilities you consider important for reproducibility?
+
+Check also the comments on Twitter by exploring the replies to [this tweet](https://twitter.com/khinsen/status/1329832546474061824).
