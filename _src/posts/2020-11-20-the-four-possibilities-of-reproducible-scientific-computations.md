@@ -50,3 +50,11 @@ The possibility of verifying the correspondence of source code and executable ve
 As I said, the goal of this blog post is to start a discussion. Your comments are valuable, possibly more so than the post itself. How important are the four possibilities in your own discipline? How well can they be realized within the current state of the art? Are there additional possibilities you consider important for reproducibility?
 
 Check also the comments on Twitter by exploring the replies to [this tweet](https://twitter.com/khinsen/status/1329832546474061824).
+
+
+## Notes added after publication
+
+### 2020-11-22
+
+[Jeremy Leipzig](https://twitter.com/jermdemo/status/1329866889867059200) points out 
+[the 2012 ICERM workshop document](https://icerm.brown.edu/topical_workshops/tw12-5-rcem/icerm_report.pdf), whose appendix A discusses several levels of reproducibility. Its last level ("open or reproducible research") covers in a general way the four possibilities I discuss above. The lower levels describe research output in which at least one of the four possibilities is not provided.
