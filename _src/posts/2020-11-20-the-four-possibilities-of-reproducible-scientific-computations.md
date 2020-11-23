@@ -62,3 +62,5 @@ Check also the comments on Twitter by exploring the replies to [this tweet](http
 ### 2020-11-23
 
 [Ivo Jimenez](https://twitter.com/ivotron/status/1329873600472621057) refers to [ongoing work](https://www.niso.org/standards-committees/reproducibility-badging) at NISO (National Information Standards Organization, USA) to define recommended practices, and [Neil Chue Hong](https://twitter.com/npch/status/1330453823568171008) says they will be out soon.
+
+[Ivo Jimenez](https://twitter.com/ivotron/status/1330612647763570690) also mentions an interesting collection of [resources on artifact evaluation for computer systems conferences](https://sysartifacts.github.io/).
