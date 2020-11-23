@@ -58,3 +58,7 @@ Check also the comments on Twitter by exploring the replies to [this tweet](http
 
 [Jeremy Leipzig](https://twitter.com/jermdemo/status/1329866889867059200) points out 
 [the 2012 ICERM workshop document](https://icerm.brown.edu/topical_workshops/tw12-5-rcem/icerm_report.pdf), whose appendix A discusses several levels of reproducibility. Its last level ("open or reproducible research") covers in a general way the four possibilities I discuss above. The lower levels describe research output in which at least one of the four possibilities is not provided.
+
+### 2020-11-23
+
+[Ivo Jimenez](https://twitter.com/ivotron/status/1329873600472621057) refers to [ongoing work](https://www.niso.org/standards-committees/reproducibility-badging) at NISO (National Information Standards Organization, USA) to define recommended practices, and [Neil Chue Hong](https://twitter.com/npch/status/1330453823568171008) says they will be out soon.
