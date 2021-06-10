@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="One of the more interesting things I have been playing with recently is Pharo, a modern descendent of Smalltalk. This is a summary of my first impressions after using it on a small (and unfinished) project, for which it might actually turn out to be very ...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2018/12/19/exploring-pharo/">
+
+    <title>Exploring Pharo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2018/12/19/exploring-pharo/'>Exploring Pharo</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2018-12-19" pubdate="true">2018-12-19</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>One of the more interesting things I have been playing with recently is <a href="http://www.pharo.org/">Pharo</a>, a modern descendent of Smalltalk. This is a summary of my first impressions after using it on a <a href="https://github.com/khinsen/leibniz-pharo/">small (and unfinished) project</a>, for which it might actually turn out to be very helpful.</p>
+<!-- more-->
+
+<p>The first time I read about Smalltalk was in the <a href="https://archive.org/details/byte-magazine-1981-08">August 1981 issue of Byte magazine</a>. Back then, I was a high school student and I had just invested my savings into my first home computer with characteristics typical for the time: Z80 processor, 16 KB of memory, Microsoft Basic, data storage on cassette tapes. From that perspective, Smalltalk was a utopia. The revolutionary aspect of Smalltalk was its design as an integrated computing system that combined a language, a huge standard library, a development environment, and perhaps most of all a graphical user interface (GUI), which in fact was the ancestor of all of today&rsquo;s desktop-style GUIs. As a consequence, it required a high-quality graphics display, a mouse, and plenty of CPU power. None of that was available in commodity hardware.</p>
+
+<p>In 1995, a friend passed me a floppy disk with Smalltalk&ndash;80 for the Atari ST family, and I could finally lay my hands on a working Smalltalk system. By then I had an Atari TT with the awesome big high-resolution black-and-white screen that was available for it. Just perfect for Smalltalk. I was very impressed by the system, which in many respects was superior to the Atari&rsquo;s native TOS/GEM combo, and even to the Unix workstations I had in the lab. But I couldn&rsquo;t actually use it for anything productive, because Smalltalk lived in a separate universe, unable to access any file on my hard disk. It wasn&rsquo;t more than an impressive demo of what computing could be like.</p>
+
+<p>I have faint memories of playing with <a href="http://www.squeak.org/">Squeak</a> a couple of years later, but I found its flashy colors and toy-inspired aesthetics so unpleasant that I didn&rsquo;t go very far. Pharo is actually a fork of Squeak that evolved into a different direction, with a more sober design that is much more to my liking. More importantly, some of the on-going developments in the Pharo community (in particular the <a href="https://gtoolkit.com/">Glamorous Toolkit</a>) are much in line with my recent interest in the <a href="https://peerj.com/articles/cs-158/">human-computer interface of computational science</a>. The 2018 session of the <a href="https://mooc.pharo.org/">Pharo MOOC</a> was thus a good occasion to take a more serious look at this up-to-date incarnation of Smalltalk. The MOOC does a pretty good job at introducing Pharo to people with various interests, and it even includes some explanations of the internal workings of Pharo (look for the &ldquo;black magic&rdquo; label).</p>
+
+<p>As a language, Smalltalk was revolutionary in the 1980s, but no longer today because many now better known languages have drawn on it for inspiration. If you know Python, for example, then Pharo won&rsquo;t surprise you much beyond the obvious and important syntactical differences. On the plus side, that means it is not much effort to do a first project in Pharo when coming from a Python background. But it also means that there isn&rsquo;t much to be gained from learning Pharo if you look at it as just another programming language. The really interesting part is not the language, but the user interface of Pharo the computing platform.</p>
+
+<p>Pharo belongs to a rare species of computing environments that I think is best described by the label &ldquo;explorable&rdquo;. All of Pharo is implemented in Pharo itself, and all the source code is there for you to inspect and modify. But it&rsquo;s not just the code that is inspectable, it&rsquo;s all the objects that exist in memory. You can, for example, evaluate <code>Array instanceCount</code> to find out how many arrays exist at the moment (213464 when I tried). You can then obtain an arbitrarily chosen instance with <code>Array someInstance</code> and open a graphical inspector using <code>Array someInstance inspect</code>. You can also modify that array, without any idea of where it is used and for what, and thus wreak havoc with your system. For a more thorough approach to breaking Pharo, one of my favorites is <code>true become: false</code>, which replaces <code>true</code> by <code>false</code> and vice versa everywhere in the system. Pharo reacts much like I&rsquo;d expect a human logician to react: it freezes instantly.</p>
+
+<p>The complete state of a Pharo system, including all code and all objects, and thus even GUI elements such as open windows, can be saved with a click in what is called an image. This is obviously very convenient, but should not be used as the only strategy for storing code because images are fragile, as my example above illustrates. Consider an image your development environment rather than your code repository. In fact, Pharo supports and encourages storing code in Git repositories.</p>
+
+<p>It is important to understand that explorability is not an accidental feature of Pharo (and other Smalltalk derivates), but has been a design goal from the start. Those interested in the history of this idea should look at <a href="https://en.wikipedia.org/wiki/Dynabook">Alan Kay&rsquo;s Dynabook concept</a> and then take another step back in history to <a href="http://thedemo.org/">Doug Englebart&rsquo;s &ldquo;Mother of all Demos&rdquo;</a>. The motivation behind all these developments is to make computing a tool not for performing tasks, but for augmenting human intellectual abilities. That goal is, unfortunately, very rare. In fact, the only other system I know of that was designed to be explorable is <a href="http://www.emacs.org/">Emacs</a>, also with the goal of maximally empowering users. Once you look beyond superficialities, Pharo and Emacs are actually quite similar. Both are built around a high-level programming language with a rich library, a user-interface framework, and development tools with inspection capabilities. Emacs then comes with a text editor as the default application at startup. Pharo has no such default application, meaning that it is pretty useless before you write some code of your own. That is probably the main reason why Emacs became so much more popular - people use it as a text editor and only later, if ever, discover its empowering features.</p>
+
+<p>Explorability is what interests me most in Pharo, because I believe that computational science sorely needs it, and that existing interactive interfaces such as REPLs or notebooks are far from sufficient. They impose a linear thread of exploration, whereas I want to be able to go off on a tangent, dig in deeper into a model, compare two datasets side-by-side, etc. Notebooks are also rigid exploration environments which can be extended only with major effort, if at all. Pharo offers a much richer exploration environment, and makes it easy to adapt to problem-specific needs (another reference to the <a href="https://gtoolkit.com/">Glamorous Toolkit</a> is compulsory here). The snag is that Pharo doesn&rsquo;t offer much support for working with scientific data or scientific models (though I must admit that I haven&rsquo;t checked out <a href="https://github.com/PolyMathOrg/PolyMath">PolyMath</a> yet). There are people who use Pharo for computational science (see e.g. <a href="https://github.com/UMMISCO/kendrick">this epidemiology simulation platform</a>), so I suppose that there are useful tools I simply haven&rsquo;t looked at yet.</p>
+
+<p>One power tool that I have already discovered (and explored interactively in Pharo) is the visualization library <a href="http://agilevisualization.com/">Roassal</a>. It may superficially resemble various visualization libraries for JavaScript, but the big difference is that it integrates with the Pharo development and exploration tools. It is very easy to add a visualization pane to Pharo&rsquo;s object inspector and get a graphical view on your objects in addition to the standard browser-type interface for accessing an object&rsquo;s internals. And that means that you can easily use visualization as a tool in designing, implementing, and debugging code. It also helps a lot that the visualizations are themselves interactive. You can make them react to clicks, drags, and other events, and thus turn them into a user interface to your classes. For those familiar with Jupyter notebooks, it&rsquo;s as if you could implement interactive widgets in a few lines of Python code stored in your notebook.</p>
+
+<p>I should perhaps say something about Pharo as a software development environment, but that aspect has been covered before by others in much more depth than I would do it myself. The demos in the Pharo MOOC are a good introduction, but for an overview of the possibilities, nothing beats <a href="https://www.youtube.com/watch?v=baxtyeFVn3w">Aditya Siram&rsquo;s recent demo</a> aimed at adepts of functional programming languages.</p>
+
+<p>After all that praise, I have to add some caveats. First of all, the Pharo community is tiny compared to, say, Python&rsquo;s, and therefore the choice in domain-specific libraries is rather small. Next, Pharo development moves on at a rapid pace, with the main consequence that nearly all available documentation is outdated, and what&rsquo;s left is often an update for insiders rather than an introduction for newcomers. No matter how explorable a system is, you need some higher-level information to use it productively, if only to know the jargon that permits you to start searching for stuff. As an example, when I tried to figure out how package dependency management works, I had to ask on the <a href="http://lists.pharo.org/mailman/listinfo/pharo-users_lists.pharo.org">Pharo user mailing list</a> to learn that the keyword to look for is &ldquo;baseline&rdquo;. The three books <a href="http://books.pharo.org/updated-pharo-by-example/">Pharo by Example</a>, <a href="http://deepintopharo.com/">Deep into Pharo</a>, and <a href="http://books.pharo.org/enterprise-pharo/">Enterprise Pharo</a> are probably the best place to start looking for introductory essays, but even they are two versions behind the current one.</p>
+
+<p>Finally, let me anticipate a reaction that I expect regular readers of this blog to have. How is it possible for someone who underlines the importance of reproducibility in every second post to say something positive about a system that relies on persistent state to the point that it cannot even be bootstrapped from its own source code? There are a couple of replies. Most importantly, reproducibility is not what I am looking for in Pharo. Every system has its good and bad sides, and I am turning to Pharo for its good sides, explorability and user interfaces. Second, the Pharo developers are working on this. And finally, decades of dealing with persistent yet fragile system images have lead the Smalltalk community to figure out ways to cope with the resulting problems (e.g. changesets) that may be worth studying for inspiration. Computational science suffers from a fundamental tension between the short-term need for interactivity and the long-term need for reproducibility. So far, no one has found a satisfying answer, so it&rsquo;s worth looking for inspiration in unusual places.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2018/12/19/exploring-pharo/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2018/12/19/exploring-pharo/';
+          this.page.identifier = '/posts/2018/12/19/exploring-pharo/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2019/02/11/the-computational-notebook-of-the-future/">&larr; <em>The computational notebook of the future</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/"><em>Knowledge distillation in computer-aided research</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2019/02/11/the-computational-notebook-of-the-future/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

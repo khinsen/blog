@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="My most recent paper submission (preprint available) is about improving the verifiability of computer-aided research, and contains many references to the related subject of reproducibility. A reviewer asked the same question about all these references: is...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science, computer-aided research, scientific software">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/">
+
+    <title>Scientific software is different from lab equipment</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/'>Scientific software is different from lab equipment</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2018-05-07" pubdate="true">2018-05-07</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a>, <a href="/tags/computer-aided-research.html">computer-aided research</a>, <a href="/tags/scientific-software.html">scientific software</a></span></p>
+
+<p>My most recent paper submission (<a href="https://peerj.com/preprints/26633/">preprint</a> available) is about improving the verifiability of computer-aided research, and contains many references to the related subject of reproducibility. A reviewer asked the same question about all these references: isn&rsquo;t this the same as for experiments done with lab equipment? Is software worse? I think the answers are of general interest, so here they are.</p>
+<!-- more-->
+
+<p>First of all, an inevitable remark about terminology, which is still far from standardized (see <a href="https://arxiv.org/abs/1802.03311">this preprint</a> and <a href="https://doi.org/10.3389%2Ffninf.2017.00076">this article</a> for two recent contributions to the controversy). I will use the term &ldquo;computational reproducibility&rdquo; in its historically first sense introduced by Claerbout in 1992, because it seems to me that this is currently the dominant usage. <em>Reproducing</em> a computation thus means running the same software on the same data, though it&rsquo;s usually done by a different person using a different computer. In contrast, <em>replication</em> refers to solving the same problem using different software. This terminological subtlety matters for the following discussion, because experimental reproducibility is actually more similar to replicability, rather than reproducibility, in the computational case.</p>
+
+<p>There are two aspects in which I think scientific software differs significantly from lab equipment:</p>
+
+<ol>
+ <li>Its characteristics as a human-made artifact</li>
+ <li>Its role in the process of doing science.</li></ol>
+
+<h2 id="software-is-more-complex-and-less-robust-than-lab-equipment">Software is more complex and less robust than lab equipment</h2>
+
+<p>The first point I raised in my paper is the epistemic opacity of automated computation. Quote:</p>
+
+<blockquote>
+ <p>The overarching issue is that performing a computation by hand, step by step, on concrete data, yields a level of understanding and awareness of potential pitfalls that cannot be achieved by reasoning more abstractly about algorithms. As one moves up the ladder of abstraction from manual computation via writing code from scratch, writing code that relies on libraries, and running code written by others, to having code run by a graduate student, more and more aspects of the computation fade from a researcher&rsquo;s attention. While a certain level of epistemic opacity is inevitable if we want to delegate computations to a machine, there are also many sources of accidental epistemic opacity that can and should be eliminated in order to make scientific results as understandable as possible.</p></blockquote>
+
+<p>The reviewer asks: isn&rsquo;t this the same as when doing experiments using lab equipment constructed by somebody else? My answer is no.</p>
+
+<p>Let&rsquo;s do a little thought experiment, introducing Alice and Bob as virtual guinea pigs. Alice is an experienced microscopist, Bob is an experienced computational scientist. We give Alice a microscope she hasn&rsquo;t seen before, and ask her to evaluate if it is suitable for her research. We give Bob a simulation program (with source code and documentation) that he hasn&rsquo;t seen before, and ask him the same question.</p>
+
+<p>My expectation is that Alice will go off an do some tests with samples that she knows well, and perhaps do some measurements on the microscope. After that, she will tell us for which aspects of her work she can use this new microscope. Meanwhile, Bob will be scratching his head while trying to figure out how to deal with our question.</p>
+
+<p>One reason for the difference is that a microscope is a much simpler artifact than a simulation program. While it is certainly difficult to design and produce a good microscope, from a user&rsquo;s perspective its characteristics can be described by a handful of parameters, and its quality can be evaluated by a series of test observations. Software, on the contrary, can do almost anything. A typical simulation program has lots of options, whose precise meaning isn&rsquo;t always obvious from its documentation. More importantly, no two simulation programs have identical options. Even the most experienced user of simulation software A falls back to near-novice status when given simulation software B.</p>
+
+<p>A more subtle difference is that microscopes, and lab equipment in general, are designed to be robust against small production defects and small variations of environmental conditions. Such small variations cause only small changes in the generated images. With software, on the other hands, all bets are off. A one-character mistake in the source code can cause the program to crash, but also to produce arbitrarily different numbers. In fact, there is no notion of similarity and thus of small variations for software. For a more detailed discussion, see my <a href="http://doi.ieeecomputersociety.org/10.1109/MCSE.2016.67">CiSE article</a> on this topic. This is why you can evaluate the quality of a microscope using a few judiciously chosen samples, whereas no amount of test runs can assure you that a piece of software is free of bugs. Unless you can afford to test <em>all possible</em> inputs, of course, but then you don&rsquo;t really need the software.</p>
+
+<p>These two differences explain why Alice knows how to evaluate the microscope, whereas Bob doesn&rsquo;t know where to start. He might look at the documentation and the test cases to see if the program is meant to be used for the kind of work he does. But the documentation almost certainly lacks some important details of the approximations that are made in the code and that matter for Bob&rsquo;s work. Moreover, he would still have to check that the software has no serious bugs related to the functionality he plans to use. Without knowing the implemented algorithms in detail, he cannot even anticipate what bugs to watch out for.</p>
+
+<p>Bob could also choose a very different approach and judge the software by quality standards from software engineering. Is the code well structured? Does it have unit and integration tests? These are the criteria that software journal ask their reviewers to evaluate (e.g. the <a href="http://dx.doi.org/10.6084/m9.figshare.795303">Journal of Open Research Software</a> or the <a href="http://joss.theoj.org/about#reviewer_guidelines">Journal of Open Source Software</a>). Statistically, they are probably related to the risk of encountering bugs (if anyone knows about research into this question, please leave a comment!). But even the most meticulous developers make mistakes, and, more importantly, may have different applications in mind than those that Bob cares about.</p>
+
+<p>Finally, Bob could do what in my experience (and also according to <a href="https://arxiv.org/abs/1605.02265v1">this study</a> ) most scientists do in choosing research software: they use what their colleagues use. Bob would then send a few emails asking if anyone he knows uses this software and is happy with it. This is a reasonable approach if you can assume that your colleagues, or at least a sizable fraction of them, are in a better position to judge the suitability of a piece of software than yourself. But if everyone adopts this approach, it becomes a popularity contest with little intrinsic value (see <a href="https://doi.org/10.1126%2Fscience.1231535">this paper</a> for a detailed example). In any case, it is not a way to actually answer our question.</p>
+
+<p>In the end, if you really want to know if your software does what you expect it to do, you have to go through every line of the source code until you understand what it does. You are then at the minimal level of epistemic opacity that you can attain without actually doing the computations by hand. Unfortunately, in the case of complex wide-spectrum software, this is likely to be much more effort than writing your own special-purpose software.</p>
+
+<p>The solution I propose in my paper is to use human-readable formal specifications as a form of documentation that is rigorous and complete, and can be used as a reference to verify the software against. The idea is to have a statement of the implemented algorithms that is precise and complete but as simple as possible, without being encumbered by considerations such as performance. Note that I don&rsquo;t know if this will turn out to be possible - my work is merely a first step into that direction that, to the best of my knowledge, has not been explored until now.</p>
+
+<h2 id="software-is-about-models-lab-equipment-is-about-observations">Software is about models, lab equipment is about observations</h2>
+
+<p>A popular meme in explaining science describes it as founded on two pillars, experiment and theory. Some people propose to add computation and/or simulation as a third pillar, and data mining as a fourth, although these additions remain controversial. In my opinion, they are misguided by a bad identification of the initial pillars. They are not experiment and theory, but observations and models. We often speak of computational experiments when doing simulations, and there are good reasons for the analogy, but it is important to keep in mind that these are experiments on models, not on natural phenomena.</p>
+
+<p>Observations provide us with information about nature, and models allow us to organize and generalize this information. In this picture, computation has two roles: evaluating the consequences of a model, and comparing them to observations. Simulation is an example for the first role, data mining for the second. Both of these roles predate electronic computers, they simply received more modest labels such as &ldquo;solving differential equations&rdquo; or &ldquo;fitting parameters&rdquo; in the past.</p>
+
+<p>In the context of reproducibility and verifiability, it is important to realize that there is no symmetry between these two pillars. Nature is the big unknown that we probe through observations. To do this, we use lab equipment that can never be perfect, for two reasons: first, it is constructed on the basis of our imperfect understanding of nature, and second, our control of matter is limited, so we cannot produce equipment that behaves precisely as we imagine it. Models, on the other hand, are symbolic artifacts that are under our precise control. We can formulate and communicate them without any ambiguity, if only we are careful enough.</p>
+
+<p>Because of these very different roles of observations and models, computational reproducibility has no analogue in the universe of observations. It is almost exclusively a communication issue, the one exception being the non-determinism in parallel computing that we accept in exchange for getting results faster. Non-determinism aside, if Alice cannot reproduce Bob&rsquo;s computations, that simply means that Bob has not been able or willing to describe his work in enough detail for Alice to re-do it identically. There is no fundamental obstacle to such a description, because models and software are symbolic artifacts. We actually know how to achieve computational reproducibility, but we still need to make it straightforward in practice.</p>
+
+<p>Similarly, if Alice cannot verify that Bob&rsquo;s computation solves the problem he claims them to solve, this means that Bob has not succeeded in explaining his work clearly enough for Alice to understand what is going on. An unverifiable computation is thus very similar to a badly written article. The big difference in practice is that centuries of experience with writing have lead to accepted and documented standards of good writing style, whereas after a few decades of scientific computing, we still do not know how to expose complex algorithms to human readers in the most understandable way. My paper is a first small step towards developing appropriate techniques.</p>
+
+<p>Experimental reproducibility, on the other hand, is an ideal that can never be achieved perfectly, because no two setups are strictly the same. Verifiability is equally limited because observations can never be repeated identically, even when done with the same equipment. Reproducibility is a quality attribute much like accuracy, precision, or cost. Tradeoffs between these attributes are inevitable, and have to be made by each scientific discipline as a function of what its main obstacles to progress are.</p>
+
+<p>Science has been adjusting to the inevitable limits of observations since its beginnings, whereas the issue of incomplete model descriptions has come up only with the introduction of computers permitting to work with complex models. We don&rsquo;t know how yet if non-verifiable models are a real problem or not. However, as a theoretician I am not comfortable with the current situation. Models can be simple or complex, good or bad, grounded in solid theory or ad-hoc, but they should not be fuzzy. In particular not for complex systems, where it is very hard to foresee the consequences of minor changes.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/';
+          this.page.identifier = '/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2018/07/26/literate-computational-science/">&larr; <em>Literate computational science</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2018/04/09/scientific-communication-is-a-research-problem/"><em>Scientific communication is a research problem</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2018/07/26/literate-computational-science/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2018/04/09/scientific-communication-is-a-research-problem/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

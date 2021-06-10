@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="In discussions about computational reproducibility (or replicability, or repeatability, according to the preference of each author), I often see the argument that reproducing computations may not be worth the investment in terms of human effort and comput...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computer-aided research, reproducible research">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2017/01/24/reproducibility-does-not-imply-reproduction/">
+
+    <title>Reproducibility does not imply reproduction</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2017/01/24/reproducibility-does-not-imply-reproduction/'>Reproducibility does not imply reproduction</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2017-01-24" pubdate="true">2017-01-24</time> :: <span class="tags"><a href="/tags/computer-aided-research.html">computer-aided research</a>, <a href="/tags/reproducible-research.html">reproducible research</a></span></p>
+
+<p>In discussions about computational reproducibility (or replicability, or repeatability, according to the preference of each author), I often see the argument that reproducing computations may not be worth the investment in terms of human effort and computational resources. I think this argument misses the point of computational reproducibility.</p>
+<!-- more-->
+
+<p>Obviously, there is no point in repeating a computation identically. The results will be the same. So the only reason to re-run a computation is when there are doubts about the exact software or data that were used in the original work, or doubts about the reliability of the hardware.</p>
+
+<p>The point of computational reproducibility is to dispel those doubts. The holy grail of computational reproducibility is not a world in which every computation is run five times, but a world in which a straightforward and cheap analysis of the published material verifies that it is reproducible, so that there is no need to run it again. Actual reproduction attempts would be rare and reserved for situations such as suspicion of hardware failure or suspicion of fraud.</p>
+
+<p>So how can we make reproducibility credible without actually doing reproduction? By using toolchains that have been proven in practice to make computations reproducible. Of course we do need to attempt <em>some</em> reproductions in order to validate these toolchains, but it&rsquo;s sufficient to do this for short computations. And if the toolchain is any good, the human effort should be close to zero as well.</p>
+
+<p>The mere fact that we discuss computational reproducibility at all shows that we do have doubts. Most of us doing computational science have at some point had doubts about our own work. How did I make this figure? Was it made with the latest version of this script, or an earlier one? Did I run that simulations before or after installing the recent important bug fix? And when it comes to examining work by others described in a journal article, our ignorance usually reaches a level that the word &ldquo;doubt&rdquo; cannot convey - we don&rsquo;t really know anything. All we have is someone else&rsquo;s incomplete story. If we have doubts about our own work whose full story we know, why should we trust someone else&rsquo;s story blindly?</p>
+
+<p>So the question about &ldquo;how much&rdquo; reproducibility we need comes down to a more basic question: What would it take to make you trust a computational result beyond a reasonable doubt? Here is my personal list of acceptable evidence as of today:</p>
+
+<ul>
+ <li>I can repeat the computation on my computer and get close enough results.</li>
+ <li>The results are published as an <a href="http://www.activepapers.org/">ActivePaper</a>.</li>
+ <li>The results come with a <a href="https://nixos.org/">Nix</a> or <a href="http://guixsd.org/">Guix</a> recipe for reproducing them.</li></ul>
+
+<p>The last two cases point to toolchains that I personally consider trustworthy, given the experience I have with them. Both toolchains generate a detailed trace of what happened, with references to all the software and data. And both toolchains make mistakes improbable enough that the remaining risk is acceptable for me. Neither toolchain provides protection from fraud, so if I had a reason to suspect fraud, I&rsquo;d still attempt a reproduction.</p>
+
+<p>Note that I am not saying that everybody should use one of those toolchains. In their current state, they are neither universal nor sufficiently easy to use. But they do show the toolchain approach to reproducibility is viable.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2017/01/24/reproducibility-does-not-imply-reproduction/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2017/01/24/reproducibility-does-not-imply-reproduction/';
+          this.page.identifier = '/posts/2017/01/24/reproducibility-does-not-imply-reproduction/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2017/04/06/reproducible-research-in-the-python-ecosystem-a-reality-check/">&larr; <em>Reproducible research in the Python ecosystem: a reality check</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/"><em>Sustainable software and reproducible research: dealing with software collapse</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2017/04/06/reproducible-research-in-the-python-ecosystem-a-reality-check/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

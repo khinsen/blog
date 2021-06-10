@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="A recent article in &quot;The Atlantic&quot; has been the subject of many comments in my Twittersphere. It's about scientific communication in the age of computer-aided research, which requires communicating computations (i.e. code, data, and results) in addition t...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computer-aided research">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2018/04/09/scientific-communication-is-a-research-problem/">
+
+    <title>Scientific communication is a research problem</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2018/04/09/scientific-communication-is-a-research-problem/'>Scientific communication is a research problem</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2018-04-09" pubdate="true">2018-04-09</time> :: <span class="tags"><a href="/tags/computer-aided-research.html">computer-aided research</a></span></p>
+
+<p>A <a href="https://www.theatlantic.com/amp/article/556676/">recent article in &ldquo;The Atlantic&rdquo;</a> has been the subject of many comments in my Twittersphere. It&rsquo;s about scientific communication in the age of computer-aided research, which requires communicating computations (i.e. code, data, and results) in addition to the traditional narrative of a paper. The article focuses on computational notebooks, a technology introduced in the late 1980s by <a href="https://www.wolfram.com/mathematica/">Mathematica</a> but which has become accessible to most researchers only since <a href="http://jupyter.org/">Project Jupyter</a> (formerly known as the IPython notebook) started to offer an open-source implementation supporting a wide range of programming languages. The gist of the article is that today&rsquo;s practice of publishing science in PDF files is obsolete, and that notebooks are the future.</p>
+<!-- more-->
+
+<p>One <a href="https://twitter.com/khinsen/status/982339472036593672">interesting follow-up thread on Twitter</a> explored if any scientific papers had actually been published in the form of Jupyter notebooks. It seems that the answer is no. Notebooks are published as supplementary material to standard papers, or as informal communication outside of the official scientific record, in particular for teaching purposes, but no one could point to a paper indexed in any article database that was written as a Jupyter notebook. As to the question of <em>why</em> his hasn&rsquo;t happened, all answers remain speculative in the absence of research into the subject. Publishers&rsquo; format requirements are certainly a part of the problem, but limitations of today&rsquo;s notebook format also matter. In particular, notebooks lack support for bibliographies and for cross referencing.</p>
+
+<p>Another interesting follow-up is <a href="https://metarabbit.wordpress.com/2018/04/08/the-scientific-paper-of-the-future-is-probably-a-pdf/">a blog post by Luis Pedro Coelho</a> who predicts that PDFs will stay with us for many years to come, because none of the proposed successors is actually mature enough for use in real life. In particular, he points out the complexity and lack of longevity and stability of most of today&rsquo;s computational tools. My personal experience is very similar to his. He also asks the very relevant question if a notebook-style presentation of results and computations is actually a good idea in the context of a scientific paper. I suspect nobody can provide an evidence-based answer at this time.</p>
+
+<p>As these discussions illustrate, scientific communication about computer-aided research remains a research problem. As a community, we do not know how to explain, share, or review computer-aided research in a satisfactory way. Most of us agree that PDFs are no longer sufficient, and that we need to share code and data. However, we do not yet have good enough practices for doing so, at least not for all practically relevant situations. We do not know either if sharing code and data will actually be sufficient to enable effective communication. It is well possible that we will also need to develop practices for better <em>explaining</em> computations to each other, and have them peer reviewed in some form.</p>
+
+<p>From this point of view, all of today&rsquo;s technology, be it Jupyter, <a href="https://orgmode.org/worg/org-contrib/babel/">Org mode</a>, <a href="https://yihui.name/knitr/">knitr</a> or similar tools, should best be seen as support tools for performing experiments in scientific communication. What is still largely missing is systematic research that evaluates these experiments with the goal of summarizing the collective experience and drawing conclusions. There are promising starts, such as <a href="https://hal.archives-ouvertes.fr/hal-01676633">this study on the actual use of Jupyter notebooks</a>, but their number is negligible compared to the number of articles proclaiming that this or that technology is going to revolutionize scientific communication without providing any tangible evidence.</p>
+
+<p>I think it is time for the scientific community to acknowledge that it doesn&rsquo;t really know how to communicate computer-aided research effectively, and encourage research into the question. Experimenting with the various proposed approaches is essential, but analyzing the outcomes of these experiments is essential as well. In my opinion, we currently over-emphasize tool development, community building, and teaching, which are all directed at <em>implementing</em> new practices, but neglect research into what these practices actually should <em>be</em>. Future generations of scientists may well remember today&rsquo;s hot developments as sources of technical debt.</p>
+
+<p>A personal anecdote provide and illustration of the dominating attitude. My <a href="http://www.activepapers.org/">ActivePapers</a> project is clearly labeled as research. Its goal is to explore how non-trivial computations (long run times, big data sets) can be performed, archived, and published reproducibly. For first results, see <a href="https://f1000research.com/articles/3-289/v3">this paper</a>. Whenever I present this project, I know there is one question someone in the audience will ask: What are your plans for increasing your user base? I answer that I am doing research and not product development, and that I am not recruiting users but at best collaborators. This always causes surprise and sometimes animated discussions. It almost seems that doing research on doing research is a strange idea for professional scientists. On the other hand, my other research project on scientific communication, the digital scientific notation <a href="https://github.com/khinsen/leibniz">Leibniz</a>, does not generate this kind of reaction, but then it hasn&rsquo;t see that much exposure yet. It explores the question of how we can explain a complex computation in a way that allows readers to verify its scientific assumptions. For a first account, see <a href="https://peerj.com/preprints/26633/">this preprint</a>.</p>
+
+<p>Finally, readers might be interested in two of my earlier blog posts that are related to notebooks:</p>
+
+<ul>
+ <li>
+  <p><a href="https://khinsen.wordpress.com/2015/09/03/beyond-jupyter-whats-in-a-notebook/">&ldquo;Beyond Jupyter: what’s in a notebook?&rdquo;</a> looks at notebooks as digital documents, focusing on the information content rather than on the tool for doing computations.</p></li>
+ <li>
+  <p><a href="http://blog.khinsen.net/posts/2015/12/08/from-facts-to-narratives/">&ldquo;From facts to narratives&rdquo;</a> explores various approaches, one of them being notebooks, to combining formal elements of a computation (code, date) with a explanatory narrative.</p></li></ul>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2018/04/09/scientific-communication-is-a-research-problem/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2018/04/09/scientific-communication-is-a-research-problem/';
+          this.page.identifier = '/posts/2018/04/09/scientific-communication-is-a-research-problem/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/">&larr; <em>Scientific software is different from lab equipment</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2018/03/07/what-can-we-do-to-check-scientific-computation-more-effectively/"><em>What can we do to check scientific computation more effectively?</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2018/05/07/scientific-software-is-different-from-lab-equipment/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2018/03/07/what-can-we-do-to-check-scientific-computation-more-effectively/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

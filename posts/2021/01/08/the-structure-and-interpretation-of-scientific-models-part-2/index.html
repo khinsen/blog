@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="In my last post, I have discussed the two main types of scientific models: empirical models, also called descriptive models, and explanatory models. I have also emphasized the crucial role of equations and specifications in the formulation of explanatory ...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2021/01/08/the-structure-and-interpretation-of-scientific-models-part-2/">
+
+    <title>The structure and interpretation of scientific models, part 2</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2021/01/08/the-structure-and-interpretation-of-scientific-models-part-2/'>The structure and interpretation of scientific models, part 2</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2021-01-08" pubdate="true">2021-01-08</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>In <a href="https://blog.khinsen.net/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/">my last post</a>, I have discussed the two main types of scientific models: empirical models, also called descriptive models, and explanatory models. I have also emphasized the crucial role of equations and specifications in the formulation of explanatory models. But my description of scientific models in that post left aside a very important aspect: on a more fundamental level, all models are stories.</p>
+<!-- more-->
+
+<p>To illustrate my point, I will take up my running example from part 1: celestial mechanics. Newton&rsquo;s model for our solar system is, as I said, composed of several equations, the most famous of which, <em>F</em> = <em>m</em> ⋅ <em>a</em>, many readers will probably remember from a high-school physics class. But that equation means nothing on its own. It just says that there are three quantities, one of which being the product of the other two.</p>
+
+<p>The minimal story required to make sense of this equation provides a definition of the three quantities involved. For acceleration (the <em>a</em>), this may look superficially simple: it&rsquo;s the second derivative of an object&rsquo;s position in time. The concepts of position and time are part of our everyday intuition, so that&rsquo;s the easy part. Velocity is an intuitive everyday concept as well, but its precise relation to position as a time derivative is not. For acceleration, nothing short of calculus will do. In fact, Newton invented calculus along with his physical theory! Defining mass (the <em>m</em>) and force (the <em>F</em>) is not a trivial task either. Both concepts are rooted in our everyday intuition about the world, but their role in Newton&rsquo;s law of motion requires a much more precise understanding. If you have doubts about this, try explaining the difference between <em>mass</em> and <em>weight</em> to someone who doesn&rsquo;t have a scientific education.</p>
+
+<p>From this big-picture point of view, equations such as <em>F</em> = <em>m</em> ⋅ <em>a</em> are tiny pieces of our scientific models. They are the tips of icebergs whose massive underwater parts are the stories defining the underlying concepts and linking them to our intuition about the world, often through multiple and increasingly abstract layers. We tend to forget about these stories, because once we have understood them well enough, what we actually work with are the equations. But this works only for the well-established models whose stories are now found in textbooks. New research continuously introduces new models, often as small variants or extensions of existing ones. Their stories are told in scientific publications.</p>
+
+<p>Historically, <a href="https://en.wikipedia.org/wiki/History_of_mathematical_notation">mathematical notation</a> was introduced as a convenient shorthand for use in plain-language stories. The lengthy phrase &ldquo;force equals mass times acceleration&rdquo; thus became <em>F</em> = <em>m</em> ⋅ <em>a</em>. The transition to symbolic equations encouraged the development of formal methods in mathematics, starting with algebraic transformations of simple equations. This approach was so successful that equations became the main focus of interest in science. Later, other formal representations were added for the non-numerical aspects of models, graphs being the prime example. The most recent addition to the collection of formal notations for scientific models is software. Today, scientists spend most of their time working with the formalized parts of scientific models, such as equations or algorithms, to the point of neglecting the stories that give them meaning.</p>
+
+<p>What happens when people use the equations of scientific models without a proper understanding of their stories is nicely illustrated by the joke about the physics student who combines Einstein&rsquo;s <em>E</em> = <em>m</em> ⋅ <em>c²</em> with Pythagoras&rsquo; <em>a²</em> + <em>b²</em> = <em>c²</em> to deduce <em>E</em> = <em>m</em> ⋅ (<em>a²</em> + <em>b²</em>). It works as a joke among physicists because in their community, everybody knows the two inputs and the contexts from which they are taken. For other people, there is nothing funny about this reasoning, and it can even look convincing. Such superficial use of scientific models without understanding their context is actually quite common in today&rsquo;s research: the inappropriate use of statistical inference methods is a major cause of the <a href="https://en.wikipedia.org/wiki/Replication_crisis">reproducibility crisis</a>.</p>
+
+<p>Computing technology has played a big role in alienating scientists from their models. Most obviously, computers have made it possible to apply scientific models and methods as black-box tools: in an automated fashion, without understanding them. But the attitudes of the software industry, whose development tools computational science has inherited, have also contributed to this tendency. The focus of the software industry is on professional developers making tools for others that almost magically solve some of their problems. Users then get a manual, or hands-on training, for learning how to use the tool, but the inner workings of the tool are something they shouldn&rsquo;t even have to think about. A good tool is one that minimizes learning requirements. Applied to science, this implies that users shouldn&rsquo;t have to know the stories behind the models. Everyone with a dataset should be able to do statistical inference with a few mouse clicks and get a nice visualization. But without the stories, we can easily draw wrong conclusions from nice graphics.</p>
+
+<p>After a long period of separation of tools and stories, computational notebooks are now bringing some of the stories back. The enthusiastic adoption of notebooks by computational scientists is perhaps the best evidence for the importance of stories in science. But today&rsquo;s notebooks capture only the surface stories of a research project. It&rsquo;s tips of icebergs again. The typical notebook makes use of a large number of code libraries that are based on non-trivial scientific models, but the reader of the notebook remains completely unaware of them. Ideally, these models, with their stories, should be only a few clicks away.</p>
+
+<p>So what would an electronic representation of scientific models look like, ideally? It&rsquo;s a collection of cross-referencing stories. In the celestial mechanics example, there&rsquo;s a story about positions, velocities, and accelerations, which refers to a story about time and to a story about derivatives. There is another story that explains mass. The story of Newton&rsquo;s law of motion, which also introduces the concept of force, can then refer to these more fundamental stories. If this description reminds you of Wikipedia, or in fact of any Wiki, you are right. Wikis are also collections of cross-referencing stories. What is missing in Wikis is a machine-readable version of the formalized parts of our models. Which, as I explained in <a href="https://blog.khinsen.net/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/">part 1</a>, needs to allow at least equations, specifications, and algorithms for its ingredients. Another feature that is missing in today&rsquo;s Wikis, although some people are working on it, is the possibility to integrate computational tools in the form of code snippets. Their role would be to give access to visualizations, simulations, and other exploration tools.</p>
+
+<p>My own experiments in this domain are <a href="https://github.com/khinsen/leibniz/">Leibniz</a>, a digital scientific notation for embedding machine-readable formal models into human-readable stories, and the <a href="https://github.com/activepapers/activepapers-pharo">Pharo edition of ActivePapers</a>, which integrates datasets and computational tools into a Wiki-like collection of stories. Both ingredients require more work, and then need to be combined. There remains a lot of work to do.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2021/01/08/the-structure-and-interpretation-of-scientific-models-part-2/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2021/01/08/the-structure-and-interpretation-of-scientific-models-part-2/';
+          this.page.identifier = '/posts/2021/01/08/the-structure-and-interpretation-of-scientific-models-part-2/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2021/06/10/the-dependency-hubs-in-open-source-software/">&larr; <em>The dependency hubs in Open Source software</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/"><em>The structure and interpretation of scientific models</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2021/06/10/the-dependency-hubs-in-open-source-software/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/proteins.html">proteins</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/software.html">software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

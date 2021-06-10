@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Regular readers of this blog may have noticed that I am not very happy with today's state of computational notebooks, such as they were pioneered by Mathematica and popularized by more recent free incarnations such as Jupyter, R markdown, or Emacs/OrgMode...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2019/02/11/the-computational-notebook-of-the-future/">
+
+    <title>The computational notebook of the future</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2019/02/11/the-computational-notebook-of-the-future/'>The computational notebook of the future</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2019-02-11" pubdate="true">2019-02-11</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>Regular readers of this blog may have noticed that I am not very happy with today&rsquo;s state of computational notebooks, such as they were pioneered by Mathematica and popularized by more recent free incarnations such as <a href="https://jupyter.org/">Jupyter</a>, <a href="https://rmarkdown.rstudio.com/">R markdown</a>, or <a href="https://orgmode.org/worg/org-contrib/babel/">Emacs/OrgMode</a>. In this post and the <a href="https://peervideo.net/videos/watch/9ed70819-6271-439f-b392-54f34b73c124">accompanying screencast</a> (my first one!), I will explain what I dislike about today&rsquo;s notebooks, and how I think we can do better.</p>
+<!-- more-->
+
+<p>There are two aspects of notebooks that I consider harmful for scientific communication:</p>
+
+<ol>
+ <li>The linear structure of a notebook that forces the narrative to follow the order of the computation.</li>
+ <li>The impossibility to refer to data and code in a notebook from the outside, and in particular from another notebook, making reuse of code and data impossible.</li></ol>
+
+<p>If you look at a traditional scientific article, or technical report, you will notice that its narrative is structured according to a high-level view of the work. It starts by describing the context of the work, then its goals and a very brief summary of the methods, and right after that it presents results and discusses them. Technical details are only discussed afterwards, once the reader understands why they actually matter. With today&rsquo;s notebooks, the technical details come first: a typical data analysis starts with cleanup and preprocessing steps, and therefore they also come first in the narrative.</p>
+
+<p>An unpleasant side effect of the &ldquo;narrative follows computation&rdquo; principle is that some technical details actually cannot be discussed adequately. Scientific methods implemented in software libraries can be summarized in plain English, but the code is elsewhere, managed by a different toolset, and cannot be shown to the reader.</p>
+
+<p>This makes the transition to the second problematic aspect: there is no way to refer to or reuse any specific part of a notebook. Neither the code nor the computed results are accessible from the outside. And that also makes it impossible to build up useful libraries from notebooks.</p>
+
+<p>So far for the criticism - now let&rsquo;s make it constructive. At this point, you should watch the <a href="https://peervideo.net/videos/watch/9ed70819-6271-439f-b392-54f34b73c124">screencast</a> before reading on. In the screencast, I show a simple data analysis both as a Jupyter notebook and as a demo prototype for what I consider the notebook of the future. This prototype is built using the <a href="https://gtoolkit.com/">Glamorous Toolkit</a>, a very innovative software development environment for <a href="https://pharo.org/">Pharo</a>, which is a modern descendant of <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>. If you want to play with this yourself, the code is <a href="https://github.com/khinsen/computational-documents-with-gtoolkit/">on GitHub</a>. It&rsquo;s really just a demo, because the simplistic approach to organizing the computation that I have used there would not scale to real-life computations (it does a lot of needless recomputation). My plan is to implement the <a href="https://www.activepapers.org/">ActivePapers</a> approach for managing the computations. GToolkit is alpha software as well. So none of this is ready for prime time, but it does show that better notebooks are possible.</p>
+
+<p>Unlike today&rsquo;s notebooks, which are a sequence of code snippets and documentation paragraphs, the computational documents of my demo are <em>objects</em> in the sense of object-oriented programming. Each document contains code, input data, and computed data, which can be accessed from the outside and thus reused in client code. The narrative is merely an additional view into these items, which can present and discuss them in any order that seems suitable for explaining the work. Like with scientific articles, the narrative is typically written in the final stages of the work, once the basic code skeleton is working. In the case of my demo, I started out writing the two Pharo classes, before even installing GToolkit which was a bit unstable at the time.</p>
+
+<p>Note that this &ldquo;one job, one object, one narrative&rdquo; approach has a beneficial side effect in encouraging people to do each job well, rather than just well enough for going on with the next job. My Jupyter/Python version of the data analysis only extracts the minimum information required from the input dataset, without even mentioning what else is in there. The GToolkit/Pharo version provides a complete description of the dataset, including the data that is not used at all in the second document that describes the analysis.</p>
+
+<p>Finally, there are other interesting aspects of GToolkit (and Pharo) for computational science, but I will leave them for future posts. I will just mention that the &ldquo;inspectors&rdquo; (a term familiar to every Smalltalk developer but probably unknown to anyone else) are easily extensible. Adding a pane that provides yet another view of the document is a matter of writing a couple of lines of Pharo code. It&rsquo;s as if you could implement a new widget for Jupyter in a few lines of Python code right in your notebook.</p>
+
+<p><strong>Update</strong>: There&rsquo;s a workaround for embedding figures (thanks to Tudor Gîrba for the hint!), which you can find in the current code version on GitHub.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2019/02/11/the-computational-notebook-of-the-future/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2019/02/11/the-computational-notebook-of-the-future/';
+          this.page.identifier = '/posts/2019/02/11/the-computational-notebook-of-the-future/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/">&larr; <em>Is reproducibility good for scientific progress? (a paper review)</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2018/12/19/exploring-pharo/"><em>Exploring Pharo</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2018/12/19/exploring-pharo/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

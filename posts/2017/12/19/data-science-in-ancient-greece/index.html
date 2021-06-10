@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Data science is usually considered a very recent invention, made possible by electronic computing and communication technologies. Some consider it the fourth paradigm of science, suggesting that it came after three other paradigms, though the whole idea o...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2017/12/19/data-science-in-ancient-greece/">
+
+    <title>Data science in ancient Greece</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2017/12/19/data-science-in-ancient-greece/'>Data science in ancient Greece</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2017-12-19" pubdate="true">2017-12-19</time> :: <span class="tags"><a href="/tags/science.html">science</a></span></p>
+
+<p>Data science is usually considered a very recent invention, made possible by electronic computing and communication technologies. Some consider it the <a href="https://www.microsoft.com/en-us/research/publication/fourth-paradigm-data-intensive-scientific-discovery/">fourth paradigm</a> of science, suggesting that it came after three other paradigms, though the whole idea of distinct paradigms remains controversial. What I want to point out in this post is that the principles of data science are much older than most of today&rsquo;s practitioners imagine. Let me introduce you to <a href="https://en.wikipedia.org/wiki/Apollonius_of_Perga">Apollonius</a>, <a href="https://en.wikipedia.org/wiki/Hipparchus">Hipparchus</a>, and <a href="https://en.wikipedia.org/wiki/Ptolemy">Ptolemy</a>, who applied these principles about 2000 years ago.</p>
+<!-- more-->
+
+<p>The focus of interest of these early researchers was a topic that had kept humanity busy for quite a while already, all over the world: the motion of heavenly bodies. The main motivation was making predictions for the near future. The configuration of the stars and planets was widely believed to have an impact on human affairs (a belief we call astrology today), so knowing them in advance was of obvious interest. They had astronomical observations at their disposal, but numbers alone are not sufficient to make predictions. You also need a model for extrapolating the numbers to the future.</p>
+
+<p>The tool that Apollonius, Hipparchus, Ptolemy, and probably many others, developed and improved to near perfection was <a href="https://en.wikipedia.org/wiki/Deferent_and_epicycle">epicycles</a>: a model for the orbit of a heavenly body consisting of a superposition of circles, with each circle&rsquo;s center moving along a bigger circle&rsquo;s circumference. Epicycles are similar in spirit to Fourier series. Any periodic orbit can be described as a superposition of circular motions. Given enough data, one can fit an epicycle model and make predictions. But since the epicycle model does not contain any physics, it doesn&rsquo;t come with any safeguards against mistakes. Epicycles can equally well describe real and completely unrealistic orbits, and therefore the quality of the data is very important.</p>
+
+<p>Today&rsquo;s data science works much the same. Very general models, such as neural networks, are fitted to large datasets and then used to make predictions. Again the models contain very few assumptions about underlying laws of nature. They are by design very general (see e.g this <a href="http://neuralnetworksanddeeplearning.com/chap4.html">visual proof</a> that neural networks can compute any function) in order to capture any kind of regularity in the input datasets. As for epicycles, data quality is important, which is why data scientist invest a significant effort into cleaning up the raw data they work on.</p>
+
+<p>Aside from the obvious technological aspects and the associated change of scale in the size of datasets, the main improvement of today&rsquo;s data science on epicyle models for orbits is even more generality. Early astronomers had periodicity baked into their models from the start. Neural networks (and other models used in data science) could predict the motion of heavenly bodies with even less theoretical input. However, it is important to realize that every model imposes <em>some</em> a priori assumptions, even if, as in the case of neural networks, these assumptions are not fully understood and therefore not formalized. Seen in this light, the improvement of modern data science over epicycles is gradual rather than fundamental.</p>
+
+<p>Adopting an historical perspective, data science turns out to mark the <em>beginning</em> of scientific disciplines rather than their refinement. It permits the very first step from raw observations to a description of regularities. Connecting these regularities to known more fundamental principles, or even discovering <em>new</em> fundamental principles as in the case of Newton&rsquo;s laws for celestial mechanics, can only happen afterwards.</p>
+
+<p>Perhaps a more fundamental distinction than the one between experiment and theory (plus, according to some, simulation and data science) is the one between <em>data-driven</em> and <em>model-driven</em> science. Data-driven science starts from observations and searches for regularities using generic models. Model-driven science takes more advanced problem-specific models and aims at evaluating and improving their quality on one hand, and explore their consequences on the other hand. In terms of day-to-day research activities, data-driven science collects observations that promise to be interesting and uses statistical methods to interpret them. Model-driven science has theoreticians exploring models and experimentalists asking Nature specific questions arising from this exploration. The oldest and best-known scientific disciplines, i.e. physics and chemistry, are primarily model-driven today, which may contribute to the impression that data-driven science is new. As the epicycle example shows, this is really just a lack of historical perspective.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2017/12/19/data-science-in-ancient-greece/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2017/12/19/data-science-in-ancient-greece/';
+          this.page.identifier = '/posts/2017/12/19/data-science-in-ancient-greece/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2018/03/07/what-can-we-do-to-check-scientific-computation-more-effectively/">&larr; <em>What can we do to check scientific computation more effectively?</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/"><em>Stability in the SciPy ecosystem: a summary of the discussion</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2018/03/07/what-can-we-do-to-check-scientific-computation-more-effectively/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

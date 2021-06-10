@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="The importance of reproducibility in computer-aided research (and elsewhere) is by now widely recognized in the scientific community. Of course, a lot of work remains to be done before reproducibility can be considered the default. Doing computational res...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computer-aided research, reproducible research">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/">
+
+    <title>From reproducible to verifiable computer-aided research</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/'>From reproducible to verifiable computer-aided research</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2016-05-11" pubdate="true">2016-05-11</time> :: <span class="tags"><a href="/tags/computer-aided-research.html">computer-aided research</a>, <a href="/tags/reproducible-research.html">reproducible research</a></span></p>
+
+<p>The importance of reproducibility in computer-aided research (and elsewhere) is by now widely recognized in the scientific community. Of course, a lot of work remains to be done before reproducibility can be considered the default. Doing computational research reproducibly must become easier, which requires in particular better support in computational tools. Incentives for working and publishing reproducibly must also be improved. But I believe that the Reproducible Research movement has made enough progress that it&rsquo;s worth considering the next step towards doing trustworthy research with the help of computers: verifiable research.</p>
+<!-- more-->
+
+<p>Verifiable research is research that you can verify for yourself. Not in the sense of verifying the scientific conclusions, which often can only be done many years later. The more modest goal is to verify that a publication contains no mistakes of the kind that every human being tends to make: mistakes in manual computations, mistakes in transcribing observations from a lab notebook, etc.</p>
+
+<p>Ideally, all research should be verifiable. A paper is supposed to provide sufficient details about the work that was done to enable competent peers to verify the reasoning and repeat any experiments. Peer review is supposed to certify that a paper is verifiable, and reviewers are even encouraged to do the verification if that is possible with reasonable effort.</p>
+
+<p>In the pre-computing era, much published research was indeed verifiable. Given the high cost of verifying experimental work, it is safe to assume that actual verification was the exeception. But theoretical work of any importance was commonly verified by many readers who repeated the (manual) computations.</p>
+
+<p>With the increasing use of computers, papers slowly turned into mere summaries of research work. Providing all the details was simply impossible - software was too complex to be fully described in a journal article. It also became common to use software written by other people, and even commercial software whose detailed workings are secret. This development was nicely summarized <a href="http://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf">by Buckheit and Donoho</a> in 1995 in what became a famous quote in the Reproducible Research movement:</p>
+
+<blockquote>
+ <p>An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.</p></blockquote>
+
+<p>Today this statement applies not only to computational science, but to all of computer-aided research, as many experimental and theoretical studies involve computers and software as well. The publication of all software and all input datasets in a form that other scientists can actually process on their own computers has become the main objective for making computer-aided research reproducible.</p>
+
+<p>Unfortunately, having all the software and input data that go with a journal article is still not sufficient to make the work verifiable. With the exception of particularly simple computations, it is practically impossible to figure out what the software really computes, and in particular to verify that it computes what the paper claims it computes. Assuming, of course, that the paper actually <em>does</em> provide a detailed description of its claims, which is often not the case. Much computer-aided research is thus <a href="https://en.wikipedia.org/wiki/Not_even_wrong">&ldquo;not even wrong&rdquo;</a>.</p>
+
+<p>It is the complexity of much modern scientific software that makes verification practically impossible, and for that reason software is rarely subjected to peer review. After all, who would accept the Herculean task to verify the correct functioning of a piece of software? Even &ldquo;software papers&rdquo;, i.e. papers that merely exist to provide a citable reference for some software, are reviewed without any serious validation of the software itself. At best, reviewers check that best practices of software engineering have been respected, for example by writing a test suite with good code coverage. But no amount of testing can verify that the software computes what it is supposed to compute. If some numerical constant in the source code is off by 10% due to a typo, there&rsquo;s a good chance that nobody will ever notice. Such mistakes have happened (see <a href="http://dx.doi.org/10.1038/467775a">this article</a> for a few stories), and there are good reasons to believe they are actually frequent (see <a href="http://f1000research.com/articles/3-303/v1">this article</a> for arguments). The most convincing argument should be our daily experience with computers that crash or ask us to install &ldquo;critical updates&rdquo;. If systems software is so clearly full of mistakes, is it reasonable to assume that scientific software has none at all?</p>
+
+<p>The difficulty of verifying computational results in combination with the obvious importance of computational techniques in science has lead to a change of attitude that in my opinion is detrimental to science in the long run. Most importantly, the burden of proof has been shifted from the proponents of a new hypothesis to its opponents. If you cannot show that a computational study is wrong, then it is silently assumed correct. If you want to publish results that are contradictory to work published earlier, it&rsquo;s your obligation to explain why, even though you cannot possibly verify the earlier work. This is why protein structures in contradiction with the <a href="http://www.the-scientist.com/news/home/39805/">later retracted ones from Geoffrey Chang&rsquo;s group</a> were rejected for publication for a long time. Contradictory results should be handled by a critical inspection of all of them, but this is possible only for verifiable research.</p>
+
+<p>Another detrimental change of attitude is that &ldquo;correct&rdquo; has been replaced by &ldquo;community-accepted&rdquo; as a quality criterion in many fields. Recently, I have started to ask a simple question after seminars on computational work: &ldquo;Why should I believe your results? What did you do to verify them?&rdquo; Most often, the answer is &ldquo;We used software and protocols that are widely applied in our community&rdquo;. Unfortunately, popularity can be taken as an indicator of correctness only if it is safe to assume that many users have actually verified those tools and methods. Which again assumes verifiability as a minimum criterion.</p>
+
+<h2 id="so-what-can-we-do">So&hellip; what can we do?</h2>
+
+<p>Verifiable computer-aided research is a tiny subset of today&rsquo;s published research. It&rsquo;s even a small subset of today&rsquo;s reproducible research. Can we do something about this? I believe we can, and I will summarize some possible approaches.</p>
+
+<p>The most obvious approach to make a computation verifiable is to document all code and data well enough that a competent reader is convinced of its correctness. Literate programming (for algorithms) and computational notebooks (for computations) are good techniques for this. As with any scientific proofreading, verification by inspection requires much care and a critical attitude. People are easily fooled into believing something because it is well presented, for example. But the most important obstacle to this approach is the modularity of much of today&rsquo;s scientific software. If you reuse existing libraries - and there are of course good reasons to do so - then you probably won&rsquo;t rewrite them in literate programming style for explaining their algorithms to your critical reader. A computation is only as verifiable as its least verifiable ingredient.</p>
+
+<p>Another way to make computer-aided research verifiable is to make the computations reimplementable. This means that the published journal article, or some supplementary material to that article, contains a precise enough human-readable description of the algorithms that a scientist competent in the field can write a new implementation from scratch, and verify that it produces the same (or close enough) results. This is not a fool-proof approach, of course, and again modularity is a major risk factor. If the computation uses some complex library and the reimplementor chooses to use the same library, then the library code is not verified by the reimplementation. The more the reimplementation differs from the original authors&rsquo; code, the better it is as a verification aid. This is by the way also a strong argument for diversity in scientific software. In terms of development efficiency, a single community-supported software package per field is great, but for verifiability, it is better to have multiple packages that can do the same job.</p>
+
+<p>Both approaches I have outlined fail for complex software. A million-line simulation code developed over many years by an entire research group can neither be studied nor reimplemented by a single person wishing to verify it. Even a small team working in close collaboration wouldn&rsquo;t be up to the task. The solution I propose for this situation is to introduce an intermediate layer between the software and the human-readable documents (papers, software documentation) that describe what it computes. A layer that contains all the science but none of the technicalities of the software, such as parallelism, platform-dependence, or resource management. The idea is to &ldquo;factor out&rdquo; the <a href="https://en.wikipedia.org/wiki/No_Silver_Bullet">accidental complexity</a> and retain only the essential complexity, the one due to the complexity of the models and methods that the software implements. This idea is very similar to the use of <a href="https://en.wikipedia.org/wiki/Formal_specification">formal specifications</a> in software development. The specification would be verified by human scientists, whereas the conformity of the software to the specification would be checked by automated methods, of which <a href="https://en.wikipedia.org/wiki/QuickCheck">randomized unit testing</a> is probably the most immediately useful one.</p>
+
+<p>An intermediate layer that factors out accidental complexity is also of interest for other uses in scientific research. That new layer would be the closest we can get to a digital representation of a model or a method. Rather than use it just in the specification of a single piece of software, we can use it for all kinds of analyses and comparisons, and cite it as the main scientific reference in work based on it, in addition to the citation to the software as the technical tool for doing the computations. For this reason, I call this layer &ldquo;digital scientific knowledge&rdquo; and the languages for expressing it &ldquo;digital scientific notation&rdquo;. None of this exists today, but many developments in computer science can be used as a basis for its development. For the details, see <a href="http://sjscience.org/article?id=527">this article</a>.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/';
+          this.page.identifier = '/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">&larr; <em>Sustainable software and reproducible research: dealing with software collapse</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2016/03/04/composition-is-the-root-of-all-evil/"><em>Composition is the root of all evil</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2016/03/04/composition-is-the-root-of-all-evil/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

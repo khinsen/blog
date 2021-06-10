@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="One question I have been thinking about in the context of reproducible research is this: Why is all stable software technology old, and all recent technology fragile? Why is it easier to run 40-year-old Fortran code than ten-year-old Python code? A hypoth...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2020/02/26/the-rise-of-community-owned-monopolies/">
+
+    <title>The rise of community-owned monopolies</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2020/02/26/the-rise-of-community-owned-monopolies/'>The rise of community-owned monopolies</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2020-02-26" pubdate="true">2020-02-26</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>One question I have been thinking about in the context of reproducible research is this: Why is all stable software technology old, and all recent technology fragile? Why is it easier to run 40-year-old Fortran code than ten-year-old Python code? A hypothesis that comes to mind immediately is growing code complexity, but I&rsquo;d expect this to be an amplifier rather than a cause. In this pose, I will look at another candidate: the dominance of Open Source communities in the development of scientific software.</p>
+<!-- more-->
+
+<h2 id="from-markets-to-monopolies">From markets to monopolies</h2>
+
+<p>In the 1990s, when I was working on my thesis, the world of scientific computing was very different from what it is now. Innovation was driven by hardware. Processor speeds kept increasing, and new processor architectures appeared on the market in rapid succession. In the course of the 1990s, I did most of my work on Unix workstations based on variety of architectures: <a href="https://en.wikipedia.org/wiki/PA-RISC">PA-RISC</a>, <a href="https://en.wikipedia.org/wiki/MIPS_architecture">MIPS</a>, <a href="https://en.wikipedia.org/wiki/PowerPC">PowerPC</a>, <a href="https://en.wikipedia.org/wiki/DEC_Alpha">DEC Alpha</a>. I also worked on mainframe computers made by IBM, Fujitsu, and Cray, all using proprietary processors. Each manufacturer sold a package of hardware, operating system, and development tools such as compilers. Compilers implemented standardized programming languages, mainly Fortran and C, with manufacturer-specific extensions that most people stayed away from because they expected to be using different machines a few years later. The computing platforms that everybody was developing for were not processors nor operating systems, but Fortran~77 and ANSI-C, each of which had developed its ecosystem of scientific libraries. For an interactive development platform, add Unix and X11. Mixing Fortran and C was somewhat platform-specific, but very doable as well. Every time I changed labs and computers during my postdoc years, I had to spend a day or two to reinstall everything I needed, but I never suffered <a href="https://hal.archives-ouvertes.fr/hal-02117588">software collapse</a>.</p>
+
+<p>Today, hardware innovation in mainstream computing has almost come to a halt. All the processor architectures listed above are gone. The x86 architecture, implemented in chips from Intel and AMD, dominates scientific computing, and in fact all of computing except for mobile devices. Hardware manufacturers therefore no longer supply compilers. For everyday work, most people use the free <a href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GNU Compiler Collection</a> or the equally free <a href="https://en.wikipedia.org/wiki/Clang">Clang</a> compiler. For performance-critical work, commercial compilers from companies such as <a href="https://www.nag.com/">NAG</a>, <a href="https://www.pgroup.com/index.htm">PGI</a>, or <a href="https://software.intel.com/en-us/compilers">Intel</a> offer better performance and libraries fine-tuned for high-performance computing. The standards defining Fortran and C have evolved, but have maintained strict backwards compatibility.</p>
+
+<p>However, in the everyday life of computational scientists, these traditional platforms have lost importance. A new breed of languages and scientific ecosystems, such as <a href="https://www.python.org/">Python</a>, <a href="https://www.r-project.org/">R</a>, and <a href="https://julialang.org/">Julia</a>, have become the dominant support for scientific software in many (though not all) domains of research. Their rise has gone hand in hand with software collapse becoming so common that many consider it normal or even inevitable. Scientists are starting to adopt heavy technology with large overheads in terms of complexity and invested effort to work around the problem (if you didn&rsquo;t guess yet, I am referring to containers). I waste a lot more time today with configuration and setup work (including configuration debugging) than I did in the 1990s. How did we get into this sad state of affairs? Is there any hope for getting out of it again?</p>
+
+<p>One reason that immediately comes to mind is increasing software complexity. But that&rsquo;s more of a symptom than a cause. A better explanation would be an increased <em>problem</em> complexity that would then <em>require</em> more complex software. Problem complexity is much harder to measure, but I don&rsquo;t see much evidence supporting this hypothesis. We certainly do bigger computations, on larger datasets, but if I look at today&rsquo;s commonly used models and methods in computational science, they don&rsquo;t look more complex than what I saw in the 1990s. What has increased, however, is variety. Today&rsquo;s science relies on <em>more</em> computational models than it did 30 years ago, and I believe that this contributes to the fragility issue, as I will explain later.</p>
+
+<p>There is another reason that I haven&rsquo;t heard anyone mention so far: the disappearance of technology markets in favor of monopolist players who can count on customer lock-in. This description will probably make you think of Microsoft&rsquo;s grip on the Windows user base, or the &ldquo;walled gardens&rdquo; that Google and Apple have created around their mobile platforms. But there is another category of monopoly owner in the tech world that is hardly recognized as such: Open Source communities.</p>
+
+<h2 id="open-source-monopolists">Open Source monopolists</h2>
+
+<p>Consider two recent events: Microsoft killing Windows 7, and the Python community killing Python 2. The story is essentially the same in both cases: the creator of a piece of infrastructure software ends support for an old but still widely used version, forcing its users to move on to a later but not fully backwards compatible version. In both cases, a significant part of the user community would have preferred to stick to the older version, as has been nicely <a href="https://xkcd.com/2224/">illustrated by xkcd</a>. In both cases, the end-of-support decision is a rational one for the producer because supporting old versions is costly. And in both cases, the abandoned users have no other supplier they can turn to, because the producer holds a monopoly on the technology.</p>
+
+<p>Compare this to the diverse market of the 1990s. Producers of infrastructure software could add new functionality and try to win new clients with such improvements, but they could not afford to cause damage to their existing user base because users would simply turn to a competitor. There are many sources for standards-conforming Fortran compilers, but there is only one source for Windows or Python.</p>
+
+<p>I suspect some readers will feel anger at this point. How dare you compare a monopolist business to a community of unpaid volunteers offering their work to the world for free? The crucial point is that I am comparing them as seen from the outside. There is a wide gap between the self-image that Open Source communities have of themselves and the image that they present to the outside world, and I believe that this is a big part of the problem.</p>
+
+<p>Open Source communities tend to see themselves as communities of like-minded people that get organized to work together towards shared objectives. They see themselves much like a sports club that organizes practice sessions for its members, or like a village community that collectively plans its road infrastructure. But this is not at all how Open Source communities present themselves to the outside world. The Web site of a sports club says something like &ldquo;We are a bunch of people enthusiastic about playing football. If you are as well, come and join us.&rdquo; Now look at the <a href="https://www.python.org/">Python Web site</a>. Its first statement, in big letters, is &ldquo;Python is a programming language that lets you work quickly and integrate systems more effectively.&rdquo; The site is about a product. Its goal is to convince people to use Python, not to join a community. It is more similar to <a href="https://www.microsoft.com/fr-fr/windows/">Microsoft&rsquo;s Windows site</a> than to the site of a sports club.</p>
+
+<p>&ldquo;But&hellip;&rdquo; I hear you say. Open Source. Free Software, as in &ldquo;free beer&rdquo; <em>and</em> in &ldquo;free speech&rdquo;. And everybody can join in, the community is so welcoming! Fine, but that&rsquo;s again the insiders&rsquo; view, just slightly enlarged to the circle of people whose engagement with the technology is sufficiently deep that they consider joining the community. I suspect that most people who download and install Python the product will never know anything about the community, and many will even use Python without being aware of it at all. What they are aware of is an application or utility written in Python, e.g. <a href="https://calibre-ebook.com/">Calibre</a> for managing their e-books, or <a href="https://www.offlineimap.org/">offlineimap</a> for downloading e-mail. In contrast, a true community-oriented piece of software would have a splash screen saying &ldquo;Welcome to the Python community! Before using this software, please become familiar wit how our community works&rdquo;.</p>
+
+<p>Sports clubs and village communities focus on their members&rsquo; needs, interacting with the outside world by necessity, but only as a side effect. Most Open Source communities are more like political parties or non-government organizations in that they <em>want</em> to have an impact on the outside world. They care about the popularity of their products, and make efforts to increase their mind share. The reward they get in return is not money, but that&rsquo;s the only difference from how a company works. Both Open Source communities and software companies have an interest in attracting new clients and keeping existing ones. Both can retain clients more efficiently by generating lock-in, and so they do.</p>
+
+<p>Note that I am not saying that either one creates lock-in intentionally. For Open Source communities such as Python, which I know sufficiently well, I am convinced there is no such intention. For companies such as Microsoft or Google, I can&rsquo;t know for sure. But from the clients&rsquo; perspective, it doesn&rsquo;t matter if lock-in is intentional or a side effect.</p>
+
+<p>One particularity about computing technology is that lock-in happens by default. It takes a conscious effort (and thus an incentive) to <em>avoid</em> lock-in. The reason is the fine-grained complexity of software interfaces coupled with the near-zero cost of modifying them. There are so many details that re-implementing an existing interface exactly requires a precise documentation of that interface, a perfectionist attitude, and a lot of time. The markets of the 1990s were made possible only by lengthy and costly standardization processes. Which in turn the participants accepted only because without the markets defined by those standards, none of them could continue to innovate in the field of processor architectures.</p>
+
+<h2 id="lock-in-favors-software-collapse">Lock-in favors software collapse</h2>
+
+<p>So far for communities as monopoly holders. Back to my original question: how did software collapse become normal? I believe that this is a near-automatic consequence of infrastructure software being managed by monopoly holders. The monopoly situation prevents existing users from moving elsewhere, significantly reducing the effort that needs to be made to keep them. All effort can thus be concentrated on gaining new users, which leads to the paradoxical situation that the needs of non-users have a larger weight in strategic decisions than the needs of the user base. With backwards compatibility being costly, boring, and irrelevant to the non-users that matter for the future, why care about it? That is, in my opinion, what happened to the Scientific Python ecosystem starting in the 2010s: adoption by the explosively growing data science community drowned the existing user base. The best strategy for SciPy was then to focus on the needs of the data science people, which also became the primary source for recruiting developers and maintainers.</p>
+
+<p>Which brings me back to what I said earlier: the diversification of techniques in computational science is part of the problem. While the various subdomains of computational science have overlapping requirements, they also have divergent needs. The longevity of code is one aspect whose importance varies a lot, but there are others: the size of a typical computational task, the size of the datasets being processed, the nature of the algorithms being applied, the hardware platforms that matter most, and many more. While in theory Open Source is good for supporting diversity (&ldquo;just fork the code and adapt it to your needs&rdquo;), the reality of today&rsquo;s major Open Source communities is exactly the opposite: a focus on &ldquo;let&rsquo;s all work together&rdquo;. Combine this with the chronic lack of funding, and thus also a lack of incentives for developing the structured governance that would administrate funding and create activity reports, and you end up with large number of users depending on the work of a small number of inexperienced developers in precarious positions who cannot reasonably be expected to make an effort to even understand the needs of the user base at large. In a way, software collapse is a consequence of <a href="https://en.wikipedia.org/wiki/Conway's_law">Conway&rsquo;s law</a> applied to Open Source communities.</p>
+
+<h2 id="can-we-do-better">Can we do better?</h2>
+
+<p>Given that today&rsquo;s tech world is dominated by software and Open Source communities, rather than by hardware-producing companies, is it possible to return to a market situation with no or weak lock-in? I don&rsquo;t think so. Standards-based markets can only form when there are multiple competing producers right from the start. In contrast, Open Source communities start out small and adventurous, with a few growing big and becoming infrastructure suppliers. In the beginning, they have no competition, and when they are big, new communities cannot possibly start to compete with them in the mindshare market. Which leaves two possibilities: Open Source communities could become more user-oriented, or the maintenance of infrastructure software could be ensured by other types of organizations. Let&rsquo;s start by looking at the first possibility.</p>
+
+<p>An important first step would be Open Source communities recognizing that they are developing and selling products to a user base that extends far beyond the circle of potential community members. A good time for that would be just now. Many Open Source communities have recently realized that the shared idealistic goal of an Open Source world is not sufficient for ensuring respectful collaboration, and have reacted by introducing codes of conduct. What I am suggesting here is a similar approach for making the relation with the user base more explicit. The absence of a legal contract between developers and users is one of the core principles of Open Source, but that doesn&rsquo;t imply the absence of moral obligations. Any organization that wants to have an impact on the outside world must consider how this impact affects the life and work of other people. It should then define moral commitments, in written, even if the license prevents them from being legally enforced. A nice example are the <a href="http://big-data-biology.org/software/commitments/">Big Data Biology Lab Software Tool Commitments</a>.</p>
+
+<p>Open Source communities could also more actively solicit feedback from the outside. Getting useful feedback from low-engagement users is difficult, but there are proxies, for example the people who package software for various distributions.</p>
+
+<p>But perhaps Open Source communities are just not the right form of organization for infrastructure software. There are other entities that create Open Source software, such as the <a href="https://www.mozilla.org/">Mozilla</a> and <a href="https://apache.org/">Apache</a> foundations, or hybrids such as the <a href="https://pharo.org/community">Pharo community</a> with the <a href="https://consortium.pharo.org/">Pharo consortium</a> and the <a href="https://association.pharo.org/">Pharo User Association</a> providing channels for users to influence development. It seems probable that more useful organizational forms are waiting to be discovered. In fact, a good guess is that software should best be managed much like other scientific infrastructure: by specific institutions that ensure long-term funding and provide software as a service to research communities.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2020/02/26/the-rise-of-community-owned-monopolies/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2020/02/26/the-rise-of-community-owned-monopolies/';
+          this.page.identifier = '/posts/2020/02/26/the-rise-of-community-owned-monopolies/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/04/03/emacs-as-a-malleable-system/">&larr; <em>Emacs as a malleable system</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2019/12/31/pharo-year-one/"><em>Pharo year one</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/04/03/emacs-as-a-malleable-system/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2019/12/31/pharo-year-one/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

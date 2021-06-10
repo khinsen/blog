@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Like all information with a complex structure, scientific knowledge evolves over time. New ideas turn into validated models, and are ultimately integrated into a coherent body of knowledge defined by the concensus of a scientific community. In this essay,...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2015/11/09/the-lifecycle-of-digital-scientific-knowledge/">
+
+    <title>The lifecycle of digital scientific knowledge</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2015/11/09/the-lifecycle-of-digital-scientific-knowledge/'>The lifecycle of digital scientific knowledge</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2015-11-09" pubdate="true">2015-11-09</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>Like all information with a complex structure, scientific knowledge evolves over time. New ideas turn into validated models, and are ultimately integrated into a coherent body of knowledge defined by the concensus of a scientific community. In this essay, I explore how this process is affected by the ever increasing use of computers in scientific research. More precisely, I look at &ldquo;digital scientific knowledge&rdquo;, by which I mean scientific knowledge that is processed using computers. This includes both software and digital datasets. For simplicity, I will concentrate on software, but much of the reasoning applies to datasets as well, if only because the precise meaning of non-trivial datasets is often defined by the software that treats them.</p>
+<!-- more-->
+
+<p>Before looking at the &ldquo;digital&rdquo; aspects, I will summarize the traditional lifecycle of scientific knowledge from the &ldquo;printed page&rdquo; era. It has been going on for centuries and follows well-established procedures and habits. I will then argue that these procedures should serve as a guideline for the management of digital scientific knowledge as well, and that computing technology for science should be designed to support this lifecycle.</p>
+
+<p>New observations, instruments, models, methods, and ideas are first published in journal articles. Such an article explains the background and motivation for the work, summarizes the state of the art, and then exposes the new elements that the authors wish to contribute to the scientific record. Other scientists from the field read the article, and draw conclusions for their own work, which are translated to citations to the article in their own publications. After some time, if the original publication creates enough interest, it will become a subject of discussion in its research community, and it will be mentioned in review articles, which place it in the context of other recent work in the field.</p>
+
+<p>Being cited in review articles is typically the last step in the lifecycle of an individual contribution. Its ideas and conclusions are then merged with related ideas and conclusions and reformulated to become part of the state of the art of the field, recorded in reference works, monographs, and textbooks. These works represent a kind of community concensus. New research, in the same or in other domains, builds on such concensus knowledge, often implicitly by assuming that every reader of a journal article is familiar with the contents of reference works, monographs, and textbooks.</p>
+
+<p>The introduction of computers into scientfic research has lead to many changes to this process. Some of them, such as the transition from paper to computer files as a support medium for scientific article and, reference works, are relatively minor. The most profound change is that an important part of digital scientific knowledge exists only in the form of software. This is true in particular for complex scientific models, for which we have no other convenient form of representation. An example where this situation is very explicit is the <a href="https://www2.cesm.ucar.edu/">Community Earth System Model</a> for climate research, which takes the form of a software package. Most often, the status of computational models is more fuzzy. As an example, consider force fields for proteins such as <a href="https://en.wikipedia.org/wiki/AMBER">AMBER</a> or <a href="https://en.wikipedia.org/wiki/CHARMM">CHARMM</a>. People refer to these force fields by citing scientific articles, but these articles contain only outlines of the models. Their only complete recorded expressions are implementations as part of simulation software packages, but unlike for the Community Earth System Model, there is no software package designed to function as a reference implementation defining the model.</p>
+
+<p>The fundamental difference between software and other media for storing scientific knowledge is that software has two sides: a human-facing side, and a machine-facing side. As a medium for expressing scientific knowledge, software fulfills the same role as prose or mathematical formulas. But the necessity of specifying a computation so precisely that a machine can execute it imposes severe constraints (software must be expressed using formal languages), and the desire to perform computations efficiently in a world of finite resources adds a different set of priorities in software development that are often in conflict with the criteria attached to the role of a medium for expressing ideas. As an illustration, the source code of a simulation program that has been heavily optimized for parallel execution combines 10% of scientific model with 90% of resource management and bookkeeping, making the scientific model not only hard to understand but even hard to find in the source code. For a more detailed discussion, see <a href="http://f1000research.com/articles/3-101/v2">my article</a> in F1000Research.</p>
+
+<p>Many of the problems that computational science is facing today (reliability, reproducibility, black-box mentality, etc.) can be traced back to an insufficient support for the lifecycle of scientific knowledge by today&rsquo;s software development tools. Practically all of them were developed by and for software development communities outside of scientific research. As a consequence, these tools (programming languages, compilers, packaging and deployment tools, version control systems, etc.) do not take into account the specificities of scientific computing. Worse, computational scientists do nothing to improve the situation. The dominant attitude today is &ldquo;scientists have to adopt best practices from software engineering and acquire the skills required to apply them&rdquo;. What I advocate is a somewhat different point of view: scientists should adapt these practices and the tools that implement them to their specific needs.</p>
+
+<p>To see where the problems are, let&rsquo;s look at the lifecycle of scientific knowledge expressed as software. New models and methods are developed by a mixture of thinking, tinkering, and exploring the consequences. This requires a representation that humans can understand and manipulate easily. Executability by a computer is a condition, but other machine-related criteria hardly matter at this stage. Once some useful contribution to the field has been identified, it is communicated to the research community, in a form that is easily understandable, but also easy to deploy on other people&rsquo;s computers. This step is the equivalent of publishing a scientific paper. Next, other scientists start to play with the new stuff. This includes comparisons with other models and methods, analysis of model properties, application to different scenarios, etc. The conclusions from this work should take a form similar to a review article. This would be a toolkit in which different models and methods are made available for execution, with added annotations about their relative strengths and weaknesses. Finally, a synthesis of different ideas leads to a concensus implementation supported and maintained by a wider community of scientists, both as a basis for their own future work and as an infrastructure tool for other communities. This last step corresponds to reference works, and should be accompanied by tutorials that take the role of textbooks. At this stage, usability and performance become major criteria, whereas it is acceptable that not everyone can easily understand the implementation. Those who do wish to understand the method can go back to the &ldquo;review paper&rdquo; stage.</p>
+
+<p>Most of the discussion about scientific software today is focused on the last stage. It&rsquo;s about community-supported software packages, whose sustained development requires significant efforts and investments. Most of this effort is required to keep the software useful in a world of rapidly changing computational environments, and to improve its human interfaces. A smaller part is dedicated to implementing new scientific models and methods. This effort has no equally important counterpart in the traditional lifecycle of scientific knowledge, and therefore the people who work on it find it hard to get recognition for their work. It is &ldquo;not science&rdquo; by the standards of the generation that occupies most leadership positions in research today. Fortunately, this attitude is starting to change.</p>
+
+<p>This focus on the last stage is perhaps also the reason for the dominating attitude that scientists should simply adopt best practices from software engineering. In fact, the development and maintenance of community software packages implementing concensus models and methods is technically close enough to software development in business and industry that the same tools and procedures can be applied. This is not true, however, for the the earlier stages in the lifecycle of digital scientific knowledge. As we will see, they are not well supported by today&rsquo;s software development tools and practices. What&rsquo;s worse is that most computational scientists accept this situation as inevitable.</p>
+
+<p>At the first stage, a scientist&rsquo;s activity is better described by &ldquo;manipulating and exploring models and methods&rdquo; than by &ldquo;software development&rdquo;. Computational models are of course algorithms, and thus software, but this is almost a technical detail. What is more important is a clear view of the hypotheses and approximations that have lead to a specific model, and a trace of the scientific validation that has been performed (comparison with experimental data and with other models). Programming languages are not at all a good match for this kind of work, nor are software engineering approaches such as testing. In terms of software technology, a computational model is much closer to a specification than to a piece of software.</p>
+
+<p>For the next stage, the evaluation of a new idea in a narrow community of specialists, the technical requirements are somewhere in between the two neighboring stages. The manipulation of computational models loses some importance, whereas evaluation and comparison become more relevant. Interoperability matters a lot: even if the authors of two models chose different languages (corresponding to different scientific notations in the traditional scenario), a comparative evaluation should be a straightforward task. With programming languages, it clearly isn&rsquo;t. The technical difficulties of making programs written in different languages talk to each other are effectively discouraging scientists from even trying. We would need tools such as &ldquo;notational adapters&rdquo; and, even more importantly, some low-level conventions for code and data that everybody can agree and build on. As a guideline for developing such technology, keep the analogy with review articles in mind. What would an executable review article about similar but independently developed computational methods look like? Which authoring tools are available to support such work?</p>
+
+<p>Finally, the transition from the first two stages to the last one is not as smooth as it ought to be. Quite often, an implementation written for convenient manipulation by humans must be completely rewritten in order to fit into a collection of optimized subroutines. What we should have is compiler-like tools that translate code from the first two stages into standard programming languages, using annotations added by expert programmers for guidance. The idea is to have a toolchain (1) guarantee the equivalence of the initial and the optimized level, and (2) keep track of additional approximations that were made for performance reasons. Moreover, community-supported optimized software libraries should be usable as infrastructure tools in the next level of model and method development, and thus be interoperable with the tools appropriate for the first stage, which are inexistent for now.</p>
+
+<p>Another way to describe this specificity of scientific computing, compared to other application domains, is the absence of a clear borderline between software developers and software users. Most scientists are users of tried and trusted computational methods while working on the development or validation of methods at another level. The only clear separation we have, conceptually, is the one between scientific models and methods on one hand and computing technology (in particular resource management) on the other hand. Unfortunately, that is exactly the separation that current software technology does not allow us to make.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2015/11/09/the-lifecycle-of-digital-scientific-knowledge/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2015/11/09/the-lifecycle-of-digital-scientific-knowledge/';
+          this.page.identifier = '/posts/2015/11/09/the-lifecycle-of-digital-scientific-knowledge/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2015/12/08/from-facts-to-narratives/">&larr; <em>From facts to narratives</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2015/11/06/a-rant-about-software-deployment-in-2015/"><em>A rant about software deployment in 2015</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2015/12/08/from-facts-to-narratives/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2015/11/06/a-rant-about-software-deployment-in-2015/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

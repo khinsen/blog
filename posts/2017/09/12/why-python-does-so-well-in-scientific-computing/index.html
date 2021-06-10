@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="A few days ago, I noticed this tweet in my timeline:   I 'still' program in C. Why? Hint: it's not about performance. I wrote an essay to elaborate... appearing at Onward! https://t.co/pzxjfvUs5B -- Stephen Kell (@stephenrkell) September 5, 2017 That soun...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="python, scientific computing">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/">
+
+    <title>Why Python does so well in scientific computing</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/'>Why Python does so well in scientific computing</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2017-09-12" pubdate="true">2017-09-12</time> :: <span class="tags"><a href="/tags/python.html">python</a>, <a href="/tags/scientific-computing.html">scientific computing</a></span></p>
+
+<p>A few days ago, I noticed this tweet in my timeline:</p>
+
+<blockquote class="twitter-tweet" data-lang="en">
+ <p lang="en" dir="ltr">I &#39;still&#39; program in C. Why? Hint: it&#39;s not about performance. I wrote an essay to elaborate... appearing at Onward! <a href="https://t.co/pzxjfvUs5B">https://t.co/pzxjfvUs5B</a></p>&mdash; Stephen Kell (@stephenrkell) <a href="https://twitter.com/stephenrkell/status/905126286762356736">September 5, 2017</a></blockquote>
+
+<script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>That sounded like a good read for the weekend, which it was. The main argument the author makes is that C remains unsurpassed as a system integration language, because it permits interfacing with &ldquo;alien&rdquo; code, i.e. code written independently and perhaps even in different languages, down to assembly. In fact, C is one of the few programming languages that lets you deal with whatever data at the byte level. Most more &ldquo;modern&rdquo; languages prohibit such interfacing in the name of safety - the only memory you can access is memory allocated through your safe language&rsquo;s runtime system. As a consequence, you are stuck in the closed universe of your language.</p>
+<!-- more-->
+
+<p>System integration is indeed an important and often overlooked aspect of working with software. And this is particularly true for scientific computing, where application software with a fixed set of functionality is rare. Solving a scientific problem typically involves combining many pieces of software into a very problem-specific whole, which may well be run only a few times (see also my <a href="http://blog.khinsen.net/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">earlier post</a> on this topic). This is exactly the task of system integration: assembling pieces into a whole using glue code where necessary. In computational science, this glue code takes the form of scripts, workflows, or more recently notebooks. This is technically quite different from the OS-level system integration that Stephen Kell refers to, but functionally it is the same.</p>
+
+<p>Stephen&rsquo;s post reminded me of my long-standing plan to write a blog post about why Python has been so successful in scientific computing, in spite of having a reputation for bad performance. So&hellip; here it is.</p>
+
+<p>There are of course many reasons for Python&rsquo;s success, but one of them is that it does a pretty good job at system integration. There are two Python features that I consider important for this, which are not shared by many other languages. One is data types explicitly designed for interfacing, the other is <a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> in combination with a small but versatile set of standard interfaces.</p>
+
+<p>The first Python data type designed for interfacing in a scientific computing context is the good old <a href="http://www.numpy.org/">NumPy</a> array - which is in fact older than NumPy, having been introduced in 1995 by NumPy&rsquo;s predecessor, Numeric. Arrays are one of the bread-and-butter data types in scientific computing, to the point of being the only one available in languages like Fortran 77 or APL. The implementation of arrays in Numeric was designed to use the same data layout as Fortran and C, in order to allow interfacing to the Fortran and C libraries that dominated scientific computing in 1995 (and still do, though to a somewhat lesser extent). The idea behind Numeric and later NumPy was always to use Python as a glue language for Fortran and C libraries, and achieve speed by delegating time-critical operations to code written in these languages.</p>
+
+<p>The second Python data type designed for interfacing is <a href="https://docs.python.org/3/library/stdtypes.html#memoryview">memoryview</a>, related to the <a href="https://docs.python.org/3/c-api/buffer.html">buffer protocol</a>. This is as close as Python gets to C-style memory access. The buffer protocol lets different Python data types access each other&rsquo;s internal memory at the byte level. A typical use case would be an image data type (e.g. from <a href="https://python-pillow.org/">Pillow</a>) allowing access to the in-memory representation of an image through an array type (e.g. from NumPy), permitting the implementation of image manipulation algorithms in terms of array operations.</p>
+
+<p>The third and least known Python data type for interfacing is the <a href="https://docs.python.org/3/c-api/capsule.html">capsule</a> that replaces the earlier <a href="https://docs.python.org/2/c-api/cobject.html">CObject</a>. Capsules exist solely for the benefit of Python modules written in C, which can exchange opaque data with one another via glue code written in Python, even though the glue code itself cannot inspect or manipulate the data in any way. A typical use is to wrap C function pointers in a Python object such that Python glue code, e.g. a script, can pass a C function from one module to a to C code from another module.</p>
+
+<p>All these interfacing data types mediate between Python and C code, although quite often the Python system integrator is hardly aware of using C code at all. The other Python feature for system integration, duck typing with standard interfaces, is what facilitates glueing together independently written Python modules. By &ldquo;standard interfaces&rdquo;, I mean the sequence and dictionary interfaces, but also the standard method names for operator overloading.</p>
+
+<p>To see why this is an important feature, let us look at statically typed languages that by design do not have it. As a concrete example, consider multidimensional arrays in Java. They are not part of the language or its standard library, but they can be implemented on top of it with reasonable effort. In fact, there are several Java implementations you can choose from. And that&rsquo;s the problem. Suppose you want to use an FFT library based on array implementation A together with a linear algebra library based on array implementation B. Bad luck - the arrays from A and B have different types, so you cannot use the output of an FFT as the input to a linear equation solver. It doesn&rsquo;t matter that the underlying abstraction is the same, and that even the implementations have much in common. For a Java compiler, tje types don&rsquo;t match, period.</p>
+
+<p>Python is not completely immune to this problem. It is perfectly possible to write Python code, or C code in a C module, that expects a precise type of data as input, and will raise an exception otherwise. But in Python code that would be considered bad style, and in C modules for Python as well except where required for performance or for compatibility with the C code. Wherever possible, Python programmers are expected to use the standard interfaces for working with data. Iteration and indexing work the same way for arrays as for the built-in lists, for example. For operations that are not covered by the standard interfaces, Python programmers are supposed to use Python methods, which are subject to duck typing as well. In practice, independently implemented Python types are much more interoperable than independently implemented Java types. For the specific case of n-dimensional arrays, Python has had the chance of overwhelming acceptance of a single implementation, which is due more to social and historical than to technical issues.</p>
+
+<p>Finally, even though Python is a pretty good choice for system integration in scientific computing, there are of course limits, which are exactly of the kind that Stephen Kell explains in his essay: combining Python code with code in other managed languages, say R or Julia, requires a lot of work and even then is fragile, because the required hacks depend on undocumented implementation details. I suspect that the only solution would be to have language-neutral garbage-collected data objects proposed as an OS-level service that maintains an option for non-managed byte-level access à la C. The closest existing technology I am aware of is Microsoft&rsquo;s <a href="https://en.wikipedia.org/wiki/Common_Language_Runtime">CLR</a>, better known by its commercial name .NET. Its implementation is now Open Source and runs on multiple platforms, but its Windows-only origins and strong ties to a huge Microsoft-y library have been an obstacle to adoption by the traditionally Unix-centric scientific computing communty.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/';
+          this.page.identifier = '/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2017/11/09/there-is-no-such-thing-as-software-development/">&larr; <em>There is no such thing as software development</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/"><em>Which mistakes do we actually make in scientific code?</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2017/11/09/there-is-no-such-thing-as-software-development/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

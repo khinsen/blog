@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="In his 1962 classic &quot;The Architecture of Complexity&quot;, Herbert Simon described the hierarchical structure found in many complex systems, both natural and human-made. But even though complexity is recognized as a major issue in software development today, t...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="scientific software">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/">
+
+    <title>Wanted: a hierarchically modular software architecture</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/'>Wanted: a hierarchically modular software architecture</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2020-05-05" pubdate="true">2020-05-05</time> :: <span class="tags"><a href="/tags/scientific-software.html">scientific software</a></span></p>
+
+<p>In his 1962 classic <a href="https://www.jstor.org/stable/985254">&ldquo;The Architecture of Complexity&rdquo;</a>, Herbert Simon described the hierarchical structure found in many complex systems, both natural and human-made. But even though complexity is recognized as a major issue in software development today, the architecture described by Simon is not common in software, and in fact seems unsupported by today&rsquo;s software development and deployment tools.</p>
+<!-- more-->
+
+<p>The prime characteristic that Simon identifies in most complex systems is a hierarchical structure. Systems consist of subsystems, which consist of sub-sub-systems, etc. Simon describes the subsystems at each level as &ldquo;nearly decomposable&rdquo;, meaning that the interactions between subsystems are much less important than the interactions between the parts inside a subsystem. I prefer the shorter term &ldquo;modular&rdquo; for this feature, and thus end up with &ldquo;hierarchically modular&rdquo; as my label for the architecture that Simon describes in much detail. I won&rsquo;t repeat his arguments for the ubiquity of such systems, so please read the paper - it&rsquo;s definitely worth it, and it&rsquo;s very clearly written.</p>
+
+<p>It may seem as if many of today&rsquo;s programming languages propose exactly this kind of architecture for designing software systems, but a critical inspection shows that they don&rsquo;t. To explain where the problem is, I will use Python as an example because it is widely known, but the arguments apply with some modifications to most other languages as well.</p>
+
+<p>Python&rsquo;s module system is basically a hierarchy of namespaces, with namespaces containing mainly function and class definitions, but also variables referring to arbitrary data objects. Since namespaces are independent, and can contain sub-namespaces, this looks like a perfect match for a hierarchically modular architecture.</p>
+
+<p>One obstacle is that there is no way to combine independently designed modules into a larger hierarchy. Suppose I want to create a software component called <code>ode_solver</code> that uses the popular packages <a href="http://numpy.org/">NumPy</a> and <a href="http://scipy.org/">SciPy</a>. In a hierarchically modular architecture, implementation details of a component, such as the names of the packages it uses, would be hidden from outside view. The packages would become <code>ode_solver.numpy</code> and <code>ode_solver.scipy</code>. In real Python, they can only remain <code>numpy</code> and <code>scipy</code>, as their authors decided to call them. Independently written software components in Python always live in the globally shared top-level namespace. And since developers are free to modify their packages as they like, this makes the top-level namespace an instance of <a href="https://www.qwant.com/?q=shared%20mutable%20state">shared mutable state</a>, universally recognized as problematic in software engineering.</p>
+
+<p>The shared top-level namespace creates a strong interaction between all components at all levels. Suppose I have another component called <code>visualizer</code> that also uses NumPy and SciPy, but requires different versions. That component becomes impossible to combine with my <code>ode_solver</code> because of conflicting version requirements - the well known <a href="https://en.wikipedia.org/wiki/Dependency_hell">dependency hell</a>. Another way to look at this is to consider each package&rsquo;s detailed dependency list, with version requirements, as part of its interface.</p>
+
+<p>The second obstacle is that the full specification of a module&rsquo;s interface (something that&rsquo;s never ever written down in Python) in general includes classes defined by its dependencies. My <code>ode_solver</code> could, for example, return some value as a NumPy array. That would make NumPy not only a run-time dependency of the code, but also a specification dependency for the interface. If <code>visualizer</code> expects a NumPy array as the input to one of its functions, I&rsquo;d be in trouble again as the class definition in the two different versions of NumPy might not be the same. And that trouble would not go away if I could migrate NumPy and SciPy inside my component&rsquo;s namespace as suggested above.</p>
+
+<p>Some readers&rsquo; first reaction is likely to be &ldquo;that&rsquo;s a symptom of bad specifications&rdquo; or &ldquo;that&rsquo;s the trouble you deserve for using a dynamically typed language&rdquo;. However, static typing doesn&rsquo;t solve the problem, it merely shifts it from run time to compile time. It&rsquo;s the types introduced by dependencies that end up in the static interface of a component. The impact on component compatibility is the same. And if that&rsquo;s a symptom of bad design, then good design is not only rare but also actively discouraged by today&rsquo;s software development tools. The only way out I can see is to create wrapper types and wrapper functions in the component that hide the implementation in terms of dependencies. Hands up if you find that idea appealing!</p>
+
+<p>The only programming language I know of that does not suffer from this problem is <a href="https://www.unisonweb.org/">Unison</a>, which refers to functions and data types <a href="https://www.unisonweb.org/2020/04/10/reducing-churn/">via hashes rather than names</a>. It&rsquo;s a very young language, so it&rsquo;s too early to say how this feature will change software architecture on a larger scale.</p>
+
+<p>Programming languages are not the only realm in which we can try to construct hierarchically modular software. It would in fact be preferable to do so at a language-neutral level, to escape from the silos that languages tend to represent. I&rsquo;d love to be able to combine a component written in Python with a component written in R! So maybe we should try to make hierarchically modular assemblies at the level of compiled binaries.</p>
+
+<p>One candidate would then be Linux&rsquo; <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Executable and Linkable Format</a> (ELF), which covers several types of binary files: executables, object files, shared libraries, and more. But there is no kind of ELF file that could represent hierarchically composable modules, as far as I can see. There&rsquo;s no way to combine two shared libraries into a bigger shared library, nor two executables into a larger executable, and moreover every executable has a global namespace that would create the same issues that I outlined above for Python. You can&rsquo;t have an executable that includes or refers to two different versions of the <a href="https://zlib.net/">zlib library</a>, for example.</p>
+
+<p>The only approach that looks doable in the Unix world is working at the process level. A software component is then a process based on an executable, and data between processes is exchanged via files or sockets. Choosing a clever hash-based naming scheme (as done by <a href="https://nixos.org/">Nix</a> and <a href="https://guix.gnu.org/">Guix</a>) makes it possible to keep any combination of versions accessible in parallel. Several processes could be managed as child processes by a superprocess, which would thus represent a component one level up in the hierarchy. In the Web world, a very similar setup could be constructed by making each component a Web service. There isn&rsquo;t much tool support for such techniques, but perhaps the most important obstacle is efficiency issues in the communication between components, which would require serialization and either file storage or network communication.</p>
+
+<p>The main merit of the two approaches I have outlined in the last paragraph is that they can accommodate legacy code and systems, unlike the starting-from-scratch approach of Unison. With a bit of luck, improved tooling and optimization could turn the process/service-based approach into a viable technique for some types of real-life application, while Unison and perhaps others introduce the same basic idea at the programming language end of the scale of software component technologies. And then, if the concept turns out to be successful for taming software complexity, it might become the norm after a few decades. So far for my daily dose of wishful thinking!</p>
+
+<p>Finally, let me reveal my motivation for writing this post: I hope that someone will prove me wrong. I&rsquo;d love to see a comment pointing out that I am simply not aware of the right tools and techniques. And you get bonus points for references to actual hierarchically modular software systems that work!</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/';
+          this.page.identifier = '/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/">&larr; <em>An open letter to software engineers criticizing Neil Ferguson&rsquo;s epidemics simulation code</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2020/04/03/emacs-as-a-malleable-system/"><em>Emacs as a malleable system</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2020/04/03/emacs-as-a-malleable-system/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

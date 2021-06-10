@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="A coffee break conversion at a scientific conference last week provided an excellent illustration for the industrialization of scientific research that I wrote about in a recent blog post. It has provoked some discussion on Twitter that deserves being rec...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/">
+
+    <title>Industrialization of scientific software: a case study</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/'>Industrialization of scientific software: a case study</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2019-11-12" pubdate="true">2019-11-12</time> :: <span class="tags"><a href="/tags/science.html">science</a></span></p>
+
+<p>A coffee break conversion at a scientific conference last week provided an excellent illustration for the industrialization of scientific research that I wrote about in a <a href="https://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/">recent blog post</a>. It has provoked some discussion <a href="https://twitter.com/khinsen/status/1191673813626499072">on Twitter</a> that deserves being recorded and commented on a more permanent medium. Which is here.</p>
+<!-- more-->
+
+<p>I was chatting with a colleague who I have been meeting at such occasions for about 15 years. He asked me if I was still developing my <a href="http://dirac.cnrs-orleans.fr/MMTK">Molecular Modelling Toolkit</a>. I replied that I had stopped working on it because the <a href="https://www.python.org/doc/sunset-python-2/">end of support for Python 2 in 2020</a> would quickly make it too hard to use for most of its intended audience, and that I didn&rsquo;t have the means nor the motivation to port it to Python 3. He was quite surprised by my explanations, since he had never heard of the end of support for Python 2, though he did know that there was also a version 3 that was a bit different. His own data analysis scripts were still Python 2 because he had never seen a good reason to even look at Python 3 - never break a working system! But he was alarmed by my prediction that Python 2 would soon disappear from Linux distributions, as he relied on Ubuntu (regularly updated by his lab&rsquo;s systems administrator) to provide him with Python 2 and the few libraries he used.</p>
+
+<p>I was not surprised, as I have had similar conversations with various colleagues over the last years. In particular when someone contacts me with a Python question, which happens quite frequently as I have the reputation of being a Python expert in my little corner of science. The typical profile of these people is experimentalists who write and use small data analysis scripts, but for whom computation is not the central part of their research. They picked up Python from a colleague or a student, or perhaps through attending a short introductory course (such as a <a href="https://software-carpentry.org">Software Carpentry</a> workshop). They have a Python installation on their machine, which is managed by someone else. For them, Python is &ldquo;just there&rdquo;, exactly like other Unix basics such as <code>sh</code>, or <code>grep</code>. Moreover, Python has been part of their computing life for many years, often for their entire scientific career, and it has never caused them any trouble.</p>
+
+<p>When I mentioned my coffee break conversation <a href="https://twitter.com/khinsen/status/1191673813626499072">on Twitter</a>, Greg Landrum <a href="https://twitter.com/dr_greg_landrum/status/1192446793612705792">commented</a> that he would expect every Python user to make an effort to stay informed about important Python news, so everyone should by now have heard of the end-of-life decision for Python 2. This reminded me of an earlier <a href="https://twitter.com/zacchiro/status/1123168548929536000">Twitter conversation with Stefano Zacchiroli</a>, who expressed similar views. As did other actors of the FOSS universe in various real-life discussions. There seems to be a widely shared expectation among FOSS developers that users should follow news about the software they use and take the required steps to adapt to &ldquo;mandatory changes&rdquo;, as Stefano put it. My story illustrates that this is not happening. There is a category of users who (1) don&rsquo;t follow development news and (2) expect the software they use to stay around forever without major breaking changes.</p>
+
+<p>This is exactly the phenomenon that I call the industrialization of scientific software. Some software packages, such as the core of the Scientific Python ecosystem, become so popular beyond their core community that for an important part of their users they are industrial products, something they obtain once and then use without thinking much about its origins or possible evolution. One sign of a piece software becoming an industrial product is its inclusion in standard Linux distributions, where it is just one package out of many that users can choose from. Linux distributions take the role that department stores have for material goods, providing a platform for window-shopping and acquisition via a standardized procedure. For users who get their software from a Linux distribution, all software looks a bit alike. They have no reason to be more careful about Python than about <code>sh</code> or <code>grep</code>.</p>
+
+<p>Just like material goods industries, the developers of industrial software, FOSS or not, have no easy way to communicate with their clients. If such communication becomes inevitable, as for example in the case of a product recall for safety reasons, an enormous effort must be deployed to ensure that the message reaches most of its audience. <a href="https://twitter.com/pdebuyl/status/1192410647784574976">Pierre de Buyl made a suggestion along these lines</a>, proposing to put up posters with an explanation of the Python 2-&gt;3 transition in every research lab. Asking research funders to support such an action would be an interesting experiment.</p>
+
+<p>Is there anything that FOSS communities can do to prevent such miscommunication in the future? A look at industrial material goods may provide inspiration. Every non-trivial technical product comes with a user manual, which typically starts with pointing out safety precautions that users are expected to be aware of. Do this, don&rsquo;t do that, watch out for exceptional situations. The documentation of software packages could do the same, and tutorials could then emphasize the message when explaining the product to potential future customers. Here is what such a warning could look like:</p>
+
+<pre><code>This software package is developed for cutting-edge scientific
+research. Our priority in development is to improve the software
+and to adapt it for the needs of future applications. As a consequence,
+we cannot maintain client code compatibility indefinitely.
+Users of this package are expected to check the release notes
+(available at http://...) at least once per year, and to adapt
+their code to changes in the interfaces explained there.</code></pre>
+
+<p>I would expect such a notice in the <a href="https://scipy-lectures.org/intro/intro.html">introduction to the SciPy Lecture Notes</a>, for example. It describes the SciPy ecosystem, comparing it to alternative choices, but says no word about what users need to do to safely use this ecosystem in their research work. As I said in my <a href="https://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/">previous post</a>, the FOSS community has largely been blind to the consequences of software industrialization, maintaining the outdated view that developers and users form a single community. It&rsquo;s time for an upgrade.</p>
+
+<p>Note added after the initial publication: Dan Katz commented <a href="https://twitter.com/danielskatz/status/1194203819271491586">on Twitter</a> with a reference to this very clear <a href="https://collegeville.github.io/CW3S19/WorkshopResources/WhitePapers/quillenCW3S19.pdf">statement on the development priorities for Matlab</a>. It would be very helpful if FOSS communities published similar statements about their products.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/';
+          this.page.identifier = '/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2019/12/31/pharo-year-one/">&larr; <em>Pharo year one</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2019/10/29/the-industrialization-of-scientific-research/"><em>The industrialization of scientific research</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2019/12/31/pharo-year-one/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2019/10/29/the-industrialization-of-scientific-research/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

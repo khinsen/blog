@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="It's the season when everyone writes about the past year, or even the past decade for a year number ending in 9. I'll make a modest contribution by summarizing my experience with Pharo after one year of using it for projects of my own....">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2019/12/31/pharo-year-one/">
+
+    <title>Pharo year one</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2019/12/31/pharo-year-one/'>Pharo year one</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2019-12-31" pubdate="true">2019-12-31</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a></span></p>
+
+<p>It&rsquo;s the season when everyone writes about the past year, or even the past decade for a year number ending in 9. I&rsquo;ll make a modest contribution by summarizing my experience with Pharo after one year of using it for projects of my own.</p>
+<!-- more-->
+
+<p>My first contact with Pharo happened a bit more than one year ago, when I signed up for the <a href="http://mooc.pharo.org/">Pharo MOOC</a> in October 2018. But following a MOOC means working on exercice problems defined by someone else. Getting a real feeling for a programming system requires moving on to problems you actually care about. That&rsquo;s why I started three Pharo-based projects in 2019. The main one is the <a href="https://www.activepapers.org/pharo-edition/">Pharo edition of ActivePapers</a>, the other ones are <a href="https://github.com/khinsen/ipfs-pharo/">an exploration</a> of the <a href="https://ipfs.io">Interplanetary File System (IPFS)</a> and a <a href="https://github.com/khinsen/leibniz-pharo/">second implementation of my digital scientific notation Leibniz</a>. In all these projects, the user interface is an important aspect, because that&rsquo;s one of my major motivations for using Pharo. However, instead of the standard Pharo user interface framework, which is an evolution of the original Smalltalk user interface of the 1980s, I used the <a href="https://gtoolkit.com/">Glamorous Toolkit</a>, a complete redesign with many interesting new ideas. Perhaps the most significant innovation in the Glamorous Toolkit from my perspective is the introduction of a computational document. It resembles the fashionable computational notebooks in many ways, but differs in being an integral part of a live programming system.</p>
+
+<p>As I wrote in my <a href="https://blog.khinsen.net/posts/2018/12/19/exploring-pharo/">initial blog post</a> on Pharo, I started out by exploring the system using the tools it provides for that purpose. In retrospect, this is clearly the strongest aspect of Pharo. The combination of code browsers, code search, object inspection, and execution inspection (via a tool misleadingly called a debugger) is an extremely powerful way to understand complex software systems. The best evidence is that I was able to write useful and non-trivial extensions to the Glamorous Toolkit, which still is rapidly evolving alpha-stage software and, judged by standard metrics such as lines of documentation per line of code, badly documented. But such metrics make no sense in a system in which searching the code base is faster than documentation lookup in standard environments. Going back to such environments after working with Pharo is a very frustrating experience.</p>
+
+<p>Note that I am not saying that the Pharo environment is perfect. For my taste it requires way too much mouse use. I am still much more productive in Emacs than in Pharo for tasks supported by both, mainly because I can keep my hands on the keyboard. I also find the standard code browser in Pharo too limiting in only showing one method at a time. The Glamorous Toolkit is a clear improvement in that respect. But all the criticism I can come up with is about details that can be fixed, whereas the main defects that I now see in almost every other software development environment is much more fundamental: they suffer from a barrier that separates development tools on one side from the code under development on the other side.</p>
+
+<p>Similar remarks apply to the Smalltalk language on which Pharo is built. It&rsquo;s a minimal programming language that puts its object system in center stage and pushes as many features as possible into its libraries. That&rsquo;s certainly an interesting point in design space to explore, but I&rsquo;d personally prefer to have a couple of important concepts (for example immutable objects) as language features, rather than as implementation details of class hierarchies. But then, no language is perfect, and Smalltalk is certainly good enough for my needs.</p>
+
+<p>The most serious problem that I have with Pharo is that I don&rsquo;t see how I could use it productively for my own research in computational biophysics in the near future. There is a small computational science community around Pharo (see e.g. <a href="https://github.com/pharo-open-documentation/awesome-pharo#scientific-libraries">this list</a> of scientific libraries), but most of the infrastructure code that I&rsquo;d need is missing. Moreover, Pharo evolves too rapidly for the kind of computational research that I do (see <a href="https://blog.khinsen.net/posts/2017/11/16/a-plea-for-stability-in-the-scipy-ecosystem/">my critique of the SciPy ecosystem</a> for some background information). Finally, reproducible computations remain a challenge because there isn&rsquo;t much of a support infrastructure for reproduciblity in Pharo so far, although the recent <a href="https://github.com/guillep/PharoBootstrap">work on bootstrapping</a> is an important first step.</p>
+
+<p>On a longer time scale, I can imagine Pharo replacing Emacs as my main user interface to computing, with the hard-core science written in different languages but interfaced to Pharo. I expect IPFS to play an important role at the cross-language interface, for various reasons that deserve an entire blog post on their own. However, it takes a lot of not-yet-written code to get there. Too much to define this as a realistic goal for myself. This means that my future use of Pharo mainly depends on the directions taken by the Pharo community over the coming years. I am pretty sure that Pharo will remain an important tool in my toolbox, I just don&rsquo;t know what its exact role will be.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2019/12/31/pharo-year-one/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2019/12/31/pharo-year-one/';
+          this.page.identifier = '/posts/2019/12/31/pharo-year-one/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/02/26/the-rise-of-community-owned-monopolies/">&larr; <em>The rise of community-owned monopolies</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/"><em>Industrialization of scientific software: a case study</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/02/26/the-rise-of-community-owned-monopolies/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

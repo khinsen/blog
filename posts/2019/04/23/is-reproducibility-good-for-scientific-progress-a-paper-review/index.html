@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="A few days ago, a discussion in my Twitter timeline caught my attention. It was about a very high-level model for the process of scientific research whose conclusions included the affirmation that reproducibility does not improve the convergence of the re...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="reproducible research">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/">
+
+    <title>Is reproducibility good for scientific progress? (a paper review)</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/'>Is reproducibility good for scientific progress? (a paper review)</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2019-04-23" pubdate="true">2019-04-23</time> :: <span class="tags"><a href="/tags/reproducible-research.html">reproducible research</a></span></p>
+
+<p>A few days ago, a discussion in my Twitter timeline caught my attention. It was about a very high-level model for the process of scientific research whose conclusions included the affirmation that reproducibility does not improve the convergence of the research process towards truth. The Twitter discussion set off some alarm bells for me, in particular the use of the term &ldquo;reproducibility&rdquo; in the abstract, without specifying which of its many interpretations and application contexts everybody referred. But that&rsquo;s just the Twitter discussion, let&rsquo;s turn to the more relevant question of what to think of the paper itself (<a href="https://arxiv.org/abs/1803.10118">preprint on arXiv</a>).</p>
+<!-- more-->
+
+<p>The core of the work presented in that paper is a stochastic model for the process of scientific research. There is some phenomenon described by a &ldquo;true&rdquo; mathematical model. Scientists do not know this model, but can obtain data points from it. This is how experiments are described. Scientists do have full access to their own models for reality. At each time step, a scientist generates a new model according to some strategy and evaluates the quality of that model to see if it is &ldquo;better&rdquo; (in a well-defined sense) than the current concensus model of the community. One of the strategies is replication of prior work.</p>
+
+<p>Such highly simplified high-level models are easy to criticize because of the huge number of simplifying assumptions. And yet, in other branches of science (such as physics), simple toy models have proven to be very useful. In particular, they can help identify mechanisms that are also present in more realistic (and thus more complex) descriptions of the same phenomena. However, toy models require reality checks as well, in the form of validation, even if validation is qualitative rather than quantitative. This is in my opinion one of the weak spots of this paper: validation is limited to a few basic sanity checks. Given the scarcity of empirical data on the scientific process, this isn&rsquo;t really surprising.</p>
+
+<p>As for the specific issue of reproducibility, the model presented in the paper has a major weakness in that it completely ignores the issues that motivate reproducibility checks and replication studies in real life. Scientists, like all humans, are prone to mistakes and biases. The collective process of scientific research therefore includes verification steps that reduce the impact of mistakes and bias. Peer review is probably the best known one, but reproducibility checks and replication studies fall into this category as well. It is then not surprising that a model without mistakes and bias predicts little utility for verification measures.</p>
+
+<p>However, this is merely a criticism of the current proposed model. It should be possible to include mistakes and bias without profound changes to the basic idea of modelling scientific research by a stochastic process. Confirmation bias is perhaps the simplest case: Let authors of original research overestimate the benefit of their work (as part of the evaluation criterion S in the paper) and replicators underestimate it. As for mistakes, a crude technique would be to let some percentage of scientists generate two new models, evaluate the first one, but report the second one as having been tested. Mistakes detected in a replication study would then lead to erasure of the replicated study from the process of concensus formation.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/';
+          this.page.identifier = '/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/">&larr; <em>The computational notebook of the future (part 2)</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2019/02/11/the-computational-notebook-of-the-future/"><em>The computational notebook of the future</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2019/02/11/the-computational-notebook-of-the-future/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

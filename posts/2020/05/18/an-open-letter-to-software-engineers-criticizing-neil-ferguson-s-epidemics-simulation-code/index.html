@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Dear software engineers,  Many of you were horrified at the sight of the C++ code that Neil Ferguson and his team wrote to simulate the spread of epidemics. I feel with you. The only reason why I am less horrified than you is that I have seen a lot of sim...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="scientific software">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/">
+
+    <title>An open letter to software engineers criticizing Neil Ferguson's epidemics simulation code</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/'>An open letter to software engineers criticizing Neil Ferguson&rsquo;s epidemics simulation code</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2020-05-18" pubdate="true">2020-05-18</time> :: <span class="tags"><a href="/tags/scientific-software.html">scientific software</a></span></p>
+
+<p>Dear software engineers,</p>
+
+<p><a href="https://lockdownsceptics.org/code-review-of-fergusons-model/">Many</a> <a href="https://www.telegraph.co.uk/technology/2020/05/16/coding-led-lockdown-totally-unreliable-buggy-mess-say-experts/">of you</a> <a href="https://chrisvoncsefalvay.com/2020/05/09/imperial-covid-model/">were</a> <a href="https://github.com/mrc-ide/covid-sim/issues">horrified</a> at the sight of <a href="https://github.com/mrc-ide/covid-sim">the C++ code that Neil Ferguson and his team wrote to simulate the spread of epidemics</a>. I feel with you. The only reason why I am less horrified than you is that I have seen a lot of similar-looking code before. It is in fact quite common in scientific computing, in particular in research projects that have been running for many years. But like you, I don&rsquo;t have much trust in that code being a faithful and trustworthy implementation of the epidemiological models that it is supposed to implement, and I don&rsquo;t want to defend bad code in science.</p>
+<!-- more-->
+
+<p>However, many of your specific criticisms show a lack of familiarity with today&rsquo;s academic research. This code is not the sole result of 13 years of tax-payer-funded research. The core of that research is building and applying the model it implemented by the code, the code itself is merely a means to this end. The scientists who wrote this horrible code most probably had no training in software engineering, and no funding to hire software engineers. And the senior or former scientists who decided to give tax-payer money to this research group are probably even more ignorant of the importance of code for science. Otherwise they would surely have attributed money for software development, and verified the application of best practices.</p>
+
+<p>But the main message of this letter is something different: it&rsquo;s about <em>your</em> role in this story. That&rsquo;s of course a collective you, not you the individual reading this letter. It&rsquo;s you, the software engineering community, that is responsible for tools like C++ that look as if they were designed for shooting yourself in the foot. It&rsquo;s also you, the software engineering community, that has made no effort to warn the non-expert public of the dangers of these tools. Sure, you have been discussing these dangers internally, even a lot. But to outsiders, such as computational scientists looking for implementation tools for their models, these discussions are hard to find and hard to understand. There are lots of tutorials teaching C++ to novices, but I have yet to see a single one that starts with a clear warning about the dangers. You know, the kind of warning that every instruction manual for a microwave oven starts with: don&rsquo;t use this to dry your dog after a bath. A clear message saying &ldquo;Unless you are willing to train for many years to become a software engineer yourself, this tool is <em>not</em> for you.&rdquo;</p>
+
+<p>As a famous member of your community famously said, <a href="https://a16z.com/2011/08/20/why-software-is-eating-the-world/">software is eating the world</a>. That gives you, dear software engineers, a lot of power in modern society. But power comes with responsibility. If you want scientists to construct reliable implementations of models that matter for public health decisions, the best you can do is make good tools for that task, but the very least you must do is put clear warning signs on tools that you do <em>not</em> want scientists to use - always keeping in mind that scientists are not software engineers, and have neither the time nor the motivation to become software engineers.</p>
+
+<p>Consider what you, as a client, expect from engineers in other domains. You expect cars to be safe to use by anyone with a driver&rsquo;s license. You expect household appliances to be safe to use for anyone after a cursory glance at the instruction manuals. It is reasonable then to expect <em>your</em> clients to become proficient in <em>your</em> work just to be able to use your products responsibly? Worse, is it reasonable to make that expectation tacitly?</p>
+
+<p>Some of you have helped with a first round of code cleanup, which I think is the most constructive attitude you can adopt in the short term. But this is not a sustainable approach for the future. We can&rsquo;t ask software experts for a code review every time we do something important. We computational scientists need you software engineers to help us build a better future for computer-aided research. Which means pretty much all research, because software has been eating science as well for a while. Can we count on your help?</p>
+
+<hr />
+
+<p><em>PS added 2020&ndash;05&ndash;19T10:30:</em> This post has provoked a lively discussion not only in the comments below but also <a href="https://twitter.com/khinsen/status/1262307434632282112">on Twitter</a>. There are way too many comments for me to reply to each one individually, so I decided to address recurrent topics in this follow-up.</p>
+
+<p>Many people seem to have read my post as putting the main responsibility for the problems related to the cited simulation code on software engineers. This was most certainly not my intention. Scientists, policy makers, and journalists have all contributed to a less than satisfactory outcome. My open letter is clearly addressed at a particular group of people (software engineers criticizing the Imperial College Covid&ndash;19 simulations on the basis of code quality) and clearly states its focus on the role of software technology, which is what the target audience seems to overlook. A focus is always an arbitrary choice of an author for the sake of brevity or clarity. A glance at the rest of my blog should suffice to show that I do consider computational scientists responsible for their technological choices and their consequences. However, my main intention was not assigning blame for events in the past, but outline what needs to change to prevent similar events in the future.</p>
+
+<p>The car analogy was another frequent target of critical comments. Cars are a mature technology, in which many professions (engineers, workers, mechanics, driving instructors, drivers, etc.) have well-defined roles and everyone involved has a general understanding of the role of everyone else. Software is an immature technology in which roles remain fuzzy and everyone has an even fuzzier view of which other roles exist and who fills them. The discussion of my open letter has provided ample evidence for this all-encompassing fuzziness.  What we collectively need to work on is turning software into a mature technology. That requires all stakeholders to make their own role views explicit and then negotiate shared role definitions with everyone else. Several commenters have pointed out the emergence of research software engineers (RSEs) as a sign for progress, and I completely agree. But even the role of RSEs remains fuzzy at this time. Should they work a collaborators on research projects, with a particular specialization? Or as occasional consultants or service providers to researchers? Their interaction with the software engineering universe is even less clear. For now it is mostly one-way in that RSEs bring software technology from the outside into research labs. What my letter argues for is an action in the opposite direction: make software technology evolve to adapt to the specific needs of scientists. A big problem is culture clash. In academia, scientists are traditionally on top of the power pyramid and are used to everyone else working for them (even though the top position is now held by managers, but that&rsquo;s a different story). In the tech world, it&rsquo;s software engineers who are kings and used to everyone else, including their clients, obeying their directives. In the worst case, RSEs might find themselves trapped in the valley between two power pyramids. In the ideal case (from my point of view), they will be diplomats working towards a merger of the two kingdoms, with a simultaneous transformation into a democracy.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/';
+          this.page.identifier = '/posts/2020/05/18/an-open-letter-to-software-engineers-criticizing-neil-ferguson-s-epidemics-simulation-code/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/07/08/the-landscapes-of-digital-scientific-knowledge/">&larr; <em>The landscapes of digital scientific knowledge</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/"><em>Wanted: a hierarchically modular software architecture</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/07/08/the-landscapes-of-digital-scientific-knowledge/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2020/05/05/wanted-a-hierarchically-modular-software-architecture/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

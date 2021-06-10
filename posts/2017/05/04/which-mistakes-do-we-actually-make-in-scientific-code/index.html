@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Over the last few years, I have repeated a little experiment: Have two scientists, or two teams of scientists, write code for the same task, described in plain English as it would appear in a paper, and then compare the results produced by the two program...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computer-aided research, scientific software">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/">
+
+    <title>Which mistakes do we actually make in scientific code?</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/'>Which mistakes do we actually make in scientific code?</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2017-05-04" pubdate="true">2017-05-04</time> :: <span class="tags"><a href="/tags/computer-aided-research.html">computer-aided research</a>, <a href="/tags/scientific-software.html">scientific software</a></span></p>
+
+<p>Over the last few years, I have repeated a little experiment: Have two scientists, or two teams of scientists, write code for the same task, described in plain English as it would appear in a paper, and then compare the results produced by the two programs. Each person/team was asked to do a maximum amount of verification and testing before comparing to the other person&rsquo;s/team&rsquo;s work.</p>
+<!-- more-->
+
+<p>Let me state the most disturbing outcome of this experiment first: we never found complete agreement between the two programs. Not once. And when we explored to find the cause of the discrepancies, we most often found bugs in <em>both</em> programs, plus missing details in the description written initially for human readers.</p>
+
+<p>The two most practically significant experiments of this kind were actual research projects that have since been published:</p>
+
+<ul>
+ <li>
+  <p><a href="http://dx.doi.org/10.1063/1.4821598">A comparison of reduced coordinate sets for describing protein structure</a>. For this work, Shuangwei Hu wrote Matlab code, and I wrote the Python code that was <a href="https://doi.org/10.6084/m9.figshare.798825.v1">ultimately published</a>.</p></li>
+ <li>
+  <p><a href="http://dx.doi.org/10.1063/1.4823996">Model-free simulation approach to molecular diffusion tensors</a>. In this case, Gerald Kneller wrote Mathematica code, and I wrote the <a href="https://doi.org/10.6084/m9.figshare.808594.v1">Python version</a> again.</p></li></ul>
+
+<p>Later on, I did a series of similar experiments with PhD students participating in what can be summarized as advanced Python programming courses. PhD students with limited programming experience are exactly the kind of scientists who write much of the software for research projects. But the setting was &ldquo;exercises in a course&rdquo;, with programming tasks being much simpler, and much better specified, than what the typical research project requires.</p>
+
+<p>The results of these experiments that I will summarize here are no more than anecdotal evidence. In fact, the initial goal was not to perform an experiment in scientific computing, but to perform better checks on the code for a research project. It would be interesting to do a larger-scale proper study, but that&rsquo;s beyond my means and competence.</p>
+
+<p>As I already mentioned, there was never complete agreement between the two programs supposed to solve the same problem. In many cases the differences were small, and I suspect many would have brushed them away as caused by uncontrollable round-off, given that all problems were numerical in nature. But upon closer scrutiny, we always found different issues, and got much better agreement after fixing them. This is why I still believe that <a href="https://khinsen.wordpress.com/2015/01/07/why-bitwise-reproducibility-matters/">bitwise reproducibility matters</a>. When small numerical differences are inevitable, as they are with today&rsquo;s scientific programming languages, it becomes much more difficult to search for and eliminate mistakes.</p>
+
+<p>So which are the mistakes that were uncovered by comparing two independent implementations of the same method?</p>
+
+<p>Number one, by far, is discrepancies between the informal description for human readers and the executable implementation. Put simply, the programs did not compute what the informal description said they should compute, or the informal description was incomplete, admitting more than one interpretation.</p>
+
+<p>Number two is typos in numerical constants and in variable names. Since I can almost hear proponents of static typing saying &ldquo;that&rsquo;s what you deserve for using Python&rdquo;, let me add that most typos in variable names would <em>not</em> have been caught by static type checking. If you have two integer loop indices <code>i</code> and <code>j</code>, no type checker will complain when you interchange them by mistake.</p>
+
+<p>Number three is off-by-one-or-two errors in loops and in array indices. If you have a complex formula involving lots of x[i], x[i+1], and x[i&ndash;1], it&rsquo;s hard to avoid getting an index wrong occasionally. Unfortunately, array bounds checking does not catch all of these mistakes. Another interesting observation is that this type of mistake is just as likely in the informal description as in the code. Humans are apparently not very good at handling this kind of &ldquo;detail&rdquo;.</p>
+
+<p>Is there anything we can do to reduce the risk of these types of mistakes? I&rsquo;d say yes, but it&rsquo;s not going to be easy.</p>
+
+<p>Let&rsquo;s start with what software engineering techniques could do to improve the situation. The main opportunity I see is for mistakes of the third kind. Index arithmetic could be eliminated altogether by abstracting it away. Most situations correspond to one of a handful of patterns, often called <a href="https://en.wikipedia.org/wiki/Stencil_(numerical_analysis)">stencils</a>, which could become functions or macros in a suitable domain-specific language. Another idea, applicable to legacy code, is to have code checking tools recognize stencils and small deviations from common stencils and point out potential mistakes - see <a href="https://camfort.github.io/tvcs2017/#contrastin">this presentation</a> at the recent <a href="https://camfort.github.io/tvcs2017/">2nd Meeting on Testing and Verification for Computational Science</a>.</p>
+
+<p>Similar heuristic searches for potential mistakes could be applied to typos in variable names, though it is not sure that such reports would ultimately be useful. The real issue is the widespread use of short and similar variable names. A radical approach would be to ban them as part of a programming style guide, and have source code checkers flag violations of such a rule.</p>
+
+<p>For the main source of mistakes, discrepancies between informal specification and implementation, software engineering approaches are totally hopeless in my opinion. After all, the programs are perfectly reasonable and consistent, they merely solve a problem that is different from the one they were written to solve. Given the current state of technology, the comparison between the two problem decriptions can only be done by human proofreading, as long as at least one problem description is informal. I suspect the best approach we have today is exactly what I described above - develop two independent implementations and compare.</p>
+
+<p>In the long run, we can work on reducing the gap between informal descriptions (papers, software documentations) and executable implementations. I vaguely remember hearing about people exploring the possibility of turning informal descriptions into formal specifications by natural language processing - if anyone has a reference, please leave a comment! But I am rather skeptical of this approach, and therefore I prefer to let humans make the move towards formal specifications. The human-computer interface for such specifications is what I call <a href="http://sjscience.org/article?id=527">digital scientific notations</a>, and I am currently working on <a href="https://github.com/khinsen/leibniz">developing such a notation</a> for my corner of science, which is computational physics and chemistry.</p>
+
+<p>Finally, let me point out that my experiments and their conclusion apply only to research code in the strict sense, i.e. code that was written to compute a result that is <em>a priori</em> unknown. Referring to my <a href="http://blog.khinsen.net/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">earlier post on software collapse</a>, this is the fourth and project-specific layer of scientific software. When writing libraries and software tools that implement established methods for wider use, the situation is different because testing can be used much more effectively.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/';
+          this.page.identifier = '/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/">&larr; <em>Why Python does so well in scientific computing</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2017/04/06/reproducible-research-in-the-python-ecosystem-a-reality-check/"><em>Reproducible research in the Python ecosystem: a reality check</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2017/09/12/why-python-does-so-well-in-scientific-computing/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2017/04/06/reproducible-research-in-the-python-ecosystem-a-reality-check/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">Konrad Hinsen's Blog: Posts tagged 'reproducible research'</title>
+ <link rel="self" href="http://blog.khinsen.net/feeds/reproducible-research.atom.xml" />
+ <link href="http://blog.khinsen.net/tags/reproducible-research.html" />
+ <id>urn:http-blog-khinsen-net:-tags-reproducible-research-html</id>
+ <updated>2020-11-20T16:57:22Z</updated>
+ <entry>
+  <title type="text">The four possibilities of reproducible scientific computations</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2020-11-20-the-four-possibilities-of-reproducible-scientific-computations</id>
+  <published>2020-11-20T16:57:22Z</published>
+  <updated>2020-11-20T16:57:22Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;Computational reproducibility has become a topic of much debate in recent years. Often that debate is fueled by misunderstandings between scientists from different disciplines, each having different needs and priorities. Moreover, the debate is often framed in terms of specific tools and techniques, in spite of the fact that tools and techniques in computing are often short-lived. In the following, I propose to approach the question from the scientists&amp;rsquo; point of view rather than from the engineering point of view. My hope is that this point of view will lead to a more constructive discussion, and ultimately to better computational reproducibility.&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;The format of my proposal is inspired by the well-known &lt;a href="https://www.gnu.org/philosophy/free-sw.en.html"&gt;&amp;ldquo;four freedoms&amp;rdquo; that define Free Software&lt;/a&gt;. The focus of reproducibility is not on legal aspects, but on technical ones, and therefore my proposal is framed in terms of &lt;em&gt;possibilities&lt;/em&gt; rather than freedoms.&lt;/p&gt;
+
+&lt;h2 id="the-four-essential-possibilities"&gt;The four essential possibilities&lt;/h2&gt;
+
+&lt;p&gt;A computation is reproducible if it offers the four essential possibilities:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;The possibility to inspect all the input data and all the source code that can possibly have an impact on the results.&lt;/li&gt;
+ &lt;li&gt;The possibility to run the code on a suitable computer of one&amp;rsquo;s own choice in order to verify that it indeed produces the claimed results.&lt;/li&gt;
+ &lt;li&gt;The possibility to explore the behavior of the code, by inspecting intermediate results, by running the code with small modifications, or by subjecting it to code analysis tools.&lt;/li&gt;
+ &lt;li&gt;The possibility to verify that published executable versions of the computation, proposed as binary files or as services, do indeed correspond to the available source code.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;All of these possibilities come in degrees, measured in terms of the effort required to actually do what is supposed to be possible. For example, inspecting the source code of a computation is much easier for a notebook containing the top-level code, with links to repositories of all dependencies, than for a script available from the authors on request. Moreover, the degree to which each possibility exists can strongly vary over time. A piece of software made available on an institutional Web site is easily inspectable while that site exists, but inspectability drops to zero if the Web site closes down.&lt;/p&gt;
+
+&lt;p&gt;The reproducibility profile of a computation therefore consists of four time series, each representing one of the possibilities expressed on a suitable scale with its estimated time evolution. The minimum requirement for the label &amp;ldquo;reproducible&amp;rdquo; is a non-zero degree for all four possibilities for an estimated duration of a few months, the time it takes for new work to be carefully examined by peers.&lt;/p&gt;
+
+&lt;h2 id="rationale"&gt;Rationale&lt;/h2&gt;
+
+&lt;p&gt;The possibility to inspect all the source code is required to allow independent verification of the software&amp;rsquo;s correctness, and in particular to check that it does what its documentation claims it does.&lt;/p&gt;
+
+&lt;p&gt;The possibility to run the code is required to allow independent verification of the results.&lt;/p&gt;
+
+&lt;p&gt;The possibility to explore the behavior of the code is a &lt;em&gt;de facto&lt;/em&gt; requirement to fully accomplish the goals of the first possibility. For all but the most trivial pieces of software, inspection of the source code is not enough to convince oneself that it does what it is claimed to do.&lt;/p&gt;
+
+&lt;p&gt;The possibility of verifying the correspondence of source code and executable versions is motivated by the complexity of today&amp;rsquo;s software build procedures. Mistakes can as easily be introduced in the build process as in the source code itself. This point is well made by Ken Thompson&amp;rsquo;s Turing Award speech &lt;a href="https://www.cs.cmu.edu/~rdriley/487/papers/Thompson_1984_ReflectionsonTrustingTrust.pdf"&gt;Reflections on Trusting Trust&lt;/a&gt;, if you replace mischief by mistake in his arguments.&lt;/p&gt;
+
+&lt;h2 id="discussion-in-the-context-of-the-state-of-the-art"&gt;Discussion in the context of the state of the art&lt;/h2&gt;
+
+&lt;p&gt;The possibility to inspect all the source code is a criterion that is in principle widely accepted, although many people fail to realize its wide-ranging consequences. &amp;ldquo;All the source code that can possibly have an impact on the results&amp;rdquo; actually means a &lt;em&gt;lot&lt;/em&gt; of software. It includes many libraries, but also language implementations such as compilers and interpreters. Moreover, inspecting a dependency first of all requires precisely identifying it. This remains a difficult task today, and therefore most published computations today do not offer the first essential possibility, no matter how much effort a reader is willing to invest.&lt;/p&gt;
+
+&lt;p&gt;It is tempting to introduce another degree of compliance by requiring that only the most relevant parts of the total source code be inspectable. However, that defies the whole purpose of independent verification. Who decides what it relevant? Usually the author of the computation. But if the code declared to be irrelevant by the author is not inspectable, we have to take the author&amp;rsquo;s word for its irrelevance.&lt;/p&gt;
+
+&lt;p&gt;The possibility to run the code is also a widely accepted criterion, though not everyone accepts the additional requirement of executability &amp;ldquo;on a suitable computer of one&amp;rsquo;s own choice&amp;rdquo;. Software made available as a service (e.g. in the cloud) is considered sufficient for reproducibility by some researchers. Executability is much more susceptible to decay over time than inspectability of the source code, and this is one of the main topics of debate today. Is long-term reproducibility needed? Is it achievable? The answers vary across disciplines. There is unfortunately a strong tendency to auto-censoring here: many scientists believe that long-term reproducibility is not realistic and &lt;em&gt;therefore&lt;/em&gt; should not be asked for. This is definitely not true and it is better to frame the question as a trade-off: what is a reasonable price to pay for long-term reproducibility, in a given discipline?&lt;/p&gt;
+
+&lt;p&gt;The possibility to explore the behavior of the code is rarely mentioned in discussions of reproducibility. And in fact, exploring the behavior of non-trivial code written by someone else is such a difficult task that many scientists prefer not to require anyone to do it. I am not aware of any scientific journal that expects reviewers of submitted work to check the code of any computation for correctness or at least plausible correctness, which in practice requires examining its behavior. And yet, the scientific method requires &lt;em&gt;everything&lt;/em&gt; to be inquirable. It may not be a realistic expectation today, but it should at least be a goal for the future.&lt;/p&gt;
+
+&lt;p&gt;Since code explorability is rarely required or even discussed, there is no clear profile of practical implementations either. It&amp;rsquo;s a criterion that requires expert judgement, the expert being a fellow researcher from the same discipline as the author of a computation. It is the software analog of a &amp;ldquo;well-written&amp;rdquo; paper, which is a paper that a reader can easily &amp;ldquo;get into&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;The possibility of verifying the correspondence of source code and executable versions is also rarely mentioned. It is also the least fundamental one of the four essential possibilities, because in principle it can be abandoned if a computation is fully reproducible from source code. In practice, however, that is rarely a realistic option. The size and complexity of today&amp;rsquo;s software assemblies makes it impractical to re-build everything from source code, a process that can take many hours. Nearly all software assemblies we run in scientific computing contain some components obtained in pre-built binary form. While it is perfectly OK for most people, most of the time, to use such pre-built binaries, inquirability requires the possibility to check that these binaries really correspond to the source code that the authors of a computation claim to have used. This is a possibility where a low degree can be quite acceptable.&lt;/p&gt;
+
+&lt;h2 id="please-comment"&gt;Please comment!&lt;/h2&gt;
+
+&lt;p&gt;As I said, the goal of this blog post is to start a discussion. Your comments are valuable, possibly more so than the post itself. How important are the four possibilities in your own discipline? How well can they be realized within the current state of the art? Are there additional possibilities you consider important for reproducibility?&lt;/p&gt;
+
+&lt;p&gt;Check also the comments on Twitter by exploring the replies to &lt;a href="https://twitter.com/khinsen/status/1329832546474061824"&gt;this tweet&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="notes-added-after-publication"&gt;Notes added after publication&lt;/h2&gt;
+
+&lt;h3 id="20201122"&gt;2020&amp;ndash;11&amp;ndash;22&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/jermdemo/status/1329866889867059200"&gt;Jeremy Leipzig&lt;/a&gt; points out  &lt;a href="https://icerm.brown.edu/topical_workshops/tw12-5-rcem/icerm_report.pdf"&gt;the 2012 ICERM workshop document&lt;/a&gt;, whose appendix A discusses several levels of reproducibility. Its last level (&amp;ldquo;open or reproducible research&amp;rdquo;) covers in a general way the four possibilities I discuss above. The lower levels describe research output in which at least one of the four possibilities is not provided.&lt;/p&gt;
+
+&lt;h3 id="20201123"&gt;2020&amp;ndash;11&amp;ndash;23&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/ivotron/status/1329873600472621057"&gt;Ivo Jimenez&lt;/a&gt; refers to &lt;a href="https://www.niso.org/standards-committees/reproducibility-badging"&gt;ongoing work&lt;/a&gt; at NISO (National Information Standards Organization, USA) to define recommended practices, and &lt;a href="https://twitter.com/npch/status/1330453823568171008"&gt;Neil Chue Hong&lt;/a&gt; says they will be out soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/ivotron/status/1330612647763570690"&gt;Ivo Jimenez&lt;/a&gt; also mentions an interesting collection of &lt;a href="https://sysartifacts.github.io/"&gt;resources on artifact evaluation for computer systems conferences&lt;/a&gt;.&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">Is reproducibility good for scientific progress? (a paper review)</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2019/04/23/is-reproducibility-good-for-scientific-progress-a-paper-review/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2019-04-23-is-reproducibility-good-for-scientific-progress-a-paper-review</id>
+  <published>2019-04-23T12:47:50Z</published>
+  <updated>2019-04-23T12:47:50Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;A few days ago, a discussion in my Twitter timeline caught my attention. It was about a very high-level model for the process of scientific research whose conclusions included the affirmation that reproducibility does not improve the convergence of the research process towards truth. The Twitter discussion set off some alarm bells for me, in particular the use of the term &amp;ldquo;reproducibility&amp;rdquo; in the abstract, without specifying which of its many interpretations and application contexts everybody referred. But that&amp;rsquo;s just the Twitter discussion, let&amp;rsquo;s turn to the more relevant question of what to think of the paper itself (&lt;a href="https://arxiv.org/abs/1803.10118"&gt;preprint on arXiv&lt;/a&gt;).&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;The core of the work presented in that paper is a stochastic model for the process of scientific research. There is some phenomenon described by a &amp;ldquo;true&amp;rdquo; mathematical model. Scientists do not know this model, but can obtain data points from it. This is how experiments are described. Scientists do have full access to their own models for reality. At each time step, a scientist generates a new model according to some strategy and evaluates the quality of that model to see if it is &amp;ldquo;better&amp;rdquo; (in a well-defined sense) than the current concensus model of the community. One of the strategies is replication of prior work.&lt;/p&gt;
+
+&lt;p&gt;Such highly simplified high-level models are easy to criticize because of the huge number of simplifying assumptions. And yet, in other branches of science (such as physics), simple toy models have proven to be very useful. In particular, they can help identify mechanisms that are also present in more realistic (and thus more complex) descriptions of the same phenomena. However, toy models require reality checks as well, in the form of validation, even if validation is qualitative rather than quantitative. This is in my opinion one of the weak spots of this paper: validation is limited to a few basic sanity checks. Given the scarcity of empirical data on the scientific process, this isn&amp;rsquo;t really surprising.&lt;/p&gt;
+
+&lt;p&gt;As for the specific issue of reproducibility, the model presented in the paper has a major weakness in that it completely ignores the issues that motivate reproducibility checks and replication studies in real life. Scientists, like all humans, are prone to mistakes and biases. The collective process of scientific research therefore includes verification steps that reduce the impact of mistakes and bias. Peer review is probably the best known one, but reproducibility checks and replication studies fall into this category as well. It is then not surprising that a model without mistakes and bias predicts little utility for verification measures.&lt;/p&gt;
+
+&lt;p&gt;However, this is merely a criticism of the current proposed model. It should be possible to include mistakes and bias without profound changes to the basic idea of modelling scientific research by a stochastic process. Confirmation bias is perhaps the simplest case: Let authors of original research overestimate the benefit of their work (as part of the evaluation criterion S in the paper) and replicators underestimate it. As for mistakes, a crude technique would be to let some percentage of scientists generate two new models, evaluate the first one, but report the second one as having been tested. Mistakes detected in a replication study would then lead to erasure of the replicated study from the process of concensus formation.&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">Reproducible research in the Python ecosystem: a reality check</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2017/04/06/reproducible-research-in-the-python-ecosystem-a-reality-check/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2017-04-06-reproducible-research-in-the-python-ecosystem-a-reality-check</id>
+  <published>2017-04-06T09:26:50Z</published>
+  <updated>2017-04-06T09:26:50Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;A few years ago, I decided to adopt the practices of reproducible research as far as possible within the technical and social constraints I have to live with. So how reproducible is my published code over time?&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;The example I have chosen for this reproducibility study is a 2013 paper about computing diffusion coefficients from molecular simulations. &lt;a href="https://doi.org/10.6084/m9.figshare.808594.v1"&gt;All code and data&lt;/a&gt; has been published as an &lt;a href="http://www.activepapers.org/"&gt;ActivePaper&lt;/a&gt; on &lt;a href="https://figshare.com/"&gt;figshare&lt;/a&gt;. To save space, intermediate results had been removed from the published archive. This makes my reproducibility check very straightforward: a simple &lt;code&gt;aptool update&lt;/code&gt; will recompute everything starting from these intermediate results up to the plots that went into &lt;a href="http://dx.doi.org/10.1063/1.4823996"&gt;the paper&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;One nice aspect of ActivePapers is that it stores the version numbers of all dependencies, so I can quickly verify that in 2013, I had used Python 2.7.3, NumPy 1.6.2, h5py 2.1.3, and matplotlib 1.2.x (yes, the x is part of the reported version number).&lt;/p&gt;
+
+&lt;h2 id="first-try-use-my-current-python-environment"&gt;First try: use my current Python environment&lt;/h2&gt;
+
+&lt;p&gt;The evironment in which I do most of my current research has Python 3.5.2, NumPy 1.11.1, h5py 2.6, and Matplotlib 1.5.1. I set it up about a year ago when I got a new laptop, and haven&amp;rsquo;t had a good reason to update it since then. I had made some effort back in 2013 to make my code compatible with Python 3, so why not try now if this was a worthy investment?&lt;/p&gt;
+
+&lt;p&gt;Outcome: running the computations works just fine, with results that are not identical at the bit level but close enough for my application. However, I get some warnings from matplotlib when generating the plots. Here is the first one, the others are similar:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UserWarning: Legend does not support 'x' instances.
+A proxy artist may be used instead.
+See: http://matplotlib.org/users/legend_guide.html#using-proxy-artist
+  "#using-proxy-artist".format(orig_handle)&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A quick inspection of the plots shows that the legends have almost disappeared, all that&amp;rsquo;s left is a small white box. That makes many of the plots unintellegible.&lt;/p&gt;
+
+&lt;p&gt;Just out of curiosity, I made a quick attempt to figure out the error message. What&amp;rsquo;s that &amp;lsquo;x&amp;rsquo; instance? The following messages also refer to &amp;lsquo;yz&amp;rsquo; instances and a few others. A look at my script reveals that &amp;lsquo;x&amp;rsquo;, &amp;lsquo;yz&amp;rsquo; etc. are in fact the strings that I supplied as legends. Sounds strange to call them &amp;lsquo;x&amp;rsquo; instances, as if &amp;lsquo;x&amp;rsquo; were a class. And what&amp;rsquo;s that cryptic reference to a proxy artist?&lt;/p&gt;
+
+&lt;p&gt;Better stop here: my goal was to see if I can reproduce my data and figures from 2013 in a Python environment from 2016, and the answer is no. The plots are mutilated to the point of no longer being useful.&lt;/p&gt;
+
+&lt;h2 id="second-try-use-my-current-python-27-environment"&gt;Second try: use my current Python 2.7 environment&lt;/h2&gt;
+
+&lt;p&gt;Some of my research code still lives in the Python 2.7 universe, so I also have a Python environment based on Python 2.7.11 on my laptop, with NumPy 1.8.2, h5py 2.5, and matplotlib 1.4.3. That&amp;rsquo;s much closer to the original one, so let&amp;rsquo;s see how well it does in my reproducibility evaluation.&lt;/p&gt;
+
+&lt;p&gt;Outcome: Much better. The computations work fine as before, and the plots generate a single warning:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;MatplotlibDeprecationWarning: The "loc" positional argument to legend is deprecated. Please use the "loc" keyword instead.&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The legends still look OK, so the warning is just a minor nuisance, as one would expect from a deprecation-related message. Interestingly, this warning is also about legends, so it looks like there was a serious backwards-incompatible change in matplotlib&amp;rsquo;s &lt;code&gt;legend&lt;/code&gt; function between 1.2 and 1.5, which was prepared by a deprecation warning in 1.4.&lt;/p&gt;
+
+&lt;h2 id="third-try-reconstructing-the-original-environment"&gt;Third try: reconstructing the original environment&lt;/h2&gt;
+
+&lt;p&gt;Since I have the version numbers of everything, why not try to reconstruct the original environment exactly? Let&amp;rsquo;s go for the same major and minor version numbers, which should be sufficient. That&amp;rsquo;s a job for Anaconda:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;conda create -n python2013 python=2.7 numpy=1.6 h5py=2.1 matplotlib=1.2 anaconda
+source active python2013
+pip install tempdir
+pip install ActivePapers.Py&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Outcome: no warnings, no errors. Identical results. Reproducibility bliss at its best.&lt;/p&gt;
+
+&lt;h2 id="conclusions"&gt;Conclusions&lt;/h2&gt;
+
+&lt;p&gt;In summary, my little experiment has shown that reproducibility of Python scripts requires preserving the original environment, which fortunately is not so difficult over a time span of four years, at least if everything you need is part of the Anaconda distribution. I am not sure I would have had the patience to reinstall everything from source, given &lt;a href="http://blog.khinsen.net/posts/2015/11/06/a-rant-about-software-deployment-in-2015/"&gt;an earlier bad experience&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The purely computational part of my code was even surprisingly robust under updates in its dependencies. But the plotting code wasn&amp;rsquo;t, as matplotlib has introduced backwards-incompatible changes in a widely used function. Clearly the matplotlib team prepared this carefully, introducing a deprecation warning before introducing the breaking change. For properly maintained client code, this can probably be dealt with.&lt;/p&gt;
+
+&lt;p&gt;The problem is that I do not intend to maintain the plotting scripts for all the papers I publish. And that&amp;rsquo;s not only out of laziness, but because doing so would violate the spirit of reproducible research. The code I publish is exactly the code that I used for the original work, without any modification. If I started maintaining it, I could easily change the results by accident. I&amp;rsquo;d thus have to introduce regression tests as a safeguard against such changes. But&amp;hellip; how do I test for visual equivalence of plots? Bitwise reproducibility is about as realistic to expect for image files as for floating-point numbers: I don&amp;rsquo;t even get bitwise identical image files running the same Python code with identical matplotlib versions on different machines.&lt;/p&gt;
+
+&lt;p&gt;For my next paper, I will look for alternatives to matplotlib. My plotting needs are rather basic, so perhaps there is some other library with a more stable API that is good enough for me. Suggestions are welcome!&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">Reproducibility does not imply reproduction</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2017/01/24/reproducibility-does-not-imply-reproduction/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2017-01-24-reproducibility-does-not-imply-reproduction</id>
+  <published>2017-01-24T08:42:16Z</published>
+  <updated>2017-01-24T08:42:16Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;In discussions about computational reproducibility (or replicability, or repeatability, according to the preference of each author), I often see the argument that reproducing computations may not be worth the investment in terms of human effort and computational resources. I think this argument misses the point of computational reproducibility.&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;Obviously, there is no point in repeating a computation identically. The results will be the same. So the only reason to re-run a computation is when there are doubts about the exact software or data that were used in the original work, or doubts about the reliability of the hardware.&lt;/p&gt;
+
+&lt;p&gt;The point of computational reproducibility is to dispel those doubts. The holy grail of computational reproducibility is not a world in which every computation is run five times, but a world in which a straightforward and cheap analysis of the published material verifies that it is reproducible, so that there is no need to run it again. Actual reproduction attempts would be rare and reserved for situations such as suspicion of hardware failure or suspicion of fraud.&lt;/p&gt;
+
+&lt;p&gt;So how can we make reproducibility credible without actually doing reproduction? By using toolchains that have been proven in practice to make computations reproducible. Of course we do need to attempt &lt;em&gt;some&lt;/em&gt; reproductions in order to validate these toolchains, but it&amp;rsquo;s sufficient to do this for short computations. And if the toolchain is any good, the human effort should be close to zero as well.&lt;/p&gt;
+
+&lt;p&gt;The mere fact that we discuss computational reproducibility at all shows that we do have doubts. Most of us doing computational science have at some point had doubts about our own work. How did I make this figure? Was it made with the latest version of this script, or an earlier one? Did I run that simulations before or after installing the recent important bug fix? And when it comes to examining work by others described in a journal article, our ignorance usually reaches a level that the word &amp;ldquo;doubt&amp;rdquo; cannot convey - we don&amp;rsquo;t really know anything. All we have is someone else&amp;rsquo;s incomplete story. If we have doubts about our own work whose full story we know, why should we trust someone else&amp;rsquo;s story blindly?&lt;/p&gt;
+
+&lt;p&gt;So the question about &amp;ldquo;how much&amp;rdquo; reproducibility we need comes down to a more basic question: What would it take to make you trust a computational result beyond a reasonable doubt? Here is my personal list of acceptable evidence as of today:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;I can repeat the computation on my computer and get close enough results.&lt;/li&gt;
+ &lt;li&gt;The results are published as an &lt;a href="http://www.activepapers.org/"&gt;ActivePaper&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;The results come with a &lt;a href="https://nixos.org/"&gt;Nix&lt;/a&gt; or &lt;a href="http://guixsd.org/"&gt;Guix&lt;/a&gt; recipe for reproducing them.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;The last two cases point to toolchains that I personally consider trustworthy, given the experience I have with them. Both toolchains generate a detailed trace of what happened, with references to all the software and data. And both toolchains make mistakes improbable enough that the remaining risk is acceptable for me. Neither toolchain provides protection from fraud, so if I had a reason to suspect fraud, I&amp;rsquo;d still attempt a reproduction.&lt;/p&gt;
+
+&lt;p&gt;Note that I am not saying that everybody should use one of those toolchains. In their current state, they are neither universal nor sufficiently easy to use. But they do show the toolchain approach to reproducibility is viable.&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">Sustainable software and reproducible research: dealing with software collapse</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2017-01-13-sustainable-software-and-reproducible-research-dealing-with-software-collapse</id>
+  <published>2017-01-13T12:40:52Z</published>
+  <updated>2017-01-13T12:40:52Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;Two currently much discussed issues in scientific computing are the sustainability of research software and the reproducibility of computer-aided research. I believe that the communities behind these two ideals should work together on taming their common enemy: software collapse. As a starting point, I propose an analysis of how the risk of collapse affects sustainability and reproducibility.&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;What I call software &lt;em&gt;collapse&lt;/em&gt; is what is more commonly referred to as software &lt;em&gt;rot&lt;/em&gt;: the fact that software stops working eventually if is not actively maintained. The rot/maintenance metaphor is not appropriate in my opinion because it blames the phenomenon on the wrong part. Software does not disintegrate with time. It stops working because the foundations on which it was built start to move. This is more like an earthquake destroying a house than like fungi or bacteria transforming food, which is why I am trying out the term &lt;em&gt;collapse&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The software stacks used in computational science have a multi-layer structure that seems to be nearly universal. At the bottom, there is non-scientific infrastructure, such as operating systems, compilers, and support code for I/O, user interfaces, etc. All of this software is used by scientists in the same way as by other computer users. The predominant view is that this software is external to scientific computing, much like computer hardware. One exception is infrastructure software for high-performance computing, which like the hardware it runs on is often designed specifically for use in science and engineering.&lt;/p&gt;
+
+&lt;p&gt;The second layer is scientific infrastructure. Here we find libraries and utilities used for research in many different disciplines, such as LAPACK, NumPy, or Gnuplot. The people developing this software tend to be researchers or research software engineers, i.e. people with a scientific background. The methods (algorithms, data structures) implemented in these packages are typically well-known and stable. This does not exclude ongoing research on improving the implementations, but from the users&amp;rsquo; point of view, the job done by the software remains the same, often for several decades.&lt;/p&gt;
+
+&lt;p&gt;The third layer contains discipline-specific research software. These are tools and libraries that implement models and methods which are developed and used by research communities. Often the developers are simply a subset of the user community, but even if they aren&amp;rsquo;t, they work in very close contact with their users, who provide essential feedback not only on the quality of the software, but also on the directions that future development should take.&lt;/p&gt;
+
+&lt;p&gt;The fourth and final layer is project-specific software, which is whatever it takes to do a computation using software building blocks from the lower three levels: scripts, workflows, computational notebooks, small special-purpose libraries and utilities. At the end of a project, such software may become the starting point for software specific to another project, but it is rarely reused without modification, and rarely used by anyone except the members of the project that developed it.&lt;/p&gt;
+
+&lt;p&gt;Computational models and methods often move down the stack in the course of time. They are developed initially within a specific project, then the more widely useful ones become part of discipline-specific software, and some of them may find adoption in other fields of research and become a part of the scientific infrastructure layer.&lt;/p&gt;
+
+&lt;p&gt;Software in each layer builds on and depends on software in all layers below it, meaning that changes in any lower layer can cause it to collapse.&lt;/p&gt;
+
+&lt;p&gt;The reproducible research community focuses on the fourth layer, the project-specific software. Traditionally, the main obstacle to reproducibility was that this layer was not published, and sometimes even deleted by its authors at the end of a project. This layer also contains algorithms executed by a human user, e.g. by entering commands one by one into the computer. This ephemeral software is typically not even recorded. Fixing these problems is mainly a matter of creating an awareness of their importance, and much progress has been made in this respect. But the problem of layer&amp;ndash;4 software collapsing due to changes in the lower levels remains largely unsolved. Project-specific software is particularly vulnerable to collapse because it is almost never maintained, since its active days are over.&lt;/p&gt;
+
+&lt;p&gt;The sustainable software community is mainly interested in layer 3, the discipline-specific community software. Its development is fragile because the importance of this software is not yet recognized by institutions and funders, unlike the scientific infrastructure software one layer below. Moreover, this software is often developed by scientists with insufficient training in software engineering techniques. There are essentially two tasks that need to be organized and financed: preventing collapse due to changes in layers 1 and 2, and implementing new models and methods as the scientific state of the art advances. These two tasks go on in parallel and are often executed by the same people, but in principle they are separate and one could concentrate on just one or the other.&lt;/p&gt;
+
+&lt;p&gt;The common problem of both communities is collapse, and the common enemy is changes in the foundations that scientists and developers build on. The options they have for dealing with this are about the same as for house owners facing the risk of earthquakes:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Accept that your house or software is short-lived. In case of collapse, start from scratch.&lt;/li&gt;
+ &lt;li&gt;Whenever shaking foundations cause damage, do repair work before more serious collapse happens.&lt;/li&gt;
+ &lt;li&gt;Make your house or software robust against perturbations from below.&lt;/li&gt;
+ &lt;li&gt;Choose stable foundations.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;House owners generally opt for strategies 3 or 4, or a mixture of them. Strategies 1 and 2 are unattractive because house owners might well be injured or killed during a collapse.&lt;/p&gt;
+
+&lt;p&gt;Most software developers, in science or elsewhere, prefer strategies 1 or 2. In many business settings, this makes sense because software is short-lived or rapidly evolving anyway, due to changing requirements and newly appearing possibilities. In science, these motivations exist as well, but must be weighed against the need for preservation of the scientific knowledge embodied by scientific software. You may not care about losing the Web browser you used long ago, given that there&amp;rsquo;s a better one now. But if ten years from now, doubts come up about the analysis of &lt;a href="http://ligo.org/"&gt;LIGO&lt;/a&gt; data, you want to be able to go back to the analysis code and check what exactly was done at the time.&lt;/p&gt;
+
+&lt;p&gt;A difference between the sustainable software and the reproducible research communities is that the former privileges strategy 2, continuous repair, whereas the latter dreams of strategy 4, stable foundations. Strategy 2 is in fact easier to adopt, given that most of the software industry is applying it. Strategy 4 is seen as unrealistic by many, because stable foundations are hard to find, and the few we have impose unpleasant restrictions. But if developers in layer 3 adopt the continuous-repair strategy, this leaves only one option for the code in layer 4 - accept that it is short-lived. This is more or less what we see happening at the moment. For a recent discussion, see &lt;a href="http://ivory.idyll.org/blog/2017-pof-software-archivability.html"&gt;this blog post&lt;/a&gt; by C. Titus Brown and the discussion following it.&lt;/p&gt;
+
+&lt;p&gt;In one of the comments there, Daniel S. Katz proposes a cost-benefit analysis, which to the best of my knowledge has not been attempted until now. However, I think it should be done globally, rather than for an individual research project. A move towards stable foundations (strategy 4) is likely to require a large up-front investment, but lower development costs later on, for scientific code in all layers. It might well be interesting for nothing else but reducing global development costs, not even counting the hard to evaluate benefit of long-term reproducibility.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s also worth looking at &lt;em&gt;why&lt;/em&gt; software foundations are shaking all the time. Why can&amp;rsquo;t we just keep on using the same software forever, if we are happy with the way it works?&lt;/p&gt;
+
+&lt;p&gt;One reason is the bottom layer of our software stack, which we share with non-scientific software. There are market incentives for shaking up the foundations of commercial software, which then cause collateral damage elsewhere, such as in science. For example, some markets rely on planned obsolescence and never-ending change to create continuous customer demand. Smartphones are a good example. Also, a company controlling a software platform might benefit from changing it a bit all the time in order to retain control and customer attention. Finally, security problems in systems software are discovered regularly, and their fixes can send ripples up the software stack. All this makes it difficult to find stable foundations to build on. However, it is clearly not impossible. After all, banks have been keeping their COBOL software alive for decades. At worst, we could build our own bottom layer instead of sharing it with other application domains. One advantage of scientific software in that respect is that it has few if any security concerns to deal with.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, we also have home-made quakes in our software stack, due to changes in layers 2 and 3. In the fast-paced development of layer 3, collateral damage sometimes leads to collapse in layer 4. I suspect much of this could be avoided with some more attention on stability, plus extensive testing. What&amp;rsquo;s worse is a widespread attitude that considers stability impossible anyway and concludes that one more breaking change is not such a big problem after all. This is particularly harmful for the scientific infrastructure of layer 2. I&amp;rsquo;ll just mention my two-year-old &lt;a href="https://khinsen.wordpress.com/2014/09/12/the-state-of-numpy/"&gt;rant about NumPy&lt;/a&gt; as an example. In view of the systematic non-maintenance of layer&amp;ndash;4 software, this is an inappropriate attitude in the world of scientific computing in my opinion.&lt;/p&gt;
+
+&lt;p&gt;As a final remark, strategy 3 does not seem to exist in the software world. There are no proven techniques for making a program robust against changes in its foundations. Software interfaces are much too rigid for that. I vaguely remember Alan Kay speaking about more lenient interface mechanisms - if anyone has a reference to share, please leave a comment! A recent &lt;a href="https://www.youtube.com/watch?v=oyLBGkS5ICk"&gt;presentation by Rich Hickey&lt;/a&gt;, the creator of the Clojure language, also contains useful ideas for dealing with change in interfaces (executive summary: add new features, but don&amp;rsquo;t remove or change existing ones), but it&amp;rsquo;s more of a move towards strategy 4 than strategy 3. More generally, I would like to see more research and development along these lines. Robustness is a major design principle in other engineering domains, and software would benefit from a larger dose as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note added 2019&amp;ndash;09&amp;ndash;04:&lt;/strong&gt; I have written a more detailed article about &lt;a href="https://doi.org/10.1109/MCSE.2019.2900945"&gt;Dealing with Software Collapse&lt;/a&gt; for the May 2019 issue of &lt;em&gt;Computing in Science and Engineering&lt;/em&gt; magazine. A &lt;a href="https://hal.archives-ouvertes.fr/hal-02117588"&gt;preprint&lt;/a&gt; is available as well.&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">From reproducible to verifiable computer-aided research</title>
+  <link rel="alternate" href="http://blog.khinsen.net/posts/2016/05/11/from-reproducible-to-verifiable-computer-aided-research/?utm_source=reproducible-research&amp;utm_medium=Atom" />
+  <id>urn:http-blog-khinsen-net:-posts-2016-05-11-from-reproducible-to-verifiable-computer-aided-research</id>
+  <published>2016-05-11T12:40:40Z</published>
+  <updated>2016-05-11T12:40:40Z</updated>
+  <author>
+   <name>Konrad Hinsen</name></author>
+  <content type="html">
+&lt;p&gt;The importance of reproducibility in computer-aided research (and elsewhere) is by now widely recognized in the scientific community. Of course, a lot of work remains to be done before reproducibility can be considered the default. Doing computational research reproducibly must become easier, which requires in particular better support in computational tools. Incentives for working and publishing reproducibly must also be improved. But I believe that the Reproducible Research movement has made enough progress that it&amp;rsquo;s worth considering the next step towards doing trustworthy research with the help of computers: verifiable research.&lt;/p&gt;
+&lt;!-- more--&gt;
+
+&lt;p&gt;Verifiable research is research that you can verify for yourself. Not in the sense of verifying the scientific conclusions, which often can only be done many years later. The more modest goal is to verify that a publication contains no mistakes of the kind that every human being tends to make: mistakes in manual computations, mistakes in transcribing observations from a lab notebook, etc.&lt;/p&gt;
+
+&lt;p&gt;Ideally, all research should be verifiable. A paper is supposed to provide sufficient details about the work that was done to enable competent peers to verify the reasoning and repeat any experiments. Peer review is supposed to certify that a paper is verifiable, and reviewers are even encouraged to do the verification if that is possible with reasonable effort.&lt;/p&gt;
+
+&lt;p&gt;In the pre-computing era, much published research was indeed verifiable. Given the high cost of verifying experimental work, it is safe to assume that actual verification was the exeception. But theoretical work of any importance was commonly verified by many readers who repeated the (manual) computations.&lt;/p&gt;
+
+&lt;p&gt;With the increasing use of computers, papers slowly turned into mere summaries of research work. Providing all the details was simply impossible - software was too complex to be fully described in a journal article. It also became common to use software written by other people, and even commercial software whose detailed workings are secret. This development was nicely summarized &lt;a href="http://statweb.stanford.edu/~wavelab/Wavelab_850/wavelab.pdf"&gt;by Buckheit and Donoho&lt;/a&gt; in 1995 in what became a famous quote in the Reproducible Research movement:&lt;/p&gt;
+
+&lt;blockquote&gt;
+ &lt;p&gt;An article about computational science in a scientific publication is not the scholarship itself, it is merely advertising of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;Today this statement applies not only to computational science, but to all of computer-aided research, as many experimental and theoretical studies involve computers and software as well. The publication of all software and all input datasets in a form that other scientists can actually process on their own computers has become the main objective for making computer-aided research reproducible.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, having all the software and input data that go with a journal article is still not sufficient to make the work verifiable. With the exception of particularly simple computations, it is practically impossible to figure out what the software really computes, and in particular to verify that it computes what the paper claims it computes. Assuming, of course, that the paper actually &lt;em&gt;does&lt;/em&gt; provide a detailed description of its claims, which is often not the case. Much computer-aided research is thus &lt;a href="https://en.wikipedia.org/wiki/Not_even_wrong"&gt;&amp;ldquo;not even wrong&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It is the complexity of much modern scientific software that makes verification practically impossible, and for that reason software is rarely subjected to peer review. After all, who would accept the Herculean task to verify the correct functioning of a piece of software? Even &amp;ldquo;software papers&amp;rdquo;, i.e. papers that merely exist to provide a citable reference for some software, are reviewed without any serious validation of the software itself. At best, reviewers check that best practices of software engineering have been respected, for example by writing a test suite with good code coverage. But no amount of testing can verify that the software computes what it is supposed to compute. If some numerical constant in the source code is off by 10% due to a typo, there&amp;rsquo;s a good chance that nobody will ever notice. Such mistakes have happened (see &lt;a href="http://dx.doi.org/10.1038/467775a"&gt;this article&lt;/a&gt; for a few stories), and there are good reasons to believe they are actually frequent (see &lt;a href="http://f1000research.com/articles/3-303/v1"&gt;this article&lt;/a&gt; for arguments). The most convincing argument should be our daily experience with computers that crash or ask us to install &amp;ldquo;critical updates&amp;rdquo;. If systems software is so clearly full of mistakes, is it reasonable to assume that scientific software has none at all?&lt;/p&gt;
+
+&lt;p&gt;The difficulty of verifying computational results in combination with the obvious importance of computational techniques in science has lead to a change of attitude that in my opinion is detrimental to science in the long run. Most importantly, the burden of proof has been shifted from the proponents of a new hypothesis to its opponents. If you cannot show that a computational study is wrong, then it is silently assumed correct. If you want to publish results that are contradictory to work published earlier, it&amp;rsquo;s your obligation to explain why, even though you cannot possibly verify the earlier work. This is why protein structures in contradiction with the &lt;a href="http://www.the-scientist.com/news/home/39805/"&gt;later retracted ones from Geoffrey Chang&amp;rsquo;s group&lt;/a&gt; were rejected for publication for a long time. Contradictory results should be handled by a critical inspection of all of them, but this is possible only for verifiable research.&lt;/p&gt;
+
+&lt;p&gt;Another detrimental change of attitude is that &amp;ldquo;correct&amp;rdquo; has been replaced by &amp;ldquo;community-accepted&amp;rdquo; as a quality criterion in many fields. Recently, I have started to ask a simple question after seminars on computational work: &amp;ldquo;Why should I believe your results? What did you do to verify them?&amp;rdquo; Most often, the answer is &amp;ldquo;We used software and protocols that are widely applied in our community&amp;rdquo;. Unfortunately, popularity can be taken as an indicator of correctness only if it is safe to assume that many users have actually verified those tools and methods. Which again assumes verifiability as a minimum criterion.&lt;/p&gt;
+
+&lt;h2 id="so-what-can-we-do"&gt;So&amp;hellip; what can we do?&lt;/h2&gt;
+
+&lt;p&gt;Verifiable computer-aided research is a tiny subset of today&amp;rsquo;s published research. It&amp;rsquo;s even a small subset of today&amp;rsquo;s reproducible research. Can we do something about this? I believe we can, and I will summarize some possible approaches.&lt;/p&gt;
+
+&lt;p&gt;The most obvious approach to make a computation verifiable is to document all code and data well enough that a competent reader is convinced of its correctness. Literate programming (for algorithms) and computational notebooks (for computations) are good techniques for this. As with any scientific proofreading, verification by inspection requires much care and a critical attitude. People are easily fooled into believing something because it is well presented, for example. But the most important obstacle to this approach is the modularity of much of today&amp;rsquo;s scientific software. If you reuse existing libraries - and there are of course good reasons to do so - then you probably won&amp;rsquo;t rewrite them in literate programming style for explaining their algorithms to your critical reader. A computation is only as verifiable as its least verifiable ingredient.&lt;/p&gt;
+
+&lt;p&gt;Another way to make computer-aided research verifiable is to make the computations reimplementable. This means that the published journal article, or some supplementary material to that article, contains a precise enough human-readable description of the algorithms that a scientist competent in the field can write a new implementation from scratch, and verify that it produces the same (or close enough) results. This is not a fool-proof approach, of course, and again modularity is a major risk factor. If the computation uses some complex library and the reimplementor chooses to use the same library, then the library code is not verified by the reimplementation. The more the reimplementation differs from the original authors&amp;rsquo; code, the better it is as a verification aid. This is by the way also a strong argument for diversity in scientific software. In terms of development efficiency, a single community-supported software package per field is great, but for verifiability, it is better to have multiple packages that can do the same job.&lt;/p&gt;
+
+&lt;p&gt;Both approaches I have outlined fail for complex software. A million-line simulation code developed over many years by an entire research group can neither be studied nor reimplemented by a single person wishing to verify it. Even a small team working in close collaboration wouldn&amp;rsquo;t be up to the task. The solution I propose for this situation is to introduce an intermediate layer between the software and the human-readable documents (papers, software documentation) that describe what it computes. A layer that contains all the science but none of the technicalities of the software, such as parallelism, platform-dependence, or resource management. The idea is to &amp;ldquo;factor out&amp;rdquo; the &lt;a href="https://en.wikipedia.org/wiki/No_Silver_Bullet"&gt;accidental complexity&lt;/a&gt; and retain only the essential complexity, the one due to the complexity of the models and methods that the software implements. This idea is very similar to the use of &lt;a href="https://en.wikipedia.org/wiki/Formal_specification"&gt;formal specifications&lt;/a&gt; in software development. The specification would be verified by human scientists, whereas the conformity of the software to the specification would be checked by automated methods, of which &lt;a href="https://en.wikipedia.org/wiki/QuickCheck"&gt;randomized unit testing&lt;/a&gt; is probably the most immediately useful one.&lt;/p&gt;
+
+&lt;p&gt;An intermediate layer that factors out accidental complexity is also of interest for other uses in scientific research. That new layer would be the closest we can get to a digital representation of a model or a method. Rather than use it just in the specification of a single piece of software, we can use it for all kinds of analyses and comparisons, and cite it as the main scientific reference in work based on it, in addition to the citation to the software as the technical tool for doing the computations. For this reason, I call this layer &amp;ldquo;digital scientific knowledge&amp;rdquo; and the languages for expressing it &amp;ldquo;digital scientific notation&amp;rdquo;. None of this exists today, but many developments in computer science can be used as a basis for its development. For the details, see &lt;a href="http://sjscience.org/article?id=527"&gt;this article&lt;/a&gt;.&lt;/p&gt;</content></entry></feed>

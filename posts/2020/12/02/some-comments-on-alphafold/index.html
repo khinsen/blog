@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Many people are asking for my opinion on the recent impressive success of AlphaFold at CASP14, perhaps incorrectly assuming that I am an expert on protein folding. I have actually never done any research in that field, but it's close enough to my research...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="science, proteins">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2020/12/02/some-comments-on-alphafold/">
+
+    <title>Some comments on AlphaFold</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2020/12/02/some-comments-on-alphafold/'>Some comments on AlphaFold</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2020-12-02" pubdate="true">2020-12-02</time> :: <span class="tags"><a href="/tags/science.html">science</a>, <a href="/tags/proteins.html">proteins</a></span></p>
+
+<p>Many people are asking for my opinion on the recent <a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology">impressive success of AlphaFold at CASP14</a>, perhaps incorrectly assuming that I am an expert on protein folding. I have actually never done any research in that field, but it&rsquo;s close enough to my research interests that I have closely followed the progress that has been made over the years. Rather than reply to everyone individually, here is a public version of my comments. They are based on the limited information on AlphaFold that is available today. I may come back to this post later and expand it.</p>
+<!-- more-->
+
+<p>First of all, the GDT scores obtained by AlphaFold are impressive, which is of course the reason for all the buzz at the moment. The GDT score measures how close a predicted structure is to the experimentally determined one. It is defined on a scale from 0 to 100 and can roughly be interpreted as the percentage of amino acid residues that were placed correctly. For about 2/3 of the proteins in this year&rsquo;s competition, AlphaFold achieved a GDT score in the 90s, whereas in the not so distant past, a score in the 70s was already considered very good. Which exact techniques were used to obtain the predicted structures is not something I can comment on: as far as I know, no technical details have been made public so far. Nor is AlphaFold a publicly available program or service that scientists could explore or apply to their own work. So all we know for now is that DeepMind, the company behind AlphaFold, has figured out a way to obtain good scores at CASP14. In the following I will assume that this is not just good luck, and that the method is applicable to a much larger class of proteins than the CASP candidates.</p>
+
+<p>The scores obtained by AlphaFold are clearly a sign of significant progress. But does it mean that we have &ldquo;a solution to a 50-year-old grand challenge in biology&rdquo;, as the press release claims? That depends on what exactly one considers that challenge to be.</p>
+
+<p>If the challenge of protein folding is taken to be a purely pragmatic one, i.e. being able to predict structure from sequence, then AlphaFold is a candidate for a solution. How much of a solution will depend on further evaluations that remain to be done, on a larger range of proteins. CASP is limited to proteins for which experimental structures are (just) available. But some proteins resist experimental structure determination, for example because they have no well-defined structure at all. A robust structure prediction tool would have to identify such cases, rather than predict bogus structures. Allosteric proteins, which are proteins that can take more than one stable structure, provide another set of interesting test cases. A third case of interest is protein pairs that differ minimally in their sequence but importantly in structure. The goal of evaluating the robustness of a tool is to understand how it behaves at best, at worst, and for important edge cases, such that its users can judge the trustworthiness of its results.</p>
+
+<p>For many scientists, including myself, having a black-box structure prediction tool is not sufficient to declare the protein folding problem solved. A solution requires an in-depth understanding of the mechanisms that determine protein structure. Whether or not AlphaFold can contribute to identifying these mechanisms is a question that scientists can only start to examine, and only if AlphaFold becomes sufficiently accessible and inspectable for critical examination by outside experts. I hope this will happen, and in fact I am optimistic that it will happen: the problem is important enough to deserve a serious effort by everyone involved. AlphaFold is not the end of the quest for a solution of the protein folding problem, but it could well turn out to be the beginning of a new chapter in the story.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2020/12/02/some-comments-on-alphafold/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2020/12/02/some-comments-on-alphafold/';
+          this.page.identifier = '/posts/2020/12/02/some-comments-on-alphafold/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/">&larr; <em>The structure and interpretation of scientific models</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/"><em>The four possibilities of reproducible scientific computations</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/12/10/the-structure-and-interpretation-of-scientific-models/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/proteins.html">proteins</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="There is an important and ubiquitous process in scientific research that scientists never seem to talk about. There isn't even a word for it, as far as I now, so I'll introduce my own: I'll call it _knowledge distillation_.  In today's scientific practice...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="computational science, computer-aided research, scientific software">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/">
+
+    <title>Knowledge distillation in computer-aided research</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/'>Knowledge distillation in computer-aided research</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2018-10-21" pubdate="true">2018-10-21</time> :: <span class="tags"><a href="/tags/computational-science.html">computational science</a>, <a href="/tags/computer-aided-research.html">computer-aided research</a>, <a href="/tags/scientific-software.html">scientific software</a></span></p>
+
+<p>There is an important and ubiquitous process in scientific research that scientists never seem to talk about. There isn&rsquo;t even a word for it, as far as I now, so I&rsquo;ll introduce my own: I&rsquo;ll call it <em>knowledge distillation</em>.</p>
+
+<p>In today&rsquo;s scientific practice, there are two main variants of this process, one for individual research studies and one for managing the collective knowledge of a discipline. I&rsquo;ll briefly present both of them, before coming to the main point of this post, which is the integration of <em>digital</em> knowledge, and in particular software, into the knowledge distillation process.</p>
+<!-- more-->
+
+<p>The first variant is performed by individual researchers or closely collaborating teams who, starting from the raw information of their lab notebooks, describing methods applied and results obtained, write a journal article summarizing all of this information into an illustrated narrative that is much easier to digest for their fellow scientists. This narrative contains what the authors consider the essence of their work, leaving out what they consider technical details. Moreover, the narrative places the work into its wider scientific context. In a second step, the authors condense the article into an even smaller abstract, supposed to tell readers at a glance if the article is of interest to them without going into any details. This process can be illustrated as a pyramid:</p>
+
+<div class="figure"><img src="./knowledge-pyramid-1.svg" alt="" />
+ <p class="caption"></p></div>
+
+<p>At the bottom we have all the gory details, one level up the distilled version for communication, and at the top the minimal summary for first contact with a potential reader. It is not uncommon to have an additional layer between the bottom two, often published as &ldquo;supplementary material&rdquo;.</p>
+
+<p>Whereas authors work from the bottom to the top of this pyramid, readers work down from the top, gaining a more detailed understanding at each step. Until not so long ago, this was a two-step process: after the abstract, they could move on to the paper, but after that they had to contact the authors for obtaining more details, and the authors might well not care to reply. The Open Science movement has made some progress in pushing for more transparency by making deeper information layers available for critical inspection, in particular raw datasets and the source code for the software used to process them. The situation is very much in flux as various scientific disciplines are working out which information can and should be shared, and how. The maximal level of openness is known as <a href="https://en.wikipedia.org/wiki/Open-notebook_science">Open Notebook science</a>, which basically means making the whole pyramid public. Note, however, that giving access to the base of pyramid does not make the knowledge distillation steps superfluous. Readers would succumb to information overload if exposed to all the details without a proper introduction in the form of distilled knowledge. In fact, <em>most</em> readers don&rsquo;t want to anything else than the distilled version.</p>
+
+<p>The second variant of knowledge distillation is performed collectively by domain experts who summarize the literature of their field into review articles and then into monographs or textbooks for students. The pyramid diagram is very similar to the first variant&rsquo;s:</p>
+
+<div class="figure"><img src="./knowledge-pyramid-2.svg" alt="" />
+ <p class="caption"></p></div>
+
+<p>It&rsquo;s really just the same process at another scale: knowledge transfer about a discipline, rather than about a specific study.</p>
+
+<p>So far for good old science - let&rsquo;s move to the digital age. The base of our first pyramid now contains code and digital datasets. Some of the code was written by the authors of the study for this specific project and typically takes the form of scripts, workflows, or notebooks. This is complemented by the dependencies of this project-specific code - see my <a href="http://blog.khinsen.net/posts/2017/01/13/sustainable-software-and-reproducible-research-dealing-with-software-collapse/">post on software collapse</a> for an analysis of the full software stack. Full openness requires making all of this public, with computational reproducibility serving as a success indicator. If other researchers can re-run the software and get the same results, they possess all the information one could possibly ask for, from a computational point of view.</p>
+
+<p>But as with Open Notebook science, making all the details open is not sufficient. Readers will again succumb to information overload when exposed to a complex software stack and digital datasets whose precise role in the study is not clear. Information overload is even a much more serious problem with software because the amount of detail that software source code contains is orders of magnitude bigger than what can be written down in a lab notebook.</p>
+
+<p>So how do we distill the scientific knowledge embedded in software? The bad news is that we don&rsquo;t yet have any good techniques. What we find in journal articles when it comes to describing computational methods is very brief summaries in plain English, closer to the abstract level than to the journal article level. As a consequence, computational methods remain impenetrable to the reader who does not have prior experience with the software that has been applied. There is no way to work down the pyramid, readers have to acquire the base level skills on their own. Worse, there is no way to stop at the middle level of the pyramid and yet have a clear understanding of what is going on.</p>
+
+<p>The recent years have seen a flurry of research and development concerning the publication of software and computations. One main focus has been the reproducibility of results, another the sustainability of scientific software development, and a third one the readability of computational analyses. This last focus has most notably led to the development of computational notebooks (such as Jupyter, Rmarkdown, Emacs/Org-mode and many more), which embed code and results in a narrative providing context and explanations. Notebooks are occasionally put forward as &ldquo;the paper of the future&rdquo;, but in view of the knowledge pyramid, that&rsquo;s not what they are. They are closer to the digital age equivalent of lab notebooks, especially when combined with version control to capture the time evolution of their contents. The real paper of the future must contain a <em>distilled</em> version of the source code.</p>
+
+<p>It is interesting to examine why notebooks have been so successful in some scientific domains. First of all, they are a much better human-readable presentation of source code than anything we had before, with the exception of the related idea of literate programming which I expect to see a come-back as well. Next, in domains where computational studies tend to be linear sequences of well-known standard operations, such as statistical analyses, the notebook is very similar to a distilled computational protocol, because the technical details are mostly hidden in libraries. These libraries also contain significant scientific knowledge, but because these methods are well-known, they have in a way been distilled in the form of textbooks.</p>
+
+<p>More generally, though, notebooks contain both too little and too much information to qualify as distilled descriptions of computational studies. Too little because much scientific knowledge is hidden in the notebook&rsquo;s dependencies, which are not documented at the same level of readability (which is why I believe that literate programming has a future). Too much because they still expose technical details to the reader that is more a hindrance than a help for understanding.</p>
+
+<p>How, then, should the paper of the future present distilled computational knowledge? I see three main requirements:</p>
+
+<ol>
+ <li>It must be possible to explain and discuss individual models, approximations, or algorithms without the constraints of an efficient working implementation.</li>
+ <li>These models, approximations, and algorithms must be presented in a sufficiently precise form that automatic verification procedures can ensure that the source code at the base level of the pyramid actually implements them.</li>
+ <li>Suitable user interfaces must allow a reader to explore these models, approximations, and algorithms through concrete examples.</li></ol>
+
+<p>The first requirement says that clarity of exposition must take absolute precedence over any technical considerations of software technology. The intrinsic complexity of computational methods makes understanding hard enough, so everything possible must be done to keep accidental complexity out of the way.</p>
+
+<p>The second requirement ensures that the conformity between the distilled and the detailed representations of a computational protocol can be verified by computers rather than by humans. Humans aren&rsquo;t very good at checking that two complex artifacts are equivalent.</p>
+
+<p>The third requirement is motivated by the observation that a real understanding of a computational method, which is usually too lengthy to be actually performed manually, requires both reading code and observing how it processes simple test cases. Observation is not limited to the final outcome, it may well be necessary to provide access to intermediate results.</p>
+
+<p>To get an idea of what &ldquo;suitable user interfaces&rdquo; might look like, it&rsquo;s worth looking at the <a href="https://explorabl.es/">explorable explanations</a> and the <a href="http://www.complexity-explorables.org/">Complexity Explorables</a> Web sites. Note, however, that none of these exploration user interfaces provide easy access to a precise formulation of the underlying models or algorithm. They exist in the form of JavaScript source code embedded in the Web site, but that&rsquo;s not exactly a reader-friendly medium of expression. Another interesting line of development is happening in the <a href="https://pharo.org/">Pharo</a> community (Pharo being a modern descendent of Smalltalk), e.g. the idea of <a href="http://scg.unibe.ch/research/moldableinspector">moldable inspectors</a>, which are user interfaces specifically designed to explore a particular kind of object, which in the O-O tradition combines code and data.</p>
+
+<p>Back to requirements 1 and 2: we want a precise and easily inspectable description that can be embedded into an explanatory narrative. We also want to be sure that it actually corresponds to what the user interface lets us explore, and to what the software implementation applies efficiently to real-world problems. I am not aware of any existing technology that can fulfill this role, although there many that were designed with somewhat different goals in mind that can serve as guidelines, in particular the various <a href="https://en.wikipedia.org/wiki/Modeling_language">modeling</a> and <a href="https://en.wikipedia.org/wiki/Specification_language">specification languages</a>.</p>
+
+<div class="figure"><img src="./knowledge-pyramid-3.svg" alt="" />
+ <p class="caption"></p></div>
+
+<p>My own research into this problem had led to the concept of <a href="http://sjscience.org/article?id=527">digital scientific notations</a>, and I am currently designing such a notation for physics and chemistry, called <a href="https://github.com/khinsen/leibniz">Leibniz</a>. A <a href="https://peerj.com/articles/cs-158/">first report</a> on this research has been published earlier this year. Leibniz is mainly inspired by traditional mathematical notation concerning the way it is embedded into a narrative, and from specification languages in terms of semantics. Some relevant features of Leibniz for expressing distilled knowledge are</p>
+
+<ul>
+ <li>
+  <p>Its highly declarative nature. Leibniz code consists of short declarations that can be written down in (nearly) arbitrary order, making them easy to embed into a narrative, much like mathematical expressions and equations.</p></li>
+ <li>
+  <p>Its foundation in term rewriting (the same foundation adopted by most computer algebra systems). Among other advantages, this allows Leibniz code to concentrate on one aspect of a model or algorithm while leaving other aspects unspecified.</p></li>
+ <li>
+  <p>Its restriction to a single universal (but often inefficient) data structure.</p></li></ul>
+
+<p>These features mainly address requirement 1. As for requirement 2, Leibniz uses XML for its syntax and has very simple semantics, making it easy to write libraries that read and execute Leibniz code which in turn make it easy to integrate Leibniz into scientific software of all kinds. Only Leibniz development environments have to deal with the more complex user-facing syntax requiring a specific parser.</p>
+
+<p>Leibniz does not try to address requirement 3, but since it meets requirement 2, it doesn&rsquo;t get in the way of people wishing to build exploration and inspection user interfaces for Leibniz-based models and algorithms.</p>
+
+<p>Leibniz is still very much experimental, and I am not at all sure that it will turn out to be useful in its current form. In fact, I am almost certain that it will require modification to be of practical use. If that doesn&rsquo;t scare you off, have a look at the <a href="http://khinsen.net/leibniz-examples/">example collection</a> to get an idea of what Leibniz can do and what it looks like. Feedback of any kind is more than welcome!</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/';
+          this.page.identifier = '/posts/2018/10/21/knowledge-distillation-in-computer-aided-research/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2018/12/19/exploring-pharo/">&larr; <em>Exploring Pharo</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2018/07/26/literate-computational-science/"><em>Literate computational science</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2018/12/19/exploring-pharo/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2018/07/26/literate-computational-science/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Computational reproducibility has become a topic of much debate in recent years. Often that debate is fueled by misunderstandings between scientists from different disciplines, each having different needs and priorities. Moreover, the debate is often fram...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="reproducible research, scientific computing">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/">
+
+    <title>The four possibilities of reproducible scientific computations</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/'>The four possibilities of reproducible scientific computations</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2020-11-20" pubdate="true">2020-11-20</time> :: <span class="tags"><a href="/tags/reproducible-research.html">reproducible research</a>, <a href="/tags/scientific-computing.html">scientific computing</a></span></p>
+
+<p>Computational reproducibility has become a topic of much debate in recent years. Often that debate is fueled by misunderstandings between scientists from different disciplines, each having different needs and priorities. Moreover, the debate is often framed in terms of specific tools and techniques, in spite of the fact that tools and techniques in computing are often short-lived. In the following, I propose to approach the question from the scientists&rsquo; point of view rather than from the engineering point of view. My hope is that this point of view will lead to a more constructive discussion, and ultimately to better computational reproducibility.</p>
+<!-- more-->
+
+<p>The format of my proposal is inspired by the well-known <a href="https://www.gnu.org/philosophy/free-sw.en.html">&ldquo;four freedoms&rdquo; that define Free Software</a>. The focus of reproducibility is not on legal aspects, but on technical ones, and therefore my proposal is framed in terms of <em>possibilities</em> rather than freedoms.</p>
+
+<h2 id="the-four-essential-possibilities">The four essential possibilities</h2>
+
+<p>A computation is reproducible if it offers the four essential possibilities:</p>
+
+<ol>
+ <li>The possibility to inspect all the input data and all the source code that can possibly have an impact on the results.</li>
+ <li>The possibility to run the code on a suitable computer of one&rsquo;s own choice in order to verify that it indeed produces the claimed results.</li>
+ <li>The possibility to explore the behavior of the code, by inspecting intermediate results, by running the code with small modifications, or by subjecting it to code analysis tools.</li>
+ <li>The possibility to verify that published executable versions of the computation, proposed as binary files or as services, do indeed correspond to the available source code.</li></ol>
+
+<p>All of these possibilities come in degrees, measured in terms of the effort required to actually do what is supposed to be possible. For example, inspecting the source code of a computation is much easier for a notebook containing the top-level code, with links to repositories of all dependencies, than for a script available from the authors on request. Moreover, the degree to which each possibility exists can strongly vary over time. A piece of software made available on an institutional Web site is easily inspectable while that site exists, but inspectability drops to zero if the Web site closes down.</p>
+
+<p>The reproducibility profile of a computation therefore consists of four time series, each representing one of the possibilities expressed on a suitable scale with its estimated time evolution. The minimum requirement for the label &ldquo;reproducible&rdquo; is a non-zero degree for all four possibilities for an estimated duration of a few months, the time it takes for new work to be carefully examined by peers.</p>
+
+<h2 id="rationale">Rationale</h2>
+
+<p>The possibility to inspect all the source code is required to allow independent verification of the software&rsquo;s correctness, and in particular to check that it does what its documentation claims it does.</p>
+
+<p>The possibility to run the code is required to allow independent verification of the results.</p>
+
+<p>The possibility to explore the behavior of the code is a <em>de facto</em> requirement to fully accomplish the goals of the first possibility. For all but the most trivial pieces of software, inspection of the source code is not enough to convince oneself that it does what it is claimed to do.</p>
+
+<p>The possibility of verifying the correspondence of source code and executable versions is motivated by the complexity of today&rsquo;s software build procedures. Mistakes can as easily be introduced in the build process as in the source code itself. This point is well made by Ken Thompson&rsquo;s Turing Award speech <a href="https://www.cs.cmu.edu/~rdriley/487/papers/Thompson_1984_ReflectionsonTrustingTrust.pdf">Reflections on Trusting Trust</a>, if you replace mischief by mistake in his arguments.</p>
+
+<h2 id="discussion-in-the-context-of-the-state-of-the-art">Discussion in the context of the state of the art</h2>
+
+<p>The possibility to inspect all the source code is a criterion that is in principle widely accepted, although many people fail to realize its wide-ranging consequences. &ldquo;All the source code that can possibly have an impact on the results&rdquo; actually means a <em>lot</em> of software. It includes many libraries, but also language implementations such as compilers and interpreters. Moreover, inspecting a dependency first of all requires precisely identifying it. This remains a difficult task today, and therefore most published computations today do not offer the first essential possibility, no matter how much effort a reader is willing to invest.</p>
+
+<p>It is tempting to introduce another degree of compliance by requiring that only the most relevant parts of the total source code be inspectable. However, that defies the whole purpose of independent verification. Who decides what it relevant? Usually the author of the computation. But if the code declared to be irrelevant by the author is not inspectable, we have to take the author&rsquo;s word for its irrelevance.</p>
+
+<p>The possibility to run the code is also a widely accepted criterion, though not everyone accepts the additional requirement of executability &ldquo;on a suitable computer of one&rsquo;s own choice&rdquo;. Software made available as a service (e.g. in the cloud) is considered sufficient for reproducibility by some researchers. Executability is much more susceptible to decay over time than inspectability of the source code, and this is one of the main topics of debate today. Is long-term reproducibility needed? Is it achievable? The answers vary across disciplines. There is unfortunately a strong tendency to auto-censoring here: many scientists believe that long-term reproducibility is not realistic and <em>therefore</em> should not be asked for. This is definitely not true and it is better to frame the question as a trade-off: what is a reasonable price to pay for long-term reproducibility, in a given discipline?</p>
+
+<p>The possibility to explore the behavior of the code is rarely mentioned in discussions of reproducibility. And in fact, exploring the behavior of non-trivial code written by someone else is such a difficult task that many scientists prefer not to require anyone to do it. I am not aware of any scientific journal that expects reviewers of submitted work to check the code of any computation for correctness or at least plausible correctness, which in practice requires examining its behavior. And yet, the scientific method requires <em>everything</em> to be inquirable. It may not be a realistic expectation today, but it should at least be a goal for the future.</p>
+
+<p>Since code explorability is rarely required or even discussed, there is no clear profile of practical implementations either. It&rsquo;s a criterion that requires expert judgement, the expert being a fellow researcher from the same discipline as the author of a computation. It is the software analog of a &ldquo;well-written&rdquo; paper, which is a paper that a reader can easily &ldquo;get into&rdquo;.</p>
+
+<p>The possibility of verifying the correspondence of source code and executable versions is also rarely mentioned. It is also the least fundamental one of the four essential possibilities, because in principle it can be abandoned if a computation is fully reproducible from source code. In practice, however, that is rarely a realistic option. The size and complexity of today&rsquo;s software assemblies makes it impractical to re-build everything from source code, a process that can take many hours. Nearly all software assemblies we run in scientific computing contain some components obtained in pre-built binary form. While it is perfectly OK for most people, most of the time, to use such pre-built binaries, inquirability requires the possibility to check that these binaries really correspond to the source code that the authors of a computation claim to have used. This is a possibility where a low degree can be quite acceptable.</p>
+
+<h2 id="please-comment">Please comment!</h2>
+
+<p>As I said, the goal of this blog post is to start a discussion. Your comments are valuable, possibly more so than the post itself. How important are the four possibilities in your own discipline? How well can they be realized within the current state of the art? Are there additional possibilities you consider important for reproducibility?</p>
+
+<p>Check also the comments on Twitter by exploring the replies to <a href="https://twitter.com/khinsen/status/1329832546474061824">this tweet</a>.</p>
+
+<h2 id="notes-added-after-publication">Notes added after publication</h2>
+
+<h3 id="20201122">2020&ndash;11&ndash;22</h3>
+
+<p><a href="https://twitter.com/jermdemo/status/1329866889867059200">Jeremy Leipzig</a> points out  <a href="https://icerm.brown.edu/topical_workshops/tw12-5-rcem/icerm_report.pdf">the 2012 ICERM workshop document</a>, whose appendix A discusses several levels of reproducibility. Its last level (&ldquo;open or reproducible research&rdquo;) covers in a general way the four possibilities I discuss above. The lower levels describe research output in which at least one of the four possibilities is not provided.</p>
+
+<h3 id="20201123">2020&ndash;11&ndash;23</h3>
+
+<p><a href="https://twitter.com/ivotron/status/1329873600472621057">Ivo Jimenez</a> refers to <a href="https://www.niso.org/standards-committees/reproducibility-badging">ongoing work</a> at NISO (National Information Standards Organization, USA) to define recommended practices, and <a href="https://twitter.com/npch/status/1330453823568171008">Neil Chue Hong</a> says they will be out soon.</p>
+
+<p><a href="https://twitter.com/ivotron/status/1330612647763570690">Ivo Jimenez</a> also mentions an interesting collection of <a href="https://sysartifacts.github.io/">resources on artifact evaluation for computer systems conferences</a>.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/';
+          this.page.identifier = '/posts/2020/11/20/the-four-possibilities-of-reproducible-scientific-computations/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2020/12/02/some-comments-on-alphafold/">&larr; <em>Some comments on AlphaFold</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2020/07/08/the-landscapes-of-digital-scientific-knowledge/"><em>The landscapes of digital scientific knowledge</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2020/12/02/some-comments-on-alphafold/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2020/07/08/the-landscapes-of-digital-scientific-knowledge/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/proteins.html">proteins</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

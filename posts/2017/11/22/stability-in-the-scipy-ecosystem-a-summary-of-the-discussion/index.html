@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="The plea for stability in the SciPy ecosystem that I posted last week on this blog has generated a lot of feedback, both as comments and in a lengthy Twitter thread. For the benefit of people discovering it late, here is a summary of the main arguments an...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="python, scientific computing">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/">
+
+    <title>Stability in the SciPy ecosystem: a summary of the discussion</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/'>Stability in the SciPy ecosystem: a summary of the discussion</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2017-11-22" pubdate="true">2017-11-22</time> :: <span class="tags"><a href="/tags/python.html">python</a>, <a href="/tags/scientific-computing.html">scientific computing</a></span></p>
+
+<p>The <a href="http://blog.khinsen.net/posts/2017/11/16/a-plea-for-stability-in-the-scipy-ecosystem/#comment-3627775108">plea for stability in the SciPy ecosystem</a> that I posted last week on this blog has generated a lot of feedback, both as comments and in a lengthy <a href="https://twitter.com/khinsen/status/931192953636315137">Twitter thread</a>. For the benefit of people discovering it late, here is a summary of the main arguments and my reply to them.</p>
+<!-- more-->
+
+<h2 id="just-freeze-your-code-and-it-will-be-reproducible-forever">Just freeze your code and it will be reproducible forever</h2>
+
+<p>By far the most frequent argument against my claim that we need more stability in the SciPy ecosystem was that people can simply archive their code with all the dependencies (down to the Python language itself) in a way that lets others re-run it later for reproducibility. The most frequently proposed technical approaches were the <a href="https://conda.io/docs/">conda</a> package manager and <a href="https://www.docker.com/">Docker</a> containers.</p>
+
+<p>There are three main reasons why this is not a sufficient solution:</p>
+
+<ol>
+ <li>
+  <p>Freezing code is fine for archival reproducibility, as I mentioned in my original post. It is not sufficient for living code bases that people work on over decades. Computational biologist Luis Pedro Coelho has <a href="https://metarabbit.wordpress.com/2017/11/18/numpy-scipy-backwards-stability-debate-and-why-freezing-versions-is-not-the-solution/">explained</a> this very well and I recommend everyone to read his short writeup. My situation is very much the same as his. On Twitter, astronomer Tuan Do has chimed in with a <a href="https://twitter.com/quantumpenguin/status/933123060822978560">similar comment</a>.</p></li>
+ <li>
+  <p>The technical solutions proposed all depend on yet more infrastructure whose longevity is uncertain. For how long will a Docker container image produced in 2017 remain usable? For how long will conda and its repositories be supported, and for how long will the binaries in these repositories function on current platforms?</p></li>
+ <li>
+  <p>None of today&rsquo;s code freezing approaches comes with easy-to-use tooling and clear documentation that make it accessible to the average computational scientist. The technologies are today in a &ldquo;good for early adopters&rdquo; state. This means we cannot rely on them to preserve <em>today&rsquo;s</em> research even though they may well take on this role in the future.</p></li></ol>
+
+<p>To illustrate point 3, let me introduce Alice and Bob, who are real scientists I know, except that I have changed the names. Alice is a chemist with a decent knowledge of Python and basic software engineering techniques (Software Carpentry level), which she eagerly applies because she cares about the quality of her work. Alice considers herself an experimentalist. She develops and maintains a Python codebase for interpreting certain types of experimental data, but software development is not the focus of her work. The code she writes is not public, because her boss doesn&rsquo;t want it to be. Worse, her code depends on a small library developed by a collaborator who doesn&rsquo;t even hand out source code. What Alice gets is pre-compiled shared libraries for the three platforms that matter to herself and to her users.</p>
+
+<p>Bob is an experimental biologist who uses the same instruments as Alice and is happy that Alice has written nice software for interpreting the results. He gets that software, including the binary-only dependencies, by personal arrangements with the various people involved. Bob doesn&rsquo;t know much about Python, nor does he care. His software installation was mostly done by Alice during a one-afternoon meeting in which they worked together to reach a state he could work with. Ideally, he would like to never touch it again, but he also wants the new features that Alice adds from time to time.</p>
+
+<p>To all those who replied &ldquo;just use conda&rdquo; or &ldquo;just use Docker&rdquo;, I recommend considering the situation of Alice and Bob. Do you really believe that conda or Docker are the right solution for them today? Could you point them to suitable documentation written at the right level? Both for building and for re-using frozen environments?</p>
+
+<p>To prevent another round of misunderstanding, I am not saying that the situation of Alice and Bob would be perfect if only they could have a stable Python infrastructure. Research code should be open, for example, for many reasons including the possibility to upload it to various repositories. Fortunately, the attitudes towards software use in science are changing in the right direction, but this will take a lot of time, like all social change.</p>
+
+<p>I also fully understand the point of view that the SciPy ecosystem is for advanced users who value methodological innovation, and that it cannot cater for the needs of Alice and Bob because of conflicting requirements and insufficient resources to deal with them. But then, as I said in my original post, please have the courage to say so openly and clearly. Every beginner-level tutorial for scientists should state during the first five minutes that you cannot expect stability and that you should either use Python only for throw-away code or else be sure you can assume maintenance. In other words, make sure that people like Alice have no false expectations. They can then look for other technology, or team up with like-minded people to maintain long-time-stable branches of SciPy, or try whatever else.</p>
+
+<h2 id="stability-is-an-unrealistic-expectation">Stability is an unrealistic expectation</h2>
+
+<p>Another frequently expressed opinion was that it is unrealistic to expect the kind of stability I advocated in a modern software environment. This is a self-fulfilling prophecy: if you consider the goal impossible, you won&rsquo;t even try to achieve it. As I have pointed out, long-time stability is a reality in other ecosystems, built around languages such as Fortran or Java. A few people said that Fortran or Java are unfair comparisons, because they encourage very different approaches to dependency management. This is actually my point: you can have stability, but only if it&rsquo;s an explicit goal and if some effort is made to reach that goal. This includes finding suitable approaches to dependency management.</p>
+
+<p>David Cournape made the <a href="https://twitter.com/cournape/status/849918989165842434">interesting observation</a> that no technology less than 20 years old is better than Python in terms of stability. That rings true, in the sense that I cannot find a counterexample. But I see this as a statement about dominant attitudes in software engineering (way beyond scientific computing), not as a statement about technological constraints that would make stability fundamentally incompatible with other requirements. Software development today is dominated by short-lived technologies but also by short-lived applications. The application domains where stability is valued probably represent a much smaller part of the pie than 20 years ago. But then, this is just another illustration for what I wrote about recently: <a href="http://blog.khinsen.net/posts/2017/11/09/there-is-no-such-thing-as-software-development/">There is no such thing as software development</a> in the abstract, there is only domain-specific software development. The needs of scientific computing are clearly different from the needs of Silicon Valley startups. The conclusion is that the software development tools and practices should be different as well.</p>
+
+<p>Finally, even within the somewhat tumultuous SciPy ecosystem, stability is not impossible. My own <a href="http://dirac.cnrs-orleans.fr/MMTK/">MMTK</a> library has been around for 20 years, but in spite of continuous extensions and one API redesign (from version 1.x to version 2.x), I have never knowingly broken anyone&rsquo;s application code. With the end of support Python 2, I can unfortunately no longer maintain that policy.</p>
+
+<h2 id="everybody-lacks-resources-for-maintenance">Everybody lacks resources for maintenance</h2>
+
+<p>Many comments addressed the lack of human resources for developing and maintaining scientific software, and in particular infrastructure software like the core of the SciPy ecosystem. In combination with the fact that new developments are more attractive to most people than boring maintenance, and also more valued by the community, this leads to a culture favoring innovation over stability when most of the work is done by volunteers. This was best expressed by Peter Wang in a <a href="https://twitter.com/pwang/status/931386237193211904">short sequence of tweets</a>.</p>
+
+<p>This is indeed an important factor, and one whose importance transcends scientific computing and even science itself. If you look back at the history of civilization, or even at the history of life on earth, you can&rsquo;t fail to notice that all living organisms have invested the lion&rsquo;s share of their efforts into maintaining the <em>status quo</em>: staying alive, staying safe, maintaining an environment that ensures a certain quality of life, etc. In modern societies whose very survival depends on technology, infrastructure maintenance (roads, power grid, &hellip;) has always been a priority of state administrations - until recently, that is. Today, we hear politicians and even intellectuals proclaim the importance of innovation and disruption, while basic infrastructure starts to rot for lack of maintenance.</p>
+
+<p>I can only hope that the innovation and disruption fashion will die out before the societies that have fallen victim to this fashion will do so by natural selection. In the meantime, I propose that scientists try to resist as best as possible. The fact that infrastructure software such as NumPy does get funding is a good sign in my opinion. I believe we can also get funding for stability, if only we clearly state that we need it.</p>
+
+<h2 id="data-supremacy">Data supremacy</h2>
+
+<p>Pierre de Buyl <a href="http://disq.us/p/1nveqdc">reminded me</a> of an <a href="http://ieeexplore.ieee.org/abstract/document/6341744/">article</a> I wrote five years ago, in which I proposed that data rather than software tools should be the focus of scientific computing because data is of longer-lasting scientific importance. As I have <a href="https://f1000research.com/articles/3-101/v2">pointed out two years later</a>, that data includes scientific models (equations etc.), even though for technical reasons they are mostly embedded into software tools today (see <a href="http://sjscience.org/article?id=527">here</a> for an idea for doing things differently).</p>
+
+<p>In a world where all scientifically relevant information is stored in stable and well-defined open file formats, software tools can evolve much more freely without disturbing ongoing work or harming reproducibility. New versions of software tools would merely have to maintain the functionality of their predecessors, but not their implementation details. However, this is at best a promise for the future. We don&rsquo;t even have the basic technology to make this happen, nor a consensus that it would be a good idea, which would open up the possibility of getting funding towards that goal. We will therefore need stable software environments for many more years to come.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/';
+          this.page.identifier = '/posts/2017/11/22/stability-in-the-scipy-ecosystem-a-summary-of-the-discussion/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2017/12/19/data-science-in-ancient-greece/">&larr; <em>Data science in ancient Greece</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2017/11/16/a-plea-for-stability-in-the-scipy-ecosystem/"><em>A plea for stability in the SciPy ecosystem</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2017/12/19/data-science-in-ancient-greece/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2017/11/16/a-plea-for-stability-in-the-scipy-ecosystem/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

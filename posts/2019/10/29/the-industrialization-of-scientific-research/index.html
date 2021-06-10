@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="Over the last few years, I have spent a lot of time thinking, speaking, and discussing about the reproducibility crisis in scientific research. An obvious but hard to answer question is: Why has reproducibility become such a major problem, in so many disc...">
+    <meta name="author"      content="Konrad Hinsen">
+    <meta name="keywords"    content="science">
+    <link rel="icon"      href="/img/favicon.ico">
+    <link rel="canonical" href="http://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/">
+
+    <title>The industrialization of scientific research</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+
+    <!-- Custom styles for Frog-generated content -->
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+       window.hypothesisConfig = function () {
+         return { showHighlights : true };
+       };
+       </script>
+       <script defer src="https://hypothes.is/embed.js"></script>
+  </head>
+
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="/index.html">Home</a>
+          <a class="blog-nav-item" href="/feeds/all.atom.xml">Atom</a>
+          <a class="blog-nav-item" href="/feeds/all.rss.xml">RSS</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h2 class="blog-title">Konrad Hinsen's Blog</h2>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+
+          <div class="blog-post">
+
+  <h3 class="blog-post-title"><a href='/posts/2019/10/29/the-industrialization-of-scientific-research/'>The industrialization of scientific research</a></h3>
+  <p class="blog-post-meta">
+<time datetime="2019-10-29" pubdate="true">2019-10-29</time> :: <span class="tags"><a href="/tags/science.html">science</a></span></p>
+
+<p>Over the last few years, I have spent a lot of time thinking, speaking, and discussing about the reproducibility crisis in scientific research. An obvious but hard to answer question is: Why has reproducibility become such a major problem, in so many disciplines? And why now? In this post, I will make an attempt at formulating an hypothesis: the underlying cause for the reproducibility crisis is the ongoing industrialization of scientific research.</p>
+<!-- more-->
+
+<p>First of all, let me explain what I mean by industrialization. In the production of material goods, this term stands for a transition to high-volume production in large sites (factories), profiting from economies of scale. This doesn&rsquo;t directly carry over to immaterial goods such as information and knowledge, which can be copied at near-zero cost. There are, however, aspects of industrialization that do make sense for immaterial goods. The main one is a clear separation of producers, who design and make products for an anonymous group of potential clients, and consumers who choose from pre-existing products on the market. This stands in contrast to 1) producing for one&rsquo;s own consumption, and 2) commissioning someone else (e.g. a craftsman) to make a personalized product. Both of these approaches lead to products optimized for a specific consumer&rsquo;s need, whereas industrial products are made for a large and anonymous market.</p>
+
+<p>In scientific research, immaterial industrial products are a recent phenomenon. The ones that I will concentrate on are software and datasets that are publicly available and used by scientists outside of any collaboration with their authors. Twenty years ago, this would have been a rare event. Most software was written for in-lab use, and not even made available to others. Only a small number of basic, standardized, and widely used tools, such as compilers, were already industrial products. Most data were likewise not shared outside the research group that collected them. The resulting non-verifiability of scientific findings was an obvious problem, and led ultimately to today&rsquo;s growing Open Science movement. However, the Open Science movement goes well beyond asking for the transparency that is fundamentally required by the scientific method. It wants software and data to be <em>reusable</em> by other scientists and for different purposes. This is stated most explicitly by the <a href="https://www.go-fair.org/fair-principles/">FAIR data</a> label, in which the R stands for reusability. Open Science thus turns software and datasets into industrial commodities.</p>
+
+<h2 id="the-knowledge-gap">The knowledge gap</h2>
+
+<p>A characteristic feature of industrial products is that consumers know much less about them than producers. Consumers cannot ask for personalized explanations either, unlike in the case of a product tailor-made by a craftsman. For material goods, this has led to a wide range of professions, institutions, and regulations designed to help consumers choose suitable products and to protect them against producers&rsquo; abuse of their superior knowledge. Examples are consumer protection agencies, independent experts, technical norms, quality labels, etc. For the industrial products in scientific research, we have no established equivalents yet, and it is not even clear if can ever have them. And that is, in my opinion, a major cause of the reproducibility crisis.</p>
+
+<p>One piece of evidence is the nature of the cases discussed in the context of the crisis. Reproducibility has been an issue with experiments since the dawn of science, and yet experimental non-reproducibility never shows up in the examples cited. This is not because it is unimportant, but because it is well understood. Experimentalists of all disciplines know what ought to be reproducible in their field, and to which degree, and even the most theoretically minded theoreticians understand that experiments necessarily come with uncertainties. The issues that do show up in the catalogs of non-reproducible results are related to two specific research tools: statistics and computers. Both are recent, and both are routinely used by scientists who do not fully understand them. In other words, their users are consumers of industrial products who lack guidance in their choice of tools and methods.</p>
+
+<p>Side note: I can almost hear some readers complain that statistics are nothing recent, going back to Arab mathematicians who lived 1000 years ago. You are right. What is recent is the widespread <em>use</em> of statistics in science. Before computers, statistical methods had to be applied manually, keeping them simple and the datasets small. The kind of statistical inference whose results turn out to be non-reproducible, e.g. in psychology, would not have been possible without computers.</p>
+
+<p>As an illustration, consider the common use of <em>p</em>-value thresholds for deciding on significance. Anyone who understands the statistical framework to which <em>p</em>-values belong (hypothesis testing) agrees that most uses of such thresholds in the scientific literature make no sense. The fact that they are widely used nevertheless thus shows that most people who deal with them, as authors or as reviewers, do not understand the statistical hypothesis testing sufficiently well. And since the abuse of <em>p</em>-values has been going on for a while, it has now become a de-facto accepted practice, to the point that the people who do understand its absurdity have a hard time being heard. The same can be said about the abuse of journal impact factors for judging the authors of scientific articles, which are a sign of CVs and publication lists becoming industrial products as well.</p>
+
+<p>The root cause of computational non-reproducibility is an even better illustration of software becoming an industrial product. I noticed that many scientists who have never experienced reproducibility issues themselves find it hard to imagine that they can exist. After all, 2 + 2 is 4, today and tomorrow. What happens when two people obtain different results from &ldquo;the same&rdquo; computation is that they performed in fact different computations (using different software) without being aware of the difference. Software has become ever more complex over the last decades, but software developers have also made an effort to hide this complexity from users - with great success. Most scientists are surprised to learn that when they run that little script sent by a colleague, they are really using hundreds of software packages written (and modified frequently) by hundreds of people over many years with only loose coordination. It&rsquo;s not only those hundreds of packages that are industrial commodities, but even the assembly of all those pieces, for example a Linux distribution.</p>
+
+<h2 id="what-can-we-do">What can we do?</h2>
+
+<p>We can look at the much better understood industrial production of material goods for inspiration for possible solutions. A complex industrial product, such as a car or a television set, comes with a user manual and perhaps an obligation for user training, such as obtaining a driver&rsquo;s license. Moreover, technical norms impose precautions on producers to make their products safe to use by non-experts. Independent experts evaluate products and publish reports that guide consumers in their choice. These approaches can be adapted to scientific software and statistical methods, but that work remains to be done.</p>
+
+<p>I expect reproducibility to play a major role in this, as a quality label. A reproducible result can still be wrong, but nevertheless reproducibility guarantees the absence of some kinds of common problems. We need additional, complementary quality labels of course, and in fact we have a few, such as the presence of test suites for scientific software, or the existence of provenance metadata for datasets. But this is only the beginning. We do not yet know how to make data and code an industrial product that is safe to use by others, nor do we know how to prepare scientists for working in such an ecosystem. Best practices, even good enough practices, remain to be established.</p>
+
+<p>Experts will likely be another ingredient of a solution. I suspect that most statistics-related problems could be solved by requiring that every publication making a claim based on statistical significance be validated by a trained statistician. We will have to figure out how to organize this validation. One possibility is to create independent certification agencies, similar to <a href="https://www.cascad.tech/">cascad</a> for computational reproducibility, that employ qualified statisticians and deliver validation certificates that will figure prominently in a paper.</p>
+
+<h2 id="its-not-just-software-and-data">It&rsquo;s not just software and data</h2>
+
+<p>As I said above, I have focused on data and code because the computational aspects of science are what I am most familiar with. But industrialization isn&rsquo;t limited to computing. Even the good old journal article is slowly turning into an industrial product. With approaches such as meta-analyses or content mining, scientific papers are being used by people who are not part of the community that their authors belong to, and may thus not have the tacit knowledge shared by that community which might well be necessary to fully appreciate the published results. Interdisciplinary research is also a source of potential misunderstandings due to unshared tacit knowledge.</p>
+
+<p>We can also see industrialization in the management of science. In fact, the term &ldquo;management&rdquo; in itself implies some form of industrialization. Unfortunately, management principles from the material goods and service industries are being applied uncritically to scientific research, leading to phenomena such as the abuse of the journal impact factor to measure an individual&rsquo;s productivity, or the attribution of budgets based on multiple-year predictions of research outcomes (called &ldquo;grant proposals&rdquo;) that lack any credibility. This suggests that the people who design these management practices consider science itself a commodity, as an industry that can be run just like any other industry. There is, however, a crucial difference: whereas the production of material goods is by necessity based on well-known technologies and processes (otherwise their deployment at scale would be bound to fail), research is all about the unknown. Scientists can describe directions they want to take, but not promise to reach specific goals in the future. Science is intrinsically a bottom-up process, whereas management is about top-down organization.</p>
+
+<h2 id="open-source-and-open-science">Open Source and Open Science</h2>
+
+<p>Back to software, there is one aspect that deserves further discussion: the role of the FOSS (free/open source software) approach that has been gaining traction in research over the last decade, and that has furthermore inspired much of the Open Science movement. The origin of the FOSS movement can be seen as a rebellion against the industrialization of software, which made it difficult to impossible for users to adapt it to their needs. The widely shared story of Richard Stallman&rsquo;s fight against a proprietary printer driver (see <a href="https://poynder.blogspot.com/2006/03/interview-with-richard-stallman.html">here</a> for example) is a nice illustration. Initially, the FOSS movement focused on establishing legal means (licenses) to protect software from becoming proprietary. More slowly, and less explicitly, it worked towards a view of software development as something a community does for its own needs, with the ideal that anyone sufficiently motivated should be able to join such a community and participate in the development process. This was a reasonable proposal in the 1980s, when software was simpler and most computer users had by necessity some programming experience.</p>
+
+<p>Today&rsquo;s situation is very different. Most software has the status of an industrial product for most of its users, whether it&rsquo;s FOSS or not. In theory, anyone can learn anything about FOSS and participate in its evolution at all levels. In practice, the effort is prohibitive for most, and nobody today can envisage understanding all the software they depend on, let alone contributing to its development. As I explained above, it has even become close to impossible to just keep track of which software one depends on. From a user&rsquo;s perspective, the development communities of FOSS projects are industrial software producers just like commercial companies. In a way, FOSS users even have less power because the developer communities have no legal or moral obligations toward their users at all. There are a few cases of institutions that permit users to influence and support the development of FOSS, for example the <a href="http://consortium.pharo.org/">Pharo consortium</a> or the <a href="https://www.fondation-inria.fr/">Inria foundation</a>, but they are the exception rather than the rule.</p>
+
+<p>In science, the FOSS ideal of communities producing software for their own use works very well for domain-specific software packages, whose developers are a representative subset of a well-defined scientific community. But infrastructure software that is used across many scientific disciplines will invariably end up being an industrial product for most of its users. This is true for most of the Scientific Python ecosystem, for example, and also for the statistical software universe that has grown around the R language. Note that I am not saying that the FOSS approach has no advantages there. Open source code is very important to ensure the transparency required for making science verifiable. What I am saying is that openness is not enough to ensure that software is a safe-to-use industrial product, nor does it provide a mechanism for keeping a product&rsquo;s evolution in sync with the needs of its user base.</p>
+
+<p>Whereas the FOSS community has largely remained blind to this issue, the Open Science movement seems to be more aware of the pitfalls of &ldquo;just&rdquo; being open, at least for data. The I and R (interoperability, reusability) in FAIR are the best evidence for this. For now, they remain ideals for which practically usable implementations remain to be defined. Perhaps this will lead to a more careful consideration of reusability for software as well. As with the material goods industries, the key is to recognize users and educators as stakeholders and ensure that their needs are taken into account by producers. Open source communities working on widely used infrastructure software could, for example, adopt a governance model that includes representative non-developing users. Funders of such communities could make such a governance model a condition for funding. But the very first step is creating an awareness of the problem. Development communities should openly state their ambition. It&rsquo;s OK to develop software for use inside a delimited community, but then don&rsquo;t advertise it as easy to use for everyone. It&rsquo;s also OK to aim high and work on general-purpose infrastructure software, but then explain how users can make themselves heard without having to become contributors themselves. Being &ldquo;open&rdquo; is not enough.</p>
+
+  <hr>
+
+  <script type="text/javascript">
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src="//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,"script","twitter-wjs");
+  </script>
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-url="http://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/"
+     data-dnt="true">
+    "Tweet"</a>
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+       */
+      var disqus_config = function () {
+          this.page.url = 'http://blog.khinsen.net/posts/2019/10/29/the-industrialization-of-scientific-research/';
+          this.page.identifier = '/posts/2019/10/29/the-industrialization-of-scientific-research/';
+      };
+      (function() {  // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+
+          s.src = '//khinsen.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  <ul class="pager">
+  <li class="previous">
+    <a href="/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/">&larr; <em>Industrialization of scientific software: a case study</em></a>
+  </li>
+  <li class="next">
+    <a href="/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/"><em>The computational notebook of the future (part 2)</em> &rarr;</a>
+  </li>
+  </ul>
+
+</div><!-- /.blog-post -->
+
+          <!-- <nav> -->
+          <!--   <ul class="pager"> -->
+          <!--     <li><a href="/posts/2019/11/12/industrialization-of-scientific-software-a-case-study/">Previous</a></li> -->
+          <!--     <li><a href="/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/">Next</a></li> -->
+          <!--   </ul> -->
+          <!-- </nav> -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>Note</h4>
+            <p>This blog starts in November 2015. For older posts, see my
+               <a href="http://khinsen.wordpress.com/">old WordPress blog</a>.
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Tags</h4>
+            <ol class="list-unstyled">
+               <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/computational-science.html">computational science</a></li>
+
+<li><a href="/tags/computer-aided-research.html">computer-aided research</a></li>
+
+<li><a href="/tags/python.html">python</a></li>
+
+<li><a href="/tags/reproducible-research.html">reproducible research</a></li>
+
+<li><a href="/tags/science.html">science</a></li>
+
+<li><a href="/tags/scientific-computing.html">scientific computing</a></li>
+
+<li><a href="/tags/scientific-software.html">scientific software</a></li>
+
+<li><a href="/tags/sustainable-software.html">sustainable software</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Find me elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://khinsen.net">Home Page</a></li>
+              <li><a href="http://twitter.com/khinsen/">Twitter</a></li>
+              <li><a href="http://github.com/khinsen/">GitHub</a></li>
+              <li><a href="http://bitbucket.org/khinsen">Bitbucket</a></li>
+              <li><a href="http://orcid.org/0000-0003-0330-9428">ORCID</a></li>               <li><a href="http://www.researchgate.net/profile/Konrad_Hinsen">ResearchGate</a></li>
+
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
