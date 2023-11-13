@@ -1,0 +1,7 @@
+;;;;;
+title: Functional programming for scientific computing
+tags: Programming
+date: 2009-06-23 07:41:50
+format: html
+;;;;;
+With the increasing importance of parallel computers, ranging from multi-core desktop machines to massively parallel machines such as IBM's BlueGene, functional programming could well become an important technique for scientific software development, as it facilitates program transformations (including those for automatic or semi-automatic parallelization) considerably. It also appeals to the mathematical bend of many scientists in making it possible to apply mathematical reasoning to computer programs. The downside: there is a steep learning curve for those familiar with traditional programming (called "imperative").<br><br>I have written an introduction to functional programming for scientists for the July issue of <a href="http://www.computer.org/cise"><em>Computing in Science and Engineering</em></a>. It is also available (free access) via IEEE's <em>Computing Now</em> portal: <a href="http://www2.computer.org/portal/web/computingnow/0609/whatsnew/cise">http://www2.computer.org/portal/web/computingnow/0609/whatsnew/cise</a><br><br>While I don't expect functional programming to be adopted rapidly by computational scientists, I am convinced that ten years from now, it will be an essential item in everyone's toolbox. Better start preparing yourself now!

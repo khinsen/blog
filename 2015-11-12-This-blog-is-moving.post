@@ -1,0 +1,7 @@
+;;;;;
+title: This blog is moving!
+tags: Uncategorized
+date: 2015-11-12 15:14:40
+format: html
+;;;;;
+Welcome to the last post on this WordPress blog. I have set up a <a href="http://blog.khinsen.net/">new blog</a> for all my future writing.<br><br>The reason for the move is that the user interface at WordPress is changing all the time without ever getting better. I like to write my posts on my own computer using Emacs, rather than typing into a rudimentary editing window on a Web site. This is not completely impossible with WordPress, but more hassle than it's worth.<br><br>My new blog is <a href="https://github.com/khinsen/blog">hosted on GitHub</a> and powered by <a href="https://github.com/greghendershott/frog">Frog</a>, a static Web site generator that mixes my posts written as plain <a href="https://daringfireball.net/projects/markdown/">Markdown</a> files with HTML templates based on the <a href="http://getbootstrap.com/">Bootstrap</a> framework to produce the pages you can read. This setup gives me much more control over my blog, while at the same time making it easier for me to publish new posts.<br><br>The one feature that will disappear is the possibility to subscribe to my blog in order to be informed about new posts by e-mail. If you have a GitHub account, you can get the same effect by following updates to the <a href="https://github.com/khinsen/blog">repository</a> that contains my blog. But the easiest way to learn about new posts is to <a href="http://twitter.com/khinsen">follow me on Twitter</a>.
