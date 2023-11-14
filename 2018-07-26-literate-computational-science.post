@@ -1,0 +1,26 @@
+;;;;;
+title: Literate computational science
+date: 2018-07-26 16:44:31
+tags: computational science, computer-aided research, scientific software
+format: md
+;;;;;
+
+Since the dawn of computer programming, software developers have been aware of the rapidly growing complexity of code as its size increases. Keeping in mind all the details in a few hundred lines of code is not trivial, and understanding someone else's code is even more difficult because many higher-level decisions about algorithms and data structures are not visible unless the authors have carefully documented them and keep those comments up to date.
+
+<!-- more -->
+
+The main angle of attack to keep software source code manageable has been the development of ever more sophisticated programming languages and development paradigms, but it is not the only one. Another approach was initiated by Donald Knuth's invention of [literate programming](http://literateprogramming.com/). Its basic idea is to invert the roles of code and documentation. Rather than adding doxumentation as annotations to the code, literate programming puts an explanatory narrative about the software at the center of the software author's attention. Code snippets are embedded into this narrative, much like mathematical formulas are embedded into scientific articles and textbooks.
+
+Literate programming never gained much popularity, for reasons that, to the best of my knowledge, have never been explored systematically. Insufficient tool support is often cited as an obstacle, but I suspect that the mismatch between the structure of the narrative and the language-imposed structure of the code is equally problematic. Programmers need to name code blocks and then assemble them into valid source code by hand. My own experience is that it's usually easier to write and test the code first and then re-create it as a literate program, but this doesn't lead to code that naturally fits the narrative.
+
+The main argument in support of this suspicion is the much higher popularity of a variant of literate programming that both adds and removes features compared to Knuth's original system. Computational notebooks (implemented e.g. by [Jupyter](https://jupyter.org/)) document a computation rather than a piece of software. In addition to code, they embed input data and results into the narrative, but they also restrict code to a linear assembly of code cells executed in sequence. This limitation removes the need to name and assemble code blocks.
+
+An idea I have been exploring recently is to take another step towards letting the explanatory narrative take center stage, by designing a formal language specifically for embedding into such a narrative. However, my language called [Leibniz](https://github.com/khinsen/leibniz) is not a programming language. I call it a digital scientific notation to emphasize its intended use in the documentation of scientific models and methods, but in terms of computer science terminology it is a [specification language](https://en.wikipedia.org/wiki/Specification_language) designed for models expressed in terms of equations and algorithms. Leibniz code _must_ be embedded into a narrative, although the Leibniz authoring environment also extracts a machine-readable version as an XML file for easy processing by scientific software.
+
+For getting an overview of Leibniz, I suggest to look first at a [simple example](http://khinsen.net/leibniz-examples/examples/leibniz-by-example.html), and then read my [paper](https://peerj.com/articles/cs-158/) describing Leibniz and the problems it is designed to solve, which just appeared in PeerJ CompSci (Open Access like all of PeerJ). The explanations in the paper should prepare you for a look at the currently [most extensive example](http://khinsen.net/leibniz-examples/examples/mass-on-a-spring.html), which documents, for a toy problem, the full path of assumptions and approximations that lead from a theoretical framework (Newton's equations of motion) to a numerical algorithm, with all models along the way being machine-readable.
+
+As the paper explains, Leibniz is best described as a research prototype at the current stage. It has known limitations that make its application to complex real-world problems a bit challenging. However, I am confident that these limitations can be overcome, and that Leibniz will be suitable for a wide range of scientific models and methods, starting with mathematical equations and ending with literate workflows. As Silicon Valley startups would say, make sure you won't be left behind by the Leibniz revolution!
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->

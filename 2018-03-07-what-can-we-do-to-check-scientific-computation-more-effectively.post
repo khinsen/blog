@@ -1,0 +1,25 @@
+;;;;;
+title: What can we do to check scientific computation more effectively?
+date: 2018-03-07 18:15:50
+tags: computational science, computer-aided research, scientific software
+format: md
+;;;;;
+
+It is widely recognized by now that software is an important ingredient to modern scientific research. If we want to check that published results are valid, and if we want to build on our colleagues' published work, we must have access to the software and data that were used in the computations. The latest high-impact statement along these lines is a [Nature editorial](https://www.nature.com/articles/d41586-018-02741-4) that argues that with any manuscript submission, authors should also submit the data *and* the software for review. I am all for that, and I hope that more journals will follow.
+
+<!-- more -->
+
+However, we must also be aware of the inherent limitations of simply including software in peer review. With the exception of small and focused software, of the kind we typically have in replications submitted to [ReScience](http://rescience.github.io/) (one of the very few scientific journals that actually does code review), the task of evaluating scientific software is so enormous that asking a single person to do it within two weeks is simply unreasonable. For that reason, journals specialized in software papers, such as the [Journal of Open Research Software](https://openresearchsoftware.metajnl.com/) or the
+[Journal of Open Source Software](https://joss.theoj.org/), limit the reviewing process to more easily verifiable formal aspects, such as the presence of documentation and the use of appropriate software engineering techniques. Which is, of course, much better than nothing, but it isn't enough.
+
+A few months ago I wrote about the [kinds of mistakes that we tend to make in scientific computing](http://blog.khinsen.net/posts/2017/05/04/which-mistakes-do-we-actually-make-in-scientific-code/). In my experience (I'd love to see a systematic study on this), most mistakes are due to discrepancies between what a paper describes and what is actually computed. This covers simple mistakes such as a wrong sign in a computed formula (such as in the widely publicized case of [protein structure retractions](http://doi.org/10.1126/science.314.5807.1856)), or a typo in the input parameter file for a simulation program, but also more complex situations such as the [inflated false-positive rates in fMRI studies](http://doi.org/10.1073/pnas.1602413113) that also made it into the headlines of science news. In this case, the fundamental issue was a mismatch between the methods implemented in the software and the methods that would have been appropriate for many typical use cases of the software. Put differently, the users of the software did not fully understand what exactly the software did. They trusted the software authors blindly to do "the right thing", whatever that was. And they were probably reinforced in their blind trust by the fact that many of their colleagues used the same software. It's the research version of "nobody ever got fired for buying IBM equipment".
+
+Code review is an important step to a better verification of scientific computations, but in the cases I just described its utility is very limited. Neither the wrong sign in the protein crystallography code nor the not-quite-universally-applicable statistical analysis method used by the fMRI software would be detectable by software engineering methods. In the first case, the code would have to be compared to the set of mathematical formulas on which it was based, a task requiring expert knowledge in both crystallography and programming, plus a lot of time - much more than what a reviewer can typically invest. In the second case, code review cannot do anything at all. Only the reviewers of the application papers could have spotted the inappropriateness of the methods - but why should they be expected to be more knowledgeable about the pitfalls than the authors?
+
+An important but not yet widely recognized aspect of these situations is that today's scientific software incorporates a significant amount of scientific knowledge that is very difficult to access and verify by users and reviewers. The translation of mathematical equations in a paper into efficient computer code is almost a form of encryption from the point of view of scientific knowledge transformation. Extracting equations from software source code is not much easier than extracting source code from compiled binaries.
+
+But can we do anything about this? I believe we can, but it will require a serious rethinking of the way we use computers to do research. My first explorations in this direction are described in a paper that is now available as a [PeerJ preprint](https://peerj.com/preprints/26633/?td=bl). Please have a look, and don't hesitate to ask a question or leave other feedback of any kind!
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->

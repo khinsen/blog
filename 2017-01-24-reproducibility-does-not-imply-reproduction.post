@@ -1,0 +1,32 @@
+;;;;;
+title: Reproducibility does not imply reproduction
+date: 2017-01-24 09:42:16
+tags: computer-aided research, reproducible research
+format: md
+;;;;;
+
+In discussions about computational reproducibility (or replicability, or repeatability, according to the preference of each author), I often see the argument that reproducing computations may not be worth the investment in terms of human effort and computational resources. I think this argument misses the point of computational reproducibility.
+
+<!-- more -->
+
+Obviously, there is no point in repeating a computation identically. The results will be the same. So the only reason to re-run a computation is when there are doubts about the exact software or data that were used in the original work, or doubts about the reliability of the hardware.
+
+The point of computational reproducibility is to dispel those doubts. The holy grail of computational reproducibility is not a world in which every computation is run five times, but a world in which a straightforward and cheap analysis of the published material verifies that it is reproducible, so that there is no need to run it again. Actual reproduction attempts would be rare and reserved for situations such as suspicion of hardware failure or suspicion of fraud.
+
+So how can we make reproducibility credible without actually doing reproduction? By using toolchains that have been proven in practice to make computations reproducible. Of course we do need to attempt *some* reproductions in order to validate these toolchains, but it's sufficient to do this for short computations. And if the toolchain is any good, the human effort should be close to zero as well.
+
+The mere fact that we discuss computational reproducibility at all shows that we do have doubts. Most of us doing computational science have at some point had doubts about our own work. How did I make this figure? Was it made with the latest version of this script, or an earlier one? Did I run that simulations before or after installing the recent important bug fix? And when it comes to examining work by others described in a journal article, our ignorance usually reaches a level that the word "doubt" cannot convey - we don't really know anything. All we have is someone else's incomplete story. If we have doubts about our own work whose full story we know, why should we trust someone else's story blindly?
+
+So the question about "how much" reproducibility we need comes down to a more basic question: What would it take to make you trust a computational result beyond a reasonable doubt? Here is my personal list of acceptable evidence as of today:
+
+ - I can repeat the computation on my computer and get close enough results.
+ - The results are published as an [ActivePaper](http://www.activepapers.org/).
+ - The results come with a [Nix](https://nixos.org/) or [Guix](http://guixsd.org/) recipe for reproducing them.
+ 
+The last two cases point to toolchains that I personally consider trustworthy, given the experience I have with them. Both toolchains generate a detailed trace of what happened, with references to all the software and data. And both toolchains make mistakes improbable enough that the remaining risk is acceptable for me. Neither toolchain provides protection from fraud, so if I had a reason to suspect fraud, I'd still attempt a reproduction.
+
+Note that I am not saying that everybody should use one of those toolchains. In their current state, they are neither universal nor sufficiently easy to use. But they do show the toolchain approach to reproducibility is viable.
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->

@@ -1,0 +1,37 @@
+;;;;;
+title: On HDF5 and the future of data management
+date: 2016-01-07 16:09:10
+tags: scientific computing
+format: md
+;;;;;
+
+Yesterday a [blog post](http://cyrille.rossant.net/moving-away-hdf5/) by Cyrille Rossant entitled "Moving away from HDF5" caught my eye. My own tendency at the moment is to use HDF5 more and more, so I was interested in why someone else would want to do the opposite. Here is my conclusion after reading his post, plus some ideas about where scientific data management is or should be heading in my opinion.
+
+<!-- more -->
+
+Any evaluation of some technology happens in the context of a specific application's requirements, and this is where Cyrille's and my own experience differ in an important point: I have never run into performance problems with HDF5, probably because my jobs do much more computation (relative to I/O) than his. This also makes parallel access less of a problem for me, although I agree that HDF5's parallel support could be better.
+
+Otherwise, I agree with much of his criticism of HDF5, but I still conclude that its problems are the smallest evil compared to any other technology I know of. The big problem with HDF5 from my point of view is what Cyrille calls "opacity": the complexity of the file format which in practice means that the only way to use HDF5 files is via the HDF5 library. Which is, indeed, far from perfect. However, given my requirements, there is pretty much no competition to HDF5. The only alternative would be to roll my own system, which isn't a pleasant idea either.
+
+The peculiar combination of requirements that to the best of my knowledge only HDF5 fulfills is:
+
+  - the hierarchical management of multiple datasets with associated metadata as a single unit for archiving and publishing
+  - efficient access to the individual datasets
+
+The first requirement rules out the approach of using a directory with lot of individual files. The second requirement rules out container formats such as zip - having to unpack a dataset for processing is too much overhead.
+
+My first requirement is exactly what Cyrille describes as the "HDF5 philosophy", so it's no wonder that HDF5 fits my needs rather well. His question "One can wonder why not just use a hierarchy of files within a directory." thus deserves a few comments. I have done that for a while, and many of my colleagues still do it. My experience is that, after copying around the data between different machines a few times, I always ended up losing files or having mismatched versions. Which, of course, raises the questions why I copy around the data.
+
+Cyrille says that "today's datasets are so big that they don't tend to move a lot." Well, first of all, mine are not *that* big. My HDF5 files are a few MB to a few GB in size. Individual datasets range from a few hundred bytes to a few GB, and the number of datasets in a HDF5 file ranges from ten to a few thousand. And I copy them around because I handle different tasks in my workflow on different machines. Most data transfers happen between my desktop/laptop and the computing cluster that I use for number crunching. I couldn't do the number crunching on my desk, nor the data inspection and visualization on the cluster in batch mode. Since the two machines have no shared file storage, I can't avoid copying the data back and forth. Moreover, collaborators' desktop machines participate in the overall workflow as well.
+
+For jobs that handle much bigger datasets, copying is indeed not an option, and the usual way to work is to keep the data on a single server-type machine that also handled the computation. I cannot use that kind of setup because I have neither my software nor my computers are made for it. All my software was written with local disk storage in mind - just like HDF5.
+
+Taking a step back from the technical details, my analysis of the situation is that we are living in a transition period from local to distributed storage of scientific data. Local storage was the only option in the past, before fast networks came along. Distributed storage is what fits today's working patterns best: large data, geographically widespread collaborations, etc. But distributed storage still lacks good infrastructure, and is therefore badly supported by much scientific software.
+
+The future of scientific data management is, in my opinion, something like [IPFS](https://ipfs.io/): a single logical view of data spread out over a vast network of machines. Software accesses the data using a mixture of references (like filenames, URLs, etc.) and content-based addressing (e.g. through hashes). If performance demands local storage, the data is cached by the middleware. The middleware also ensures availability with decent performance and redundant storage to prevent data loss. No data would ever be copied explicitly, but simply retrieved "from the cloud".
+
+In such a world, my HDF5 files would become small datasets containing references to other, potentially big datasets, plus metadata. Content-based addressing plus transparant data movements performed by the middleware would ensure coherence - nothing would be messed up by me shoveling data around with manually typed scp commands. I suspect Cyrille would be happy with this as well. The only problem is that we do not have this infrastructure. Worse, given the cost and building and maintaining such infrastructure, we are not likely to have it for many years to come. So... after this short dream, it's back to HDF5 for me.
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->

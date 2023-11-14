@@ -1,0 +1,58 @@
+;;;;;
+title: Stability in the SciPy ecosystem: a summary of the discussion
+date: 2017-11-22 17:56:59
+tags: python, scientific computing
+format: md
+;;;;;
+
+The [plea for stability in the SciPy ecosystem](http://blog.khinsen.net/posts/2017/11/16/a-plea-for-stability-in-the-scipy-ecosystem/#comment-3627775108) that I posted last week on this blog has generated a lot of feedback, both as comments and in a lengthy [Twitter thread](https://twitter.com/khinsen/status/931192953636315137). For the benefit of people discovering it late, here is a summary of the main arguments and my reply to them.
+
+<!-- more -->
+
+## Just freeze your code and it will be reproducible forever
+
+By far the most frequent argument against my claim that we need more stability in the SciPy ecosystem was that people can simply archive their code with all the dependencies (down to the Python language itself) in a way that lets others re-run it later for reproducibility. The most frequently proposed technical approaches were the [conda](https://conda.io/docs/) package manager and [Docker](https://www.docker.com/) containers.
+
+There are three main reasons why this is not a sufficient solution:
+
+ 1. Freezing code is fine for archival reproducibility, as I mentioned in my original post. It is not sufficient for living code bases that people work on over decades. Computational biologist Luis Pedro Coelho has [explained](https://metarabbit.wordpress.com/2017/11/18/numpy-scipy-backwards-stability-debate-and-why-freezing-versions-is-not-the-solution/) this very well and I recommend everyone to read his short writeup. My situation is very much the same as his. On Twitter, astronomer Tuan Do has chimed in with a [similar comment](https://twitter.com/quantumpenguin/status/933123060822978560).
+
+ 2. The technical solutions proposed all depend on yet more infrastructure whose longevity is uncertain. For how long will a Docker container image produced in 2017 remain usable? For how long will conda and its repositories be supported, and for how long will the binaries in these repositories function on current platforms?
+
+ 3. None of today's code freezing approaches comes with easy-to-use tooling and clear documentation that make it accessible to the average computational scientist. The technologies are today in a "good for early adopters" state. This means we cannot rely on them to preserve *today's* research even though they may well take on this role in the future.
+
+To illustrate point 3, let me introduce Alice and Bob, who are real scientists I know, except that I have changed the names. Alice is a chemist with a decent knowledge of Python and basic software engineering techniques (Software Carpentry level), which she eagerly applies because she cares about the quality of her work. Alice considers herself an experimentalist. She develops and maintains a Python codebase for interpreting certain types of experimental data, but software development is not the focus of her work. The code she writes is not public, because her boss doesn't want it to be. Worse, her code depends on a small library developed by a collaborator who doesn't even hand out source code. What Alice gets is pre-compiled shared libraries for the three platforms that matter to herself and to her users.
+
+Bob is an experimental biologist who uses the same instruments as Alice and is happy that Alice has written nice software for interpreting the results. He gets that software, including the binary-only dependencies, by personal arrangements with the various people involved. Bob doesn't know much about Python, nor does he care. His software installation was mostly done by Alice during a one-afternoon meeting in which they worked together to reach a state he could work with. Ideally, he would like to never touch it again, but he also wants the new features that Alice adds from time to time.
+
+To all those who replied "just use conda" or "just use Docker", I recommend considering the situation of Alice and Bob. Do you really believe that conda or Docker are the right solution for them today? Could you point them to suitable documentation written at the right level? Both for building and for re-using frozen environments?
+
+To prevent another round of misunderstanding, I am not saying that the situation of Alice and Bob would be perfect if only they could have a stable Python infrastructure. Research code should be open, for example, for many reasons including the possibility to upload it to various repositories. Fortunately, the attitudes towards software use in science are changing in the right direction, but this will take a lot of time, like all social change.
+
+I also fully understand the point of view that the SciPy ecosystem is for advanced users who value methodological innovation, and that it cannot cater for the needs of Alice and Bob because of conflicting requirements and insufficient resources to deal with them. But then, as I said in my original post, please have the courage to say so openly and clearly. Every beginner-level tutorial for scientists should state during the first five minutes that you cannot expect stability and that you should either use Python only for throw-away code or else be sure you can assume maintenance. In other words, make sure that people like Alice have no false expectations. They can then look for other technology, or team up with like-minded people to maintain long-time-stable branches of SciPy, or try whatever else.
+
+## Stability is an unrealistic expectation
+
+Another frequently expressed opinion was that it is unrealistic to expect the kind of stability I advocated in a modern software environment. This is a self-fulfilling prophecy: if you consider the goal impossible, you won't even try to achieve it. As I have pointed out, long-time stability is a reality in other ecosystems, built around languages such as Fortran or Java. A few people said that Fortran or Java are unfair comparisons, because they encourage very different approaches to dependency management. This is actually my point: you can have stability, but only if it's an explicit goal and if some effort is made to reach that goal. This includes finding suitable approaches to dependency management.
+
+David Cournape made the [interesting observation](https://twitter.com/cournape/status/849918989165842434) that no technology less than 20 years old is better than Python in terms of stability. That rings true, in the sense that I cannot find a counterexample. But I see this as a statement about dominant attitudes in software engineering (way beyond scientific computing), not as a statement about technological constraints that would make stability fundamentally incompatible with other requirements. Software development today is dominated by short-lived technologies but also by short-lived applications. The application domains where stability is valued probably represent a much smaller part of the pie than 20 years ago. But then, this is just another illustration for what I wrote about recently: [There is no such thing as software development](http://blog.khinsen.net/posts/2017/11/09/there-is-no-such-thing-as-software-development/) in the abstract, there is only domain-specific software development. The needs of scientific computing are clearly different from the needs of Silicon Valley startups. The conclusion is that the software development tools and practices should be different as well.
+
+Finally, even within the somewhat tumultuous SciPy ecosystem, stability is not impossible. My own [MMTK](http://dirac.cnrs-orleans.fr/MMTK/) library has been around for 20 years, but in spite of continuous extensions and one API redesign (from version 1.x to version 2.x), I have never knowingly broken anyone's application code. With the end of support Python 2, I can unfortunately no longer maintain that policy.
+
+## Everybody lacks resources for maintenance
+
+Many comments addressed the lack of human resources for developing and maintaining scientific software, and in particular infrastructure software like the core of the SciPy ecosystem. In combination with the fact that new developments are more attractive to most people than boring maintenance, and also more valued by the community, this leads to a culture favoring innovation over stability when most of the work is done by volunteers. This was best expressed by Peter Wang in a [short sequence of tweets](https://twitter.com/pwang/status/931386237193211904).
+
+This is indeed an important factor, and one whose importance transcends scientific computing and even science itself. If you look back at the history of civilization, or even at the history of life on earth, you can't fail to notice that all living organisms have invested the lion's share of their efforts into maintaining the *status quo*: staying alive, staying safe, maintaining an environment that ensures a certain quality of life, etc. In modern societies whose very survival depends on technology, infrastructure maintenance (roads, power grid, ...) has always been a priority of state administrations - until recently, that is. Today, we hear politicians and even intellectuals proclaim the importance of innovation and disruption, while basic infrastructure starts to rot for lack of maintenance.
+
+I can only hope that the innovation and disruption fashion will die out before the societies that have fallen victim to this fashion will do so by natural selection. In the meantime, I propose that scientists try to resist as best as possible. The fact that infrastructure software such as NumPy does get funding is a good sign in my opinion. I believe we can also get funding for stability, if only we clearly state that we need it.
+
+## Data supremacy
+
+Pierre de Buyl [reminded me](http://disq.us/p/1nveqdc) of an [article](http://ieeexplore.ieee.org/abstract/document/6341744/) I wrote five years ago, in which I proposed that data rather than software tools should be the focus of scientific computing because data is of longer-lasting scientific importance. As I have [pointed out two years later](https://f1000research.com/articles/3-101/v2), that data includes scientific models (equations etc.), even though for technical reasons they are mostly embedded into software tools today (see [here](http://sjscience.org/article?id=527) for an idea for doing things differently).
+
+In a world where all scientifically relevant information is stored in stable and well-defined open file formats, software tools can evolve much more freely without disturbing ongoing work or harming reproducibility. New versions of software tools would merely have to maintain the functionality of their predecessors, but not their implementation details. However, this is at best a promise for the future. We don't even have the basic technology to make this happen, nor a consensus that it would be a good idea, which would open up the possibility of getting funding towards that goal. We will therefore need stable software environments for many more years to come.
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->
