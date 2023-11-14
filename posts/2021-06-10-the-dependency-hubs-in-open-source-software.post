@@ -89,7 +89,7 @@ At this point, I can take a break from theory and show you the results of my ana
 		<td>gmp 6.2.0</td> <td>5363</td>
     </tr>
 </table>
-If you want more, [here](./hubs.json) is the full list as a JSON file, sorted by decreasing number of dependents.
+If you want more, [here](../../../../static/hubs.json) is the full list as a JSON file, sorted by decreasing number of dependents.
 
 If you have thought a bit about what to expect before looking at this table, you have probably included programming languages such as <tt>perl</tt> or <tt>python</tt> in this list. But perhaps you did not expect to see utilities such as <tt>pkg-config</tt> or <tt>bzip2</tt>. Remember these are *build* dependencies. The very first step in building a package, *any* package, is unpacking its source code. Many of the packages in my top-twenty list represent boring but essential infrastructure software. The software equivalent of the power grid and the road network: stuff that everybody just takes for granted. Such packages rarely get into the news, except when something goes seriously wrong, as in the case of the [Heartbleed bug](https://heartbleed.com/) affecting OpenSSL. Which, by the way, is at position 634 in my list. It would be much higher up in a network defined by different criteria, of course. There's more to software than build dependencies.
 
@@ -104,7 +104,7 @@ In the almost 40 years since the beginnings of the Open Source movement, the mod
 I will conclude this post with a technical remark. I did my dependency hub analysis using a relatively new tool in the software world, called the [Glamorous Toolkit](https://gtoolkit.com/), to which I added an [interface to Guix](https://github.com/khinsen/guix-gtoolkit). This toolbox significantly lowers the cost of developing new tools. In the screenshot below, you see on the left the user interface of my analysis. It's an additional view on the Guix package catalog, complementing various other views that are already in place. On the right, you see the complete code for this analysis, including the user interface (which also gives access to the list of dependents, not just the number). In contrast to traditional scripts, there is no overhead for reading data or writing out the results. My code works on data structures that are already in place. What is not obvious from the screenshot is that you get the right-hand panel via alt-click from the left-hand one, meaning that users of my little analysis tool always have direct access to the code. It isn't obvious either that modifying the code on the right will immediately update the view on the left, making development highly interactive. If you think notebooks are great, try Glamorous Toolkit. But be warned that you might then realize that notebooks are no longer the state of the art.
 
 <div class="figure">
-<img src="./guix-gtoolkit-dependency-hubs.png" alt="" width="100%"/>
+<img src="../../../../static/guix-gtoolkit-dependency-hubs.png" alt="" width="100%"/>
 <p class="caption"></p>
 </div>
 

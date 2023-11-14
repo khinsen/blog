@@ -13,7 +13,7 @@ In today's scientific practice, there are two main variants of this process, one
 
 The first variant is performed by individual researchers or closely collaborating teams who, starting from the raw information of their lab notebooks, describing methods applied and results obtained, write a journal article summarizing all of this information into an illustrated narrative that is much easier to digest for their fellow scientists. This narrative contains what the authors consider the essence of their work, leaving out what they consider technical details. Moreover, the narrative places the work into its wider scientific context. In a second step, the authors condense the article into an even smaller abstract, supposed to tell readers at a glance if the article is of interest to them without going into any details. This process can be illustrated as a pyramid:
 
-![](./knowledge-pyramid-1.svg)
+![](../../../../static/knowledge-pyramid-1.svg)
 
 At the bottom we have all the gory details, one level up the distilled version for communication, and at the top the minimal summary for first contact with a potential reader. It is not uncommon to have an additional layer between the bottom two, often published as "supplementary material".
 
@@ -21,7 +21,7 @@ Whereas authors work from the bottom to the top of this pyramid, readers work do
 
 The second variant of knowledge distillation is performed collectively by domain experts who summarize the literature of their field into review articles and then into monographs or textbooks for students. The pyramid diagram is very similar to the first variant's:
 
-![](./knowledge-pyramid-2.svg)
+![](../../../../static/knowledge-pyramid-2.svg)
 
 It's really just the same process at another scale: knowledge transfer about a discipline, rather than about a specific study.
 
@@ -54,7 +54,7 @@ To get an idea of what "suitable user interfaces" might look like, it's worth lo
 Back to requirements 1 and 2: we want a precise and easily inspectable description that can be embedded into an explanatory narrative. We also want to be sure that it actually corresponds to what the user interface lets us explore, and to what the software implementation applies efficiently to real-world problems. I am not aware of any existing technology that can fulfill this role, although there many that were designed with somewhat different goals in mind that can serve as guidelines, in particular the various [modeling](https://en.wikipedia.org/wiki/Modeling_language) and
 [specification languages](https://en.wikipedia.org/wiki/Specification_language).
 
-![](./knowledge-pyramid-3.svg)
+![](../../../../static/knowledge-pyramid-3.svg)
 
 My own research into this problem had led to the concept of [digital scientific notations](http://sjscience.org/article?id=527), and I am currently designing such a notation for physics and chemistry, called [Leibniz](https://github.com/khinsen/leibniz). A [first report](https://peerj.com/articles/cs-158/) on this research has been published earlier this year. Leibniz is mainly inspired by traditional mathematical notation concerning the way it is embedded into a narrative, and from specification languages in terms of semantics. Some relevant features of Leibniz for expressing distilled knowledge are
 
