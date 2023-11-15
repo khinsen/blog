@@ -41,6 +41,13 @@ Both approaches I have outlined fail for complex software. A million-line simula
 
 An intermediate layer that factors out accidental complexity is also of interest for other uses in scientific research. That new layer would be the closest we can get to a digital representation of a model or a method. Rather than use it just in the specification of a single piece of software, we can use it for all kinds of analyses and comparisons, and cite it as the main scientific reference in work based on it, in addition to the citation to the software as the technical tool for doing the computations. For this reason, I call this layer "digital scientific knowledge" and the languages for expressing it "digital scientific notation". None of this exists today, but many developments in computer science can be used as a basis for its development. For the details, see [this article](http://sjscience.org/article?id=527).
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>paper editor:</i><p>It sounds nice that this kind of information was being shared in order for the guidance and ideas that they can promote. Through this, it would be an easy thing for them to see if this will all be worth it.</p></li>
+<li><i>Sisaos:</i><p>It looks nice that this kind of information was being shared in order for the guidance and ideas that they can promote. Through this, it would be an easy thing for them to see if this will all be worth it.</p></li>
+<li><i>paper editor:</i><p>It seems like a good thing that this kind of information was being shared in order for the guidance and ideas that they can promote. Through this, it would be an easy thing for them to see if this will all be worth it.</p></li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

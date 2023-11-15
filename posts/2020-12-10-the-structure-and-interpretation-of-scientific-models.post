@@ -62,6 +62,11 @@ To do so, we first need to develop a new appreciation for [scientific models as 
 
 Some readers may have recognized that the title of this post is a reference to two books, [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html) (with a [nice though inofficial online version](https://sarabander.github.io/sicp/html/index.xhtml)) and [Structure and Interpretation of Classical Mechanics](https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics) (also [online](https://tgvaughan.github.io/sicm/toc.html)). The second one is actually somewhat related to the topic of this post: it is a textbook on classical mechanics that uses computational techniques for clarity of exposition. More importantly, both books focus on inducing a deep understanding of their topics, rather than on teaching superficial technical details. This humble blog post cannot pretend to reach that level, of course, but its goal is to spark developments that will culminate in textbooks of the same quality as its two inspirations.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Konrad Hinsen:</i><p>A recommended follow-up read: <a href="https://www.quora.com/What-is-declarative-programming/answer/Alan-Kay-11" rel="nofollow noopener" title="https://www.quora.com/What-is-declarative-programming/answer/Alan-Kay-11">What is declarative programming?<br></a> by Alan Kay. His "what" and "how" is almost the same distinction as "specification" vs "algorithm".</p></li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

@@ -45,6 +45,31 @@ Using `pip install --download . --no-use-wheel matplotlib`, run of course on a m
 
 Looking back at my twenty years using Python, I come to the unfortunate conclusion that software installation is much more of a problem today than it was back in 1995. The main reason is of course that Python software has become more feature-rich and complex - in 1995 something like matplotlib was only a dream. But the state of Python packaging tools is also to blame, with three overlapping and partially compatible tools (distutils, setuptools, and distribute) creating a lot of confusion and various distribution formats (tarballs, eggs, wheels) adding another layer of complexity. What is also sorely missing is a straightforward way to package an application program with all its dependencies in such a way that it can be installed with reasonable effort on all common platforms.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>ostrokach:</i><p>Check out the Anaconda python distribution (<a href="https://anaconda.org" rel="nofollow noopener" title="https://anaconda.org">https://anaconda.org</a>). It addresses most of the issues that you list in this blog.</p><ul>
+<li><i>Konrad Hinsen:</i><p>Anaconda is great if all the packages you need are in it. If you have to add pure Python packages by hand afterwards, that's OK as well, but if you have to add packages with C extension modules, Anaconda is more of a pain than a help in my experience. And that's what I needed in this specific case (Scientific Python + MMTK + nMOLDYN, all with extension modules).</p><p>Moreover, I am not sure that Anaconda is usable in an environment without Internet connection, though I haven't tried.</p><ul>
+<li><i>ostrokach:</i><p>You could set up a local Anaconda repository, and copy into it all the packages (*.tar.bz files) that you require. Anaconda comes with `zlib` and all the other binaries which were giving you a hard time, compiled on old CentOS 5 and thus working on most Linux distros. Furthermore, you could created conda packages for MMTK and nMOLDYN on a local machine, and so you wouldn't even need `gcc` on the server.</p><p>Edit:</p><p>&gt; If you have to add packages with C extension modules, Anaconda is more of a pain than a help in my experience</p><p>If you don't have root access on your machine, you will end up compiling many of the required C libraries in your home directory anyway. You might as well make a conda package out of them so you can use them anywhere. It also helps you want to install several python packages that have different dependencies (NumPy, Boost, etc.).</p><ul>
+<li><i>Konrad Hinsen:</i><p>That all sounds nice in theory, but practice is different. I did )try to build conda packages for ScientificPython and MMTK but gave up. Linking extension modules to the shared libraries already provided by Anconda proved to be impossible in a portable way.</p><ul>
+<li><i>Chris Barker:</i><p>It's been another year, and Conda / Anaconda has grown more features and support. Particularly with conda-forge</p><p>This would probably be very easy today. Though a non-connected environment is a lot harder.</p><p>You'd need to download all your conda packages by hand, but that's not too hard to do, if annoying.</p><p>And there is the Constructor project:</p><p><a href="https://github.com/conda/constructor" rel="nofollow noopener" title="https://github.com/conda/constructor">https://github.com/conda/co...</a></p><p>that might not even be neccesary</p><p>So it HAS gotten better!</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><i>Emmanuel V.:</i><p>Mmm. You're right about Python packaging tools.</p><p>For your setup, an approach could have been:</p><p>1) replicate the "hostile" CentOS environment in a local VM (eg VirtualBox on your laptop, same base OS version, but with Internet connectivity)</p><p>2) Install all needed software as an unprivileged user</p><p>3) copy this user account on the target CentOS</p><p>Emmanuel</p><ul>
+<li><i>matthew scholz:</i><p>This is a solution that should not be required.</p><ul>
+<li><i>Chris Barker:</i><p>well, it's not, but really, on eo f the sources of the problem here is a locked down environment -- having a not-isolated "copy" of the exact same environment should be standard part of such a system.</p></li>
+</ul>
+</li>
+<li><i>Konrad Hinsen:</i><p>Yes, that's another possible strategy. But setting up a virtual machine is also a lot of work, so it comes down to estimating how close one will be to the break-even point. I really didn't expect to spend much time on this before I started.</p></li>
+</ul>
+</li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

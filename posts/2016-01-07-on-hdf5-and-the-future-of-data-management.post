@@ -32,6 +32,11 @@ The future of scientific data management is, in my opinion, something like [IPFS
 
 In such a world, my HDF5 files would become small datasets containing references to other, potentially big datasets, plus metadata. Content-based addressing plus transparant data movements performed by the middleware would ensure coherence - nothing would be messed up by me shoveling data around with manually typed scp commands. I suspect Cyrille would be happy with this as well. The only problem is that we do not have this infrastructure. Worse, given the cost and building and maintaining such infrastructure, we are not likely to have it for many years to come. So... after this short dream, it's back to HDF5 for me.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Daan van Vugt:</i><p>Hi Konrad,</p><p>For that kind of analysis tasks you might look at sshfs with a generous cache as a kind of distributed file system middleware, I use it very often when analysing data.</p><p>Ipfs looks very interesting and loads better!</p><p>Daan</p></li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

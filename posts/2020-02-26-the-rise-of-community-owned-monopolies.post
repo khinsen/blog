@@ -56,6 +56,12 @@ Open Source communities could also more actively solicit feedback from the outsi
 
 But perhaps Open Source communities are just not the right form of organization for infrastructure software. There are other entities that create Open Source software, such as the [Mozilla](https://www.mozilla.org/) and [Apache](https://apache.org/) foundations, or hybrids such as the [Pharo community](https://pharo.org/community) with the [Pharo consortium](https://consortium.pharo.org/) and the [Pharo User Association](https://association.pharo.org/) providing channels for users to influence development. It seems probable that more useful organizational forms are waiting to be discovered. In fact, a good guess is that software should best be managed much like other scientific infrastructure: by specific institutions that ensure long-term funding and provide software as a service to research communities.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Konrad Hinsen:</i><p>An interesting related blog post: <a href="http://reasonableapproximation.net/2020/04/13/in-my-culture-responsibility-oss.html" rel="nofollow noopener" title="http://reasonableapproximation.net/2020/04/13/in-my-culture-responsibility-oss.html">In my culture: the responsibilities of open source maintainers</a>.</p></li>
+<li><i>Luis Pedro Coelho:</i><p>Thanks for the shout out!</p><p>One factor that has impressed me is how shallow some of these "communities" are. Even Python, there are only a handful of big committers to the core (I think barely more than 20 over the whole lifetime of the project! which is barely more than 1 or 2 at any given time).</p><p>I think the Linux kernel may have some deeper community, but many of these central projects are a handful of individuals. (The Linux kernel is also known for keeping  backwards compatibility, but I think that's Linus' personal values rather than just a function of the size of the community: most of his most famous angry rants are about this very topic: do not break other people's code).</p></li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

@@ -30,6 +30,21 @@ Finally, there are other interesting aspects of GToolkit (and Pharo) for computa
 
 **Update**: There's a workaround for embedding figures (thanks to Tudor Gîrba for the hint!), which you can find in the current code version on GitHub.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Tomas:</i><p>Hi Konrad,<br>Is the screencast still available somewhere? The link won't load for me.</p><ul>
+<li><i>Konrad Hinsen:</i><p>Unfortunately I didn't keep a copy, and <a href="http://peervideo.net" rel="nofollow noopener" title="peervideo.net">peervideo.net</a> seems to have disappeared. So far for my very first screencast... I did better the second time, so the screencast for [part 2](<a href="http://blog.khinsen.net/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/)" rel="nofollow noopener" title="http://blog.khinsen.net/posts/2019/05/09/the-computational-notebook-of-the-future-part-2/)">http://blog.khinsen.net/pos...</a> is still around, and also more interesting in the long run.</p><ul>
+<li><i>relbus:</i><p>Getting hit by linkrot really drives home all the points you raise about stability and reproducibility.</p></li>
+<li><i>Tomas Fiers:</i><p>Just watched that one. It's fantastic. I have been thinking about a new  interface for computational science/play too, and this demo suddenly connected different loose threads (dependency graph, transclusion, intermediate value inspection)</p><ul>
+<li><i>Konrad Hinsen:</i><p>Thanks for your feedback! Another line of work I recommend in this space is Sam Ritchie's dynamic notebooks: <a href="https://roadtoreality.substack.com/p/the-dynamic-notebook" rel="nofollow noopener" title="https://roadtoreality.substack.com/p/the-dynamic-notebook">https://roadtoreality.subst...</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

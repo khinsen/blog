@@ -36,6 +36,14 @@ Finally, the transition from the first two stages to the last one is not as smoo
 
 Another way to describe this specificity of scientific computing, compared to other application domains, is the absence of a clear borderline between software developers and software users. Most scientists are users of tried and trusted computational methods while working on the development or validation of methods at another level. The only clear separation we have, conceptually, is the one between scientific models and methods on one hand and computing technology (in particular resource management) on the other hand. Unfortunately, that is exactly the separation that current software technology does not allow us to make.
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>:</i><ul>
+<li><i>Konrad Hinsen:</i><p>I kind of agree with much of what you say, but it's about publishing, not about knowledge representation. In that respect, the transition to digital has opened up many new options and I am all for exploring these - in fact, I am participating actively in doing so.</p><p>The specific topic of this post is not how information is shared and archived, but how knowledge is encoded in the form of symbols. What I want to preserve from the printed paper era is the flexibility of adapting notation to the task. It is programming languages that are rigid and constraining when seen as a medium for expressing thoughts. There are good (but also bad) reasons for that in the context of software development, but they don't carry over to doing science.</p><p>Finally, the analogy with statically linked executables is not very useful in my opinion: an executable is not at all useful for communication scientific knowledge.</p></li>
+</ul>
+</li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

@@ -68,6 +68,18 @@ Check also the comments on Twitter by exploring the replies to [this tweet](http
 
 [Ivo Jimenez](https://twitter.com/ivotron/status/1330612647763570690) also mentions an interesting collection of [resources on artifact evaluation for computer systems conferences](https://sysartifacts.github.io/).
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Roberto Di Cosmo:</i><p>Thanks for this nice post: I like the classification, and I love the acknowledgment of the difficulty to have a "one size fits all" solution when it comes to reproducibility, as the dimension of the problem and the resources available to address it really vary a lot across disciplines, and even inside discipline. A nice example of a <i>"scientific journal that expects reviewers of submitted work to check the code of any computation for correctness or at least plausible correctness, which in practice requires examining its behavior"</i> is Image Processing OnLine (<a href="https://ipol.im" rel="nofollow noopener" title="https://ipol.im">https://ipol.im</a>) that goes a long way along the road to reproducibility.</p><ul>
+<li><i>Konrad Hinsen:</i><p>Thanks for mentioning IPOL! I haven't been able to find reviewing guidelines on their Web site, but I will contact the team to find out what exactly their reviewing process evaluates.</p></li>
+</ul>
+</li>
+<li><i>Nicolas Rougier:</i><p>In terms of code interactivity, I find the <a href="https://distill.pub/" rel="nofollow noopener" title="https://distill.pub/">https://distill.pub/</a> journal to be really good even though I imagine it's a lot of work for authors. But it's really nice to be able to play with the model. In my own domain (computational neuroscience) I dream of having really interactive model where you can test what happens if you modify this or that parameter or simply change the random seed. I suspect this wont't come anytime soon since most journals do not even really care about the code, but who knows.</p><ul>
+<li><i>Konrad Hinsen:</i><p>Thanks for that nice example, which illustrates possibility #3: the possibility to explore how a computation works. Much of the work by Bret Victor (<a href="http://worrydream.com/)" rel="nofollow noopener" title="http://worrydream.com/)">http://worrydream.com/)</a> is similar to the <a href="http://distill.pub" rel="nofollow noopener" title="distill.pub">distill.pub</a> you cite. But as you say, these are very much examples of hand-crafted presentation software, and thus require a huge investment by the authors. Making such presentations more accessible should be one priority in method and tool development. Jupyter widgets are one step in that direction.</p></li>
+</ul>
+</li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->

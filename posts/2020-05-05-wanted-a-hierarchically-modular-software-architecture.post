@@ -35,6 +35,11 @@ The main merit of the two approaches I have outlined in the last paragraph is th
 
 Finally, let me reveal my motivation for writing this post: I hope that someone will prove me wrong. I'd love to see a comment pointing out that I am simply not aware of the right tools and techniques. And you get bonus points for references to actual hierarchically modular software systems that work!
 
+<h3>Comments retrieved from Disqus</h3>
+<ul>
+<li><i>Konrad Hinsen:</i><p>A <a href="https://twitter.com/__luthaf__/status/1257668514770554884" rel="nofollow noopener" title="https://twitter.com/__luthaf__/status/1257668514770554884">Twitter comment</a> says that Rust's package management system satisfies my requirements.</p></li>
+</ul>
+
 <!-- Local Variables: -->
 <!-- mode: markdown -->
 <!-- End: -->
