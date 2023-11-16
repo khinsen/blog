@@ -1,0 +1,31 @@
+;;;;;
+title: This blog gets a facelift
+tags: 
+date: 2023-11-16 15:38:58
+format: md
+toot: https://scholar.social/@khinsen/111421001261908162
+;;;;;
+
+Regular visitors to my blog have probably noticed that it looks different now. However, the visual changes are only a side effect of a more profound change: I now use a different static site generator, [coleslaw](https://github.com/coleslaw-org/coleslaw).
+
+<!-- more -->
+
+It's been a while that I wanted to replace Disqus by a less invasive commenting system, and the recent announcement by Disqus to insert ads into the comments on my blog was what finally motivated me to actually invest some time to get this done. 
+
+The first task was to find a replacement for Disqus. One of my criteria was to allow commenting from the Fediverse, to remove the need for creating yet another account on yet another site just in order to be able to comment. The other criterion was not to depend on some third party service that might disappear or turn evil one day. In reply to [a question on Mastodon](https://scholar.social/@khinsen/111345801956217482), [Marcel Stimberg](https://neuromatch.social/@mstimberg/111346021003557962) pointed me to a [post by Carl Schwan](https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/) explaining how to use replies to a post-related toot as a channel for commenting. That looked just fine: no need for anyone to set up new accounts, just a one-time investment for updating my blog-generation code.
+
+Next, I explored how to implement this technique in the static site generator I was using before, [Frog](https://github.com/greghendershott/frog). It turned out to be more complicated than I expected, because Frog allows only a fixed set of metadata fields on a post. Adding a field is certainly not impossible, but I'd have had to make changes to many places in the code to add parsing code for the new field and then pass its optional value around from function to function until its final destination in HTML rendering.
+
+Before attacking such a major code surgery, I checked out other static site generators on a few-hour train ride, looking for one that supports arbitrary metadata or, better yet, is more hackable than Frog. After all, I might want to make other changes in the future, so having a codebase that I feel comfortable hacking on is likely to be valuable. Given my recently renewed interest in Common Lisp (see [this post](/posts/2023/10/09/deconstructing-the-mastodon-client.html)) for the reasons), I quickly settled on Coleslaw as a candidate to take a closer look at.
+
+Coleslaw has a fixed set of metadata fields as well, but that set is defined by the slots of a class. Just add a slow, and you have a new metadata field. Very hackable! Moreover, the codebase is reasonably small, and while it's not a model of clarity, the ability to explore the code in a live programming environment makes it rather easy to get into, contrary to the more static and debug-hostile Racket code of Frog.
+
+So that's why you are now looking at a Coleslaw-generated blog. It's my personal modified fork for now. I may look into factoring out my add-ons as plugins and submit them upstream, but this is absolutely not a high-priority project. Many people have their own fork of Coleslaw with similar personalizations, and that looks just fine. The forks are even very discoverable via GitHub. I'd prefer having discoverability *beyond* a single forge, but I don't think that's doable today.
+
+Even though the blog looks very different, the contents of the posts have not changed, and the URLs remain identical as well. That took another ten minutes of hacking on Coleslaw. The URLs of the RSS and Atom feeds have also remained the same. I have exported the comments from Disqus and added them as static HTML on the posts. You can no longer add comments on the old posts, but at least read the existing ones. As a bonus, I also imported the posts from my very first blog at wordpress.com, because Coleslaw comes with a Wordpress importer that makes this a very straightforward operation.
+
+The visual presentation of the pages isn't really to my taste, but I am not sure I'll be able to come up with something significantly better with my current rudimentary knowledge of CSS. I'll leave that for a future facelist session, which may of course never happen.
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->
