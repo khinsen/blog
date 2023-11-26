@@ -1,0 +1,7 @@
+#!/usr/bin/sbcl --script
+;;; -*- mode : lisp -*-
+
+(load "~/.sbclrc")
+(ql:quickload :coleslaw)
+
+(coleslaw:main (truename ".") :deploy nil)
