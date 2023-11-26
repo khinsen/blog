@@ -1,0 +1,60 @@
+.mastodon-comments {
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    flex-grow: 2;
+}
+.mastodon-comments .comment {
+    display: grid;
+    column-gap: 1rem;
+    grid-template-areas:
+        "avatar name        " 
+        "avatar time        " 
+        "avatar post        " 
+        "...... interactions";
+    grid-template-columns: min-content;
+    justify-items: start;
+    margin: 0 auto 0 -1em;
+    padding: .5em;
+}
+
+.mastodon-comments .comment .avatar-link {
+    grid-area: avatar;
+    height: 4rem;
+    position: relative;
+    width: 4rem;
+}
+
+.mastodon-comments .comment .avatar img {
+    width: 6rem;
+}
+
+.mastodon-comments .comment .author {
+    align-items: center;
+    display: flex;
+    font-weight: 700;
+    gap: .5em;
+    grid-area: name;
+}
+
+.mastodon-comments  .comment .author .instance {
+    background-color: #0000001f;
+    border-radius: 9999px;
+    color: var(--neutral);
+    font-size: smaller;
+    font-weight: 400;
+    padding: .25em .75em;
+}
+
+.mastodon-comments .comment time {
+    grid-area: time;
+    line-height: 1.5rem;
+    font-size: smaller;
+}
+
+.mastodon-comments .comment .faves {
+    display: none;
+}

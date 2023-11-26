@@ -1,0 +1,52 @@
+{namespace coleslaw.theme.plain}
+
+{template post}
+<article>{\n}
+  <header>{\n}
+    <h1>{$post.title}</h1>{\n}
+    {if $post.tags}
+      Tagged as {foreach $tag in $post.tags}
+        <a href="{$config.domain}/{$tag.url}">{$tag.name}</a>{nil}
+          {if not isLast($tag)},{sp}{/if}
+      {/foreach}
+      {\n}
+    {/if}
+    <p>
+      {if $post.date}
+        Written on <time datetime="{$post.date}" pubdate>{$post.date}</time>{\n}
+      {/if}
+    </p>
+  </header>{\n}
+
+  {$post.text |noAutoescape}{\n}
+
+  {if $post.toot}
+    {\n}
+    <section id="comments">{\n}
+    <h3>Comments</h3>{\n}
+    <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="{$post.toot}">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>{\n}
+
+    <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>{\n}
+    <div id="comments-wrapper" class="mastodon-comments">
+      <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="{$post.toot}">the original post</a> on Mastodon.</p></noscript>
+    </div>{\n}
+    <noscript>You need JavaScript to view the comments.</noscript>{\n}
+    <script src="{$config.domain}/js/purify.min.js"></script>{\n}
+    <script src="{$config.domain}/js/mastodon-comments.js"></script>{\n}
+    <script type="text/javascript">
+      var tootUrl = new URL('{$post.toot}');
+      var pathnameParts = tootUrl.pathname.split('/');
+      var user = pathnameParts[1].slice(1);
+      var tootId = pathnameParts[2];
+      tootUrl.pathname = '';
+      document.getElementById("load-comment").addEventListener("click", loadComments);
+    </script>{\n}
+    </section>{\n}
+  {/if}
+
+  <ul class="pager">
+    {if $prev}<li class="previous"><a href="{$config.domain}/{$prev.url}">&larr; Previous</a></li>{/if}{\n}
+    {if $next}<li class="next"><a href="{$config.domain}/{$next.url}">Next &rarr;</a></li>{/if}{\n}
+  </ul>
+</div>{\n}
+{/template}
