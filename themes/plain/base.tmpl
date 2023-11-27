@@ -16,35 +16,23 @@
     <link href="{$config.domain}/feeds/all.atom.xml"{\n}
           type="application/atom+xml"{\n}
           rel="alternate">{\n}
-    {if $injections.head}
-      {foreach $injection in $injections.head}
-        {$injection |noAutoescape}
-      {/foreach}
-    {/if}
   </head>{\n}
   <body>{\n}
     <nav>{\n}
       <site-home><a href="/">{$config.title}</a></site-home>{\n}
+      <site-links>
       {foreach $link in $config.sitenav}
-        <site-link>
         {if $link.relative}
           <a href="{$config.domain}/{$link.url}">{$link.name}</a>
         {else}
           <a href="{$link.url}">{$link.name}</a>
         {/if}
-        </site-link>{\n}
       {/foreach}
+      </site-links>{\n}
     </nav>{\n}
     <main>{\n}
       {$raw |noAutoescape}{\n}
     </main>{\n}
-    {if $injections.body}
-      {foreach $injection in $injections.body}
-        <div>
-          {$injection |noAutoescape}
-        </div>
-      {/foreach}
-    {/if}
   </body>{\n}
 </html>{\n}
 {/template}
