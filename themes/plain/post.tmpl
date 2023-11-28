@@ -3,35 +3,39 @@
 {template post}
 <article>{\n}
   <header>{\n}
-    <h1>{$post.title}</h1>{\n}
-    <post-metadata>
-      {if $post.date}
-        <time datetime="{$post.date}" pubdate>{$post.date}</time>{\n}
+    <hgroup>{\n}
+      <h1>{$post.title}</h1>{\n}
+      <p> <post-metadata>
+        {if $post.date}
+          <time datetime="{$post.date}" pubdate>{$post.date}</time>{\n}
+        {/if}
+        {if $post.tags}
+            <post-tags>
+            {foreach $tag in $post.tags}
+              <a href="{$config.domain}/{$tag.url}">{$tag.name}</a>{nil}
+                {if not isLast($tag)},{sp}{/if}
+            {/foreach}
+            </post-tags>{\n}
       {/if}
-      {if $post.tags}
-          <post-tags>
-          {foreach $tag in $post.tags}
-            <a href="{$config.domain}/{$tag.url}">{$tag.name}</a>{nil}
-              {if not isLast($tag)},{sp}{/if}
-          {/foreach}
-          </post-tags>{\n}
-    {/if}
-    </post-metadata>{\n}
+      </post-metadata> </p>{\n}
+    </hgroup>{\n}
   </header>{\n}
 
   {$post.text |noAutoescape}{\n}
 
+</article>{\n}
+
   {if $post.toot}
     {\n}
-    <section id="comments">{\n}
-    <h2>Comments</h2>{\n}
-    <p>With an account on the Fediverse or Mastodon, you can respond to this <a href="{$post.toot}">post</a>. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. Known non-private replies are displayed below.</p>{\n}
+    <hgroup>
+      <h2>Comments</h2>{\n}
+      <p><i>With an account on the Fediverse (e.g. Mastodon), you can comment by replying to this <a href="{$post.toot}">post</a>. Non-private replies are displayed below.</i></p>
+    </hgroup>{\n}
 
-    <p id="mastodon-comments-list"><button id="load-comment">Load comments</button></p>{\n}
-    <div id="comments-wrapper" class="mastodon-comments">
-      <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="{$post.toot}">the original post</a> on Mastodon.</p></noscript>
-    </div>{\n}
-    <noscript>You need JavaScript to view the comments.</noscript>{\n}
+    <button id="load-comment">Load comments</button>{\n}
+    <mastodon-comments id="comments-wrapper">{\n}
+      <noscript><p>Loading comments relies on JavaScript. Try enabling JavaScript and reloading, or visit <a href="{$post.toot}">the original post</a> on Mastodon.</p></noscript>{\n}
+    </mastodon-comments>{\n}
     <script src="{$config.domain}/js/purify.min.js"></script>{\n}
     <script src="{$config.domain}/js/mastodon-comments.js"></script>{\n}
     <script type="text/javascript">
@@ -42,10 +46,7 @@
       tootUrl.pathname = '';
       document.getElementById("load-comment").addEventListener("click", loadComments);
     </script>{\n}
-    </section>{\n}
-  {/if}
-
-</article>{\n}
+{/if}
 
 <previous-next>{\n}
   {if $prev}

@@ -1,4 +1,4 @@
-.mastodon-comments {
+main mastodon-comments {
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     margin-bottom: 1rem;
@@ -7,7 +7,18 @@
     flex-direction: column;
     flex-grow: 2;
 }
-.mastodon-comments .comment {
+
+main mastodon-comments article {
+    background-color: #F0F0F0;
+    border:1px solid #666666;
+}
+
+main mastodon-comments article main {
+    margin: 0;
+    padding: 0;
+}
+
+main mastodon-comments .comment {
     display: grid;
     column-gap: 1rem;
     grid-template-areas:
@@ -21,18 +32,24 @@
     padding: .5em;
 }
 
-.mastodon-comments .comment .avatar-link {
+main mastodon-comments .comment.comment-reply {
+    margin: 0 auto 0 1em;
+}
+
+main mastodon-comment p { margin:0;padding:0; }
+
+main mastodon-comments .comment .avatar-link {
     grid-area: avatar;
     height: 4rem;
     position: relative;
-    width: 4rem;
+    width: 3rem;
 }
 
-.mastodon-comments .comment .avatar img {
-    width: 6rem;
+main mastodon-comments .comment .avatar-link img {
+    width: 3rem;
 }
 
-.mastodon-comments .comment .author {
+main mastodon-comments .comment .author {
     align-items: center;
     display: flex;
     font-weight: 700;
@@ -40,7 +57,7 @@
     grid-area: name;
 }
 
-.mastodon-comments  .comment .author .instance {
+main mastodon-comments  .comment .author .instance {
     background-color: #0000001f;
     border-radius: 9999px;
     color: var(--neutral);
@@ -49,12 +66,12 @@
     padding: .25em .75em;
 }
 
-.mastodon-comments .comment time {
+main mastodon-comments .comment time {
     grid-area: time;
     line-height: 1.5rem;
     font-size: smaller;
 }
 
-.mastodon-comments .comment .faves {
+main mastodon-comments .comment .faves {
     display: none;
 }

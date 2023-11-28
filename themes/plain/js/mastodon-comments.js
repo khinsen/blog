@@ -49,7 +49,7 @@ function loadComments() {
         commentsWrapper.innerHTML = "";
 
         descendants.forEach(function(status) {
-            console.log(descendants)
+          console.log(descendants)
           if( status.account.display_name.length > 0 ) {
             status.account.display_name = escapeHtml(status.account.display_name);
             status.account.display_name = emojify(status.account.display_name, status.account.emojis);
@@ -168,6 +168,7 @@ function loadComments() {
           }
 
           commentsWrapper.innerHTML += DOMPurify.sanitize(comment.outerHTML);
+          document.getElementById("load-comment").innerHTML = "Loaded";
         });
       }
     });
