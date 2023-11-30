@@ -15,7 +15,7 @@ main pre, main code { margin:0;font-size:14px;background-color:lightgray }
 main pre { padding:8px;display:inline-block;min-width:100% }
 main code { padding:4px; }
 main article { margin-top:8px; }
-main article p { margin:0;padding:3px 0 3px; }
+main article p { margin:0;padding:4px 0 4px; }
 main article post-metadata { padding:10px 0 10px;display:flex;justify-content:space-between }
 main article post-tags { font-style:italic; }
 main previous-next { padding:20px 0 10px;display:flex;justify-content:space-between }
