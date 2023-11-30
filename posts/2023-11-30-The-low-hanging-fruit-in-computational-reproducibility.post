@@ -1,0 +1,28 @@
+;;;;;
+title: The low-hanging fruit in computational reproducibility
+tags: reproducible research
+date: 2023-11-30 11:16:03
+format: md
+;;;;;
+
+Yesterday I participated in the [International workshop “Software, Pillar of Open Science”](https://www.ouvrirlascience.fr/international-workshop-software-pillar-of-open-science/), organized as part of the [French initiative for Open Science](https://www.ouvrirlascience.fr/). In the course of the various presentations and discussions (both in public and during coffee breaks), I realized that something has been absent from such events all the time: the vast majority of scientists.
+
+<!-- more -->
+
+What prompted this insight was the juxtaposition of two observations: during the introduction, the importance of software in research ("92% of all researchers say they rely on software"), and during the panel on reproducibility, the difficulties resulting from the complexities of today's software stacks.
+
+Here's a provocative proposition: we can solve computational reproducibility for a big majority of those 92% of researchers by buying them a license for [Mathematica](https://www.wolfram.com/mathematica/).
+
+It's not Open Source, and that's bad for Open Science. I agree. But it does everything that most of those researchers need, it's very easy to install and run, and it's stable. You can run 20-year-old Mathematica code in today's version, and get the same results in the vast majority of cases. No reproducibility issues.
+
+It's worth asking the question how a commercial company can solve a problem that highly qualified academic researchers have been discussing for a decade and continue to declare difficult. My answer to this question is threefold: (1) commercial licenses provide the resources for ensuring [the floor of the sustainability doughnut](https://science-in-the-digital-era.khinsen.net/#The%20sustainability%20doughnut%20of%20scientific%20software), (2) the contractual producer-client relation provides the information necessary for ensuring [the ceiling of the sustainability doughnut](https://science-in-the-digital-era.khinsen.net/#The%20sustainability%20doughnut%20of%20scientific%20software), and (3) their audience is very different from the participants at software-for-open-science events.
+
+The last aspect is my key message here. All the activities around software in Open Science are organized by and for people who work in computational science, meaning that computation is their principal tool of scientific inquiry. A large proportion of them has a degree in computer science. On the other hand, most of the 92% of researchers who depend on software do [computer-aided research](https://science-in-the-digital-era.khinsen.net/#Computer-aided%20research) but *not* computational science. Their main tools are instruments or mathematical theories. They use computers as auxiliary tools, mostly for routine data analysis tasks.
+
+The people who contribute to Open Source projects for scientic software have overall the same profile as the participants of software-for-open-science events. They develop and document their software for this kind of profile as well. The invisible others can and do use this software as well, but it's a lot too complex for them. It's above the sustainability ceiling. But since the invisible others are invisible to the developers, they have no way to make their needs heard. In contrast to a commercial company, who knows all of its clients (they are paying for their license every year), cares about them (they are paying for their license every year), and regularly asks them about their needs and their degree of satisfaction.
+
+I brought up this issue during the panel on sustainability, and discovered that there are others who have been thinking about it, for example panel member [Josh Greenberg](https://sloan.org/about/staff/joshua-m-greenberg) from the Sloan foundation (whom I'd also like to thank for an insightful discussion after the event). That's very promising. And here's my proposal for a first step into this direction: let's work on diversity and inclusion in Open Science. Make sure that all of the 92% of software-using researchers are represented.
+
+<!-- Local Variables: -->
+<!-- mode: markdown -->
+<!-- End: -->
