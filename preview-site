@@ -1,0 +1,7 @@
+#!/usr/bin/env -S sbcl --script
+;;; -*- mode : lisp -*-
+
+(load "~/.sbclrc")
+(ql:quickload :coleslaw-cli)
+
+(coleslaw-cli:preview (merge-pathnames #P"site/" (truename ".")))
